@@ -4346,7 +4346,44 @@
                     </div>
                 </div>
                 
-                <div class="div-row form-horizontal row-fluid" data-bind=" attr: { id: &#39;#section_&#39; + $index() + &#39;row_&#39; + $parent.Rows().length }" id="#section_3row_6">
+                <div class="div-row form-horizontal row-fluid" data-bind=" attr: { id: &#39;#section_&#39; + $index() + &#39;row_&#39; + $parent.Rows().length }" id="#section_5row_6">
+                    <div class="div-tab span1">
+                        <a href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#" class="btn btn-custom">
+                            <i class="icon-ellipsis-vertical  icon-white" style="display: inline-block; vertical-align: middle; position: relative; margin-top: -5px;"></i>
+                            <i class="icon-ellipsis-vertical  icon-white" style="display: inline-block; vertical-align: middle; position: relative; margin-top: -5px;"></i>
+                        </a>
+                    </div>
+                    <!-- ko foreach: Fields -->
+                    <div class="div-grid-cell span3" data-bind="css: divstyle">
+                        <!-- ko ifnot: Type --><!-- /ko -->
+                        <!-- ko if: IsDataElement --><!-- /ko -->
+                        <!-- ko if: IsStatic -->
+                        <a data-bind="click: function(data, event){ Configure($parent) }, text: Value" href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#">Full Bureau</a>
+                        <!-- /ko -->
+                    </div>
+                    
+                    <div class="div-grid-cell span4" data-bind="css: divstyle">
+                        <!-- ko ifnot: Type --><!-- /ko -->
+                        <!-- ko if: IsDataElement -->
+                        <a data-bind="click: function(data, event){ Configure($parent) }, text: DataElementName" href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#">Bureau - Entire.AsJson</a>
+                        <!-- /ko -->
+                        <!-- ko if: IsStatic --><!-- /ko -->
+                    </div>
+                    
+                    <div class="div-grid-cell span3" data-bind="css: divstyle">
+                        <!-- ko ifnot: Type --><!-- /ko -->
+                        <!-- ko if: IsDataElement --><!-- /ko -->
+                        <!-- ko if: IsStatic -->
+                        <a data-bind="click: function(data, event){ Configure($parent) }, text: Value" href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#"></a>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                    <div class="div-tab span1">
+                        <a href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#" class="btn btn-custom" style="width:15px" data-bind="click: function(data, event) { return removeRow(data, $parent); }">
+                            <i class="icon-remove-sign icon-white" style="display: inline-block; vertical-align: middle; position: relative; margin-top: -5px;"></i>
+                        </a>
+                    </div>
+                </div><div class="div-row form-horizontal row-fluid" data-bind=" attr: { id: &#39;#section_&#39; + $index() + &#39;row_&#39; + $parent.Rows().length }" id="#section_3row_6">
                     <div class="div-tab span1">
                         <a href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#" class="btn btn-custom">
                             <i class="icon-ellipsis-vertical  icon-white" style="display: inline-block; vertical-align: middle; position: relative; margin-top: -5px;"></i>
@@ -4424,44 +4461,7 @@
                     </div>
                 </div>
                 
-                <div class="div-row form-horizontal row-fluid" data-bind=" attr: { id: &#39;#section_&#39; + $index() + &#39;row_&#39; + $parent.Rows().length }" id="#section_5row_6">
-                    <div class="div-tab span1">
-                        <a href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#" class="btn btn-custom">
-                            <i class="icon-ellipsis-vertical  icon-white" style="display: inline-block; vertical-align: middle; position: relative; margin-top: -5px;"></i>
-                            <i class="icon-ellipsis-vertical  icon-white" style="display: inline-block; vertical-align: middle; position: relative; margin-top: -5px;"></i>
-                        </a>
-                    </div>
-                    <!-- ko foreach: Fields -->
-                    <div class="div-grid-cell span3" data-bind="css: divstyle">
-                        <!-- ko ifnot: Type --><!-- /ko -->
-                        <!-- ko if: IsDataElement --><!-- /ko -->
-                        <!-- ko if: IsStatic -->
-                        <a data-bind="click: function(data, event){ Configure($parent) }, text: Value" href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#">Full Bureau</a>
-                        <!-- /ko -->
-                    </div>
-                    
-                    <div class="div-grid-cell span4" data-bind="css: divstyle">
-                        <!-- ko ifnot: Type --><!-- /ko -->
-                        <!-- ko if: IsDataElement -->
-                        <a data-bind="click: function(data, event){ Configure($parent) }, text: DataElementName" href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#">Bureau - Entire.AsJson</a>
-                        <!-- /ko -->
-                        <!-- ko if: IsStatic --><!-- /ko -->
-                    </div>
-                    
-                    <div class="div-grid-cell span3" data-bind="css: divstyle">
-                        <!-- ko ifnot: Type --><!-- /ko -->
-                        <!-- ko if: IsDataElement --><!-- /ko -->
-                        <!-- ko if: IsStatic -->
-                        <a data-bind="click: function(data, event){ Configure($parent) }, text: Value" href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#"></a>
-                        <!-- /ko -->
-                    </div>
-                    <!-- /ko -->
-                    <div class="div-tab span1">
-                        <a href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#" class="btn btn-custom" style="width:15px" data-bind="click: function(data, event) { return removeRow(data, $parent); }">
-                            <i class="icon-remove-sign icon-white" style="display: inline-block; vertical-align: middle; position: relative; margin-top: -5px;"></i>
-                        </a>
-                    </div>
-                </div>
+                
                 <!-- /ko -->
                 <div class="div-row pin">
                     <div class="div-tab"><a href="https://gls-qa.defisolutions.com/Admin/PageConfiguration/Decisioning/#" class="btn btn-custom" style="width:15px" data-bind="click: addRow"><i class="icon-plus-sign icon-white" style="display: inline-block; vertical-align: middle; position: relative; margin-top: -5px;"></i></a></div>

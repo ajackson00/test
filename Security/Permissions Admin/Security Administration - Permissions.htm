@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://gls-qa.defisolutions.com/Security/Permissions -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Security Administration - Permissions</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
+    <title>Security Administration - Permissions</title>
+    <link rel="stylesheet" href="./Security Administration - Permissions_files/defi_web_merged.css">
+    
+
+        
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/defi_web_merged.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/main_style.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/columns.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/admin_content.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/forms.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/colorbox.css">
+        <link rel="apple-touch-icon" href="https://gls-qa.defisolutions.com/apple-touch-icon.png">
+            <script>
+                // Edit to suit your needs.
+                var ADAPT_CONFIG = {
+                    // Where is your CSS?
+                    path: "/Content/css/assets/",
+
+                    // false = Only run once, when page first loads.
+                    // true = Change on window resize and page tilt.
+                    dynamic: true,
+
+                    // First range entry is the minimum.
+                    // Last range entry is the maximum.
+                    // Separate ranges by "to" keyword.
+                    range: [
+                        '0px    to 760px  = mobile.min.css',
+                        '760px  to 980px  = 720.min.css',
+                        '980px  to 1280px = 960.min.css',
+                        '1280px to 1600px = 1200.min.css',
+                        '1600px to 1940px = 1560.min.css',
+                        '1940px to 2540px = 1920.min.css',
+                        '2540px           = 2520.min.css'
+                    ]
+                };
+            </script>
+        
+            <script type="text/javascript" src="./Security Administration - Permissions_files/head.load.min.js"></script>
+            <script src="./Security Administration - Permissions_files/adapt.min.js"></script><link rel="stylesheet" href="https://gls-qa.defisolutions.com/Content/css/assets/1200.min.css">
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery-1.10.2.min.js"></script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery-ui-1.10.4.min.js"></script>
+            <script type="text/ecmascript" src="./Security Administration - Permissions_files/jquery-migrate-1.2.1.min.js"></script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.tmpl.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/json2.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/grid.locale-en.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/ui.multiselect.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.jqGrid.min.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.tablednd.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.contextmenu.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/grid.addons.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.jqGrid.src.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/defi.jquery.multiselect.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.form.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.Wizardry.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.blockUI.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/underscore.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/admin.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/columns.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/main.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.validate.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/ValidateForm.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/additional-methods.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jsrender.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.maskmoney.js"> </script>  
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.maskedinput.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/ControlValues.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.formatCurrency-1.4.0.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery.colorbox-min.js"></script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/Dropdown-Values.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/knockout-2.2.1.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/knockout.mapping.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/knockout.bindings.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/jquery-TimePicker-1.0.0.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/moment.min.js"> </script>  
+            <script type="text/javascript" src="./Security Administration - Permissions_files/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/defi-utils.js"> </script>
+            <script src="./Security Administration - Permissions_files/jquery.qtip.js"> </script>
+            <script src="./Security Administration - Permissions_files/jquery.noty.js"> </script>
+            <script type="text/javascript" src="./Security Administration - Permissions_files/autoNumeric-1.9.1.js"> </script>    
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/jquery.multiselect.css">    
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/ui.jqgrid.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/jquery-ui-1.8.1.custom.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/ui.multiselect.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/jquery.qtip.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/smart_tab.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/smart_tab_vertical.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/jquery.noty.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/noty_theme_default.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Security Administration - Permissions_files/timePicker.css">
+            <style>
+                .fa {
+                    color: #01AFF3;
+                }
+            </style>
+
+        
+
+        <script language="javascript" type="text/javascript">
+            var idleTime = 0;
+
+            function timerIncrement() {
+                idleTime = idleTime + 1;
+                if (idleTime == 10) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 5 minutes due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime == 11) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 4 minutes due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime == 12) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 3 minutes due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime == 13) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 2 minutes due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime == 14) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 1 minute due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime > 14) {
+                    window.location.href = "/Account/Logoff";
+                }
+            }
+            $.ajaxSetup({ cache: false });
+
+            function showNoty(html, excludeButtons) {
+                var canEdit = 'False' == 'True';
+                html += "<table width=\"100%\"><tr><td>";
+
+                if (canEdit && !excludeButtons) {
+                    html += "<div id=\"buttons\"><input class=\"standard_button\" type=\"button\" onclick=\"saveClick();\" value=\"Save\" id=\"btnSaveRule\" /> <input class=\"standard_button\" type=\"button\" onclick=\"cancelClick();\" value=\"Cancel\" id=\"btnCancel\" /></div>";
+                }
+                html += "</td></tr></table>";
+                var n = noty({ "text": html, "layout": "topCenter", "type": "alert", "animateOpen": { "height": "toggle" }, "speed": 0, "timeout": false, "closeButton": true, "closeOnSelfClick": false, "closeOnSelfOver": false, "modal": true });
+
+                disableUnlessCanEdit();
+
+                return n;
+            }
+
+            function openHelp(helpId) {
+                var winBlankPopup = window.open("/CustomerPortal/Wiki/Content?wikiId=" + helpId);
+                if (winBlankPopup) {
+                    winBlankPopup.focus();
+                    winBlankPopup.close();
+                }
+            }
+
+                
+            $(document).ready(function () {
+                //Increment the idle time counter every minute.
+                //var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+                //Zero the idle timer on mouse movement.
+                $(this).mousemove(function (e) {
+                    idleTime = 0;
+                });
+                $(this).keypress(function (e) {
+                    idleTime = 0;
+                });
+                $(window).load(function () {
+                            
+                    var content = "";
+                    content = '<span id="pageName">Permissions Admin';                                                        
+                            
+                            
+                                
+                    content += '&nbsp;<a href="/CustomerPortal/Wiki/Content?wikiId=8" target="_blank"><i class="fa fa-question-circle"/></a>';
+                    
+
+                    content += '</span><br><font color="grey" size="2"><span id="pageDescription">List of all possible system permissions.</span></font>';
+                    $("#Caption:not(.setByWizard)").html(content);
+                                                                                                              
+
+                });
+            });
+                
+
+            function disableUnlessCanEdit() {
+                var canEdit = 'False' == 'True';
+
+                if (!canEdit) {
+
+                    $(':button').hide();
+
+                    $.each($("input"), function () {
+                        $(this).attr('disabled', true);
+                    });
+
+                    $.each($("textarea"), function () {
+                        $(this).attr('disabled', true);
+                    });
+
+                    $.each($("select"), function () {
+                        $(this).attr('disabled', true);
+                    });
+
+                    $('.btn').hide();
+
+                    $('#queueSelect').removeAttr('disabled');
+                }
+            }
+        </script>
+
+        
+     
+
+    </head>
+    <body>
+        <meta content="KlkS9oFkObu5V6hMxk0MUfdNJXJbBq+c2k/GvhAz8hkguNllwPuL/XmZWpIokVxWEoTnhboiL65Ur+phBG8j7zKUxT4/uavYBf9OAciLnSzIrserK17ovd5EgUKiRxveu4/i1pCua0rSoexplxhA91+LB6A=" name="__AjaxRequestVerificationToken">
+        <div id="wrapper" style="width:95%; margin: auto;">
+            <div id="main_container" class="container_12" style="width:100%">
+                <div id="sub_main_container" class="container_12 alpha omega" style="width:100%">
+                    <div id="header_wrapper" class="container_12 alpha omega" style="width:100%">
+                        <div id="header" class="container_12 alpha omega" style="width:100%">
+                            <div id="logo" class="logo">
+                                <a href="https://gls-qa.defisolutions.com/Home/Landing"><img id="companyLogoImage" src="./Security Administration - Permissions_files/GetLogo" alt="Your Logo Here" title="Your Logo Here"></a>
+                            </div>
+                            <div id="top_user_nav">
+                                <ul>
+                                    
+
+    <div>
+    
+    <li><a href="https://gls-qa.defisolutions.com/Account/ChangePassword" title="ChangePassword">Change Password</a></li>
+    
+    <li><a href="https://gls-qa.defisolutions.com/Account/Logoff/">Log off ajackson</a></li>
+    
+    <li><a href="https://gls-qa.defisolutions.com/Home/Landing">Home</a></li>
+    
+    </div>
+
+<script lang="javascript" type="text/javascript">
+    $('#queueSelect').change(function () {
+        var val = $(this).val();
+
+        if (val == '') return;
+
+        if (val == 'UW') {
+            window.location = '/Underwriter/Home';
+            return;
+        }
+        
+        if (val == 'VF') {
+            window.location = '/Funder/Home';
+            return;
+        }
+        
+        if (val == 'FU') {
+            window.location = '/Underwriter/Home/Followup';
+            return;
+        }
+        
+        if (val == 'P') {
+            window.location = '/Funder/Home/Personal';
+            return;
+        }
+
+        window.location = '/Underwriter/Home?activeType=' + $(this).val();
+    });
+
+</script>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container_12" id="buffer" style="width:100%">&nbsp;</div>
+               
+                    <div id="body_wrapper" class="container_12" style="width:100%;">
+                        <div id="body" class="container_12" style="width:100%;">
+                            <table style="width:100%">
+                                <tbody><tr>
+                                    <td id="leftmenu" class="alpha ui-corner-all" style="vertical-align: top; width: 10%;">
+                                        
+<a id="back" style="margin-left: 40px; cursor: pointer"><span>Back</span></a>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#leftmenu").css('width', '10%');
+        $("#back").click(function () {
+            window.location.href = '/Home/ConfigurationNormal';
+        });
+    });
+</script>
+                                    </td>
+                                    <!-- START MAIN CONTENT ROUNDED BOX -->
+                                    <td id="main" class="ui-corner-all omega grid_9" style="width:100%">
+                                        <div style="background-color: #ffffff">
+                                
+                                            <div id="content" class="body_content alpha omega grid_9 ui-corner-all" style="width:100%">
+                                                <div id="Caption" class="right_column_header"><span id="pageName">Permissions Admin&nbsp;<a href="https://gls-qa.defisolutions.com/CustomerPortal/Wiki/Content?wikiId=8" target="_blank"><i class="fa fa-question-circle"></i></a></span><br><font color="grey" size="2"><span id="pageDescription">List of all possible system permissions.</span></font></div>
+                                                
+
+
+
+
+
+
+
+
+    <link href="./Security Administration - Permissions_files/SecurityAdmin.css" rel="stylesheet" type="text/css">
+    <link href="./Security Administration - Permissions_files/ui.jqgrid(1).css" rel="stylesheet" type="text/css">
+    <script src="./Security Administration - Permissions_files/grid.locale-en.js" type="text/javascript"></script>
+    <script src="./Security Administration - Permissions_files/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="./Security Administration - Permissions_files/jquery.colorbox.js" type="text/javascript"></script>
+
+
+<div id="security_section">
+    
+
+    <div id="security_body">
+        <div id="security_header" style="display: none;">
+            <div class="row">
+                <div id="consumerList">
+                    <div class="cell">Select A Consumer:&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="cell">
+                        <select id="consumers" onchange="GetApplicationFor(0);" disabled="disabled"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="applicationList">
+                    <div class="cell">Select An Application:</div>
+                    <div class="cell">
+                        <select id="applications" onchange="Update();" disabled="disabled"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="consumerID" disabled="disabled">
+        <input type="hidden" id="applicationID" disabled="disabled">
+        <br>
+        
+
+<script type="text/javascript" src="./Security Administration - Permissions_files/security.js"> </script>  
+<script type="text/javascript" src="./Security Administration - Permissions_files/jqGridSearch.js"></script>
+
+<div id="permissions_section">
+    <div id="searchDiv">  <div>
+ <table><tbody><tr>
+     <th title="Search">Search</th>
+     <td><input type="text" id="txtSearch" disabled="disabled"> </td>
+   </tr></tbody></table>
+</div>
+
+ 
+</div>
+    <div id="permissions_list">
+       <div class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" id="gbox_permissions_grid" dir="ltr" style="width: 1359px;"><div class="ui-widget-overlay jqgrid-overlay" id="lui_permissions_grid"></div><div class="loading ui-state-default ui-state-active" id="load_permissions_grid" style="display: none;">Loading...</div><div class="ui-jqgrid-view" id="gview_permissions_grid" style="width: 1359px;"><div class="ui-jqgrid-titlebar ui-jqgrid-caption ui-widget-header ui-corner-top ui-helper-clearfix" style="display: none;"><a role="link" class="ui-jqgrid-titlebar-close ui-corner-all HeaderButton" style="right: 0px;"><span class="ui-icon ui-icon-circle-triangle-n"></span></a><span class="ui-jqgrid-title"></span></div><div class="ui-state-default ui-jqgrid-hdiv" style="width: 1359px;"><div class="ui-jqgrid-hbox"><table class="ui-jqgrid-htable" style="width:1341px" role="grid" aria-labelledby="gbox_permissions_grid" cellspacing="0" cellpadding="0" border="0"><thead><tr class="ui-jqgrid-labels" role="rowheader"><th id="permissions_grid_Name" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 666px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_permissions_grid_Name" class="ui-jqgrid-sortable">Permission Name<span class="s-ico" style=""><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="permissions_grid_Description" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 665px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_permissions_grid_Description" class="ui-jqgrid-sortable">Description<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="permissions_grid_ID" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_permissions_grid_ID" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th></tr></thead></table></div></div><div class="ui-jqgrid-bdiv" style="height: 477.68000000000006px; width: 1359px;"><div style="position:relative;"><div></div><table id="permissions_grid" tabindex="0" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" aria-labelledby="gbox_permissions_grid" class="ui-jqgrid-btable" style="width: 1341px;"><tbody><tr class="jqgfirstrow" role="row" style="height:auto"><td role="gridcell" style="height:0px;width:666px;"></td><td role="gridcell" style="height:0px;width:665px;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td></tr><tr role="row" id="79" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanAccessMultiDecision" aria-describedby="permissions_grid_Name">CanAccessMultiDecision</td><td role="gridcell" style="text-align:center;" title="User is able access multi decision" aria-describedby="permissions_grid_Description">User is able access multi decision</td><td role="gridcell" style="text-align:center;display:none;" title="79" aria-describedby="permissions_grid_ID">79</td></tr><tr role="row" id="73" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanAssignDealToOthers" aria-describedby="permissions_grid_Name">CanAssignDealToOthers</td><td role="gridcell" style="text-align:center;" title="User is able to assign deal to other users" aria-describedby="permissions_grid_Description">User is able to assign deal to other users</td><td role="gridcell" style="text-align:center;display:none;" title="73" aria-describedby="permissions_grid_ID">73</td></tr><tr role="row" id="72" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanAssignDealToSelf" aria-describedby="permissions_grid_Name">CanAssignDealToSelf</td><td role="gridcell" style="text-align:center;" title="User is able to assign deal to self" aria-describedby="permissions_grid_Description">User is able to assign deal to self</td><td role="gridcell" style="text-align:center;display:none;" title="72" aria-describedby="permissions_grid_ID">72</td></tr><tr role="row" id="11" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanBook" aria-describedby="permissions_grid_Name">CanBook</td><td role="gridcell" style="text-align:center;" title="User is able to book a deal" aria-describedby="permissions_grid_Description">User is able to book a deal</td><td role="gridcell" style="text-align:center;display:none;" title="11" aria-describedby="permissions_grid_ID">11</td></tr><tr role="row" id="102" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanBookAndDontFund" aria-describedby="permissions_grid_Name">CanBookAndDontFund</td><td role="gridcell" style="text-align:center;" title="User is able to select book/dont fund" aria-describedby="permissions_grid_Description">User is able to select book/dont fund</td><td role="gridcell" style="text-align:center;display:none;" title="102" aria-describedby="permissions_grid_ID">102</td></tr><tr role="row" id="103" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanChangeActiveReport" aria-describedby="permissions_grid_Name">CanChangeActiveReport</td><td role="gridcell" style="text-align:center;" title="User is able to select active credit bureau report" aria-describedby="permissions_grid_Description">User is able to select active credit bureau report</td><td role="gridcell" style="text-align:center;display:none;" title="103" aria-describedby="permissions_grid_ID">103</td></tr><tr role="row" id="113" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanChangeValueTypeInBookout" aria-describedby="permissions_grid_Name">CanChangeValueTypeInBookout</td><td role="gridcell" style="text-align:center;" title="User is able to change Value Type on the Bookout page" aria-describedby="permissions_grid_Description">User is able to change Value Type on the Bookout page</td><td role="gridcell" style="text-align:center;display:none;" title="113" aria-describedby="permissions_grid_ID">113</td></tr><tr role="row" id="76" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanDownloadACH" aria-describedby="permissions_grid_Name">CanDownloadACH</td><td role="gridcell" style="text-align:center;" title="User is able to download ACH files in verifications" aria-describedby="permissions_grid_Description">User is able to download ACH files in verifications</td><td role="gridcell" style="text-align:center;display:none;" title="76" aria-describedby="permissions_grid_ID">76</td></tr><tr role="row" id="75" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanDownloadCSC" aria-describedby="permissions_grid_Name">CanDownloadCSC</td><td role="gridcell" style="text-align:center;" title="User is able to download CSC files in verifications" aria-describedby="permissions_grid_Description">User is able to download CSC files in verifications</td><td role="gridcell" style="text-align:center;display:none;" title="75" aria-describedby="permissions_grid_ID">75</td></tr><tr role="row" id="111" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanDownloadDayBreak" aria-describedby="permissions_grid_Name">CanDownloadDayBreak</td><td role="gridcell" style="text-align:center;" title="User is able to download DayBreak file" aria-describedby="permissions_grid_Description">User is able to download DayBreak file</td><td role="gridcell" style="text-align:center;display:none;" title="111" aria-describedby="permissions_grid_ID">111</td></tr><tr role="row" id="112" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanDownloadDealSourceXML" aria-describedby="permissions_grid_Name">CanDownloadDealSourceXML</td><td role="gridcell" style="text-align:center;" title="User can download Deal Source Data" aria-describedby="permissions_grid_Description">User can download Deal Source Data</td><td role="gridcell" style="text-align:center;display:none;" title="112" aria-describedby="permissions_grid_ID">112</td></tr><tr role="row" id="87" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanDownloadJericho" aria-describedby="permissions_grid_Name">CanDownloadJericho</td><td role="gridcell" style="text-align:center;" title="User is able to download Jericho files in verifications" aria-describedby="permissions_grid_Description">User is able to download Jericho files in verifications</td><td role="gridcell" style="text-align:center;display:none;" title="87" aria-describedby="permissions_grid_ID">87</td></tr><tr role="row" id="104" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanDownloadMegasysLegacy" aria-describedby="permissions_grid_Name">CanDownloadMegasysLegacy</td><td role="gridcell" style="text-align:center;" title="User is able to download Megasys Legacy file for a deal" aria-describedby="permissions_grid_Description">User is able to download Megasys Legacy file for a deal</td><td role="gridcell" style="text-align:center;display:none;" title="104" aria-describedby="permissions_grid_ID">104</td></tr><tr role="row" id="92" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanDownloadMegasysXml" aria-describedby="permissions_grid_Name">CanDownloadMegasysXml</td><td role="gridcell" style="text-align:center;" title="User is able to view the xml that will be sent to Megasys" aria-describedby="permissions_grid_Description">User is able to view the xml that will be sent to Megasys</td><td role="gridcell" style="text-align:center;display:none;" title="92" aria-describedby="permissions_grid_ID">92</td></tr><tr role="row" id="77" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanDownloadXml" aria-describedby="permissions_grid_Name">CanDownloadXml</td><td role="gridcell" style="text-align:center;" title="User is able to download xml files for the deal" aria-describedby="permissions_grid_Description">User is able to download xml files for the deal</td><td role="gridcell" style="text-align:center;display:none;" title="77" aria-describedby="permissions_grid_ID">77</td></tr><tr role="row" id="91" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanEditDealerContacts" aria-describedby="permissions_grid_Name">CanEditDealerContacts</td><td role="gridcell" style="text-align:center;" title="User is able to edit dealer contacts" aria-describedby="permissions_grid_Description">User is able to edit dealer contacts</td><td role="gridcell" style="text-align:center;display:none;" title="91" aria-describedby="permissions_grid_ID">91</td></tr><tr role="row" id="101" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanEditIncludeInMissingStipsInVf" aria-describedby="permissions_grid_Name">CanEditIncludeInMissingStipsInVf</td><td role="gridcell" style="text-align:center;" title="User is able to modify Include in Missing Stips in verifications" aria-describedby="permissions_grid_Description">User is able to modify Include in Missing Stips in verifications</td><td role="gridcell" style="text-align:center;display:none;" title="101" aria-describedby="permissions_grid_ID">101</td></tr><tr role="row" id="100" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanEditStipNotesInVF" aria-describedby="permissions_grid_Name">CanEditStipNotesInVF</td><td role="gridcell" style="text-align:center;" title="User is able to edit stipulation notes in verifications" aria-describedby="permissions_grid_Description">User is able to edit stipulation notes in verifications</td><td role="gridcell" style="text-align:center;display:none;" title="100" aria-describedby="permissions_grid_ID">100</td></tr><tr role="row" id="110" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanEditXmlSchema" aria-describedby="permissions_grid_Name">CanEditXmlSchema</td><td role="gridcell" style="text-align:center;" title="User is able to add custom xml elements and attributes on the Inbound, Outbound and XmlExport configuration screens." aria-describedby="permissions_grid_Description">User is able to add custom xml elements and attributes on the Inbound, Outbound and XmlExport configuration screens.</td><td role="gridcell" style="text-align:center;display:none;" title="110" aria-describedby="permissions_grid_ID">110</td></tr><tr role="row" id="10" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanManageDealerRepresentatives" aria-describedby="permissions_grid_Name">CanManageDealerRepresentatives</td><td role="gridcell" style="text-align:center;" title="User is able to manage dealer representatives" aria-describedby="permissions_grid_Description">User is able to manage dealer representatives</td><td role="gridcell" style="text-align:center;display:none;" title="10" aria-describedby="permissions_grid_ID">10</td></tr><tr role="row" id="107" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanManuallyBookVehicle" aria-describedby="permissions_grid_Name">CanManuallyBookVehicle</td><td role="gridcell" style="text-align:center;" title="User is able to Manually Bookout Vehicle" aria-describedby="permissions_grid_Description">User is able to Manually Bookout Vehicle</td><td role="gridcell" style="text-align:center;display:none;" title="107" aria-describedby="permissions_grid_ID">107</td></tr><tr role="row" id="89" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanPullManualBureau" aria-describedby="permissions_grid_Name">CanPullManualBureau</td><td role="gridcell" style="text-align:center;" title="User is able to initiate manual bureau pulls" aria-describedby="permissions_grid_Description">User is able to initiate manual bureau pulls</td><td role="gridcell" style="text-align:center;display:none;" title="89" aria-describedby="permissions_grid_ID">89</td></tr><tr role="row" id="7" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanRemoveFiles" aria-describedby="permissions_grid_Name">CanRemoveFiles</td><td role="gridcell" style="text-align:center;" title="User is able to remove files" aria-describedby="permissions_grid_Description">User is able to remove files</td><td role="gridcell" style="text-align:center;display:none;" title="7" aria-describedby="permissions_grid_ID">7</td></tr><tr role="row" id="9" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanRepresentDealer" aria-describedby="permissions_grid_Name">CanRepresentDealer</td><td role="gridcell" style="text-align:center;" title="User is able to represent dealer" aria-describedby="permissions_grid_Description">User is able to represent dealer</td><td role="gridcell" style="text-align:center;display:none;" title="9" aria-describedby="permissions_grid_ID">9</td></tr><tr role="row" id="90" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanReturnToDealer" aria-describedby="permissions_grid_Name">CanReturnToDealer</td><td role="gridcell" style="text-align:center;" title="User is able to return to dealer" aria-describedby="permissions_grid_Description">User is able to return to dealer</td><td role="gridcell" style="text-align:center;display:none;" title="90" aria-describedby="permissions_grid_ID">90</td></tr><tr role="row" id="93" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanReturnToLender" aria-describedby="permissions_grid_Name">CanReturnToLender</td><td role="gridcell" style="text-align:center;" title="User is able to return to lender" aria-describedby="permissions_grid_Description">User is able to return to lender</td><td role="gridcell" style="text-align:center;display:none;" title="93" aria-describedby="permissions_grid_ID">93</td></tr><tr role="row" id="82" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanReturnToUW" aria-describedby="permissions_grid_Name">CanReturnToUW</td><td role="gridcell" style="text-align:center;" title="User is able to return to UW" aria-describedby="permissions_grid_Description">User is able to return to UW</td><td role="gridcell" style="text-align:center;display:none;" title="82" aria-describedby="permissions_grid_ID">82</td></tr><tr role="row" id="83" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanReturnToVF" aria-describedby="permissions_grid_Name">CanReturnToVF</td><td role="gridcell" style="text-align:center;" title="User is able to return to VF" aria-describedby="permissions_grid_Description">User is able to return to VF</td><td role="gridcell" style="text-align:center;display:none;" title="83" aria-describedby="permissions_grid_ID">83</td></tr><tr role="row" id="105" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanSendToAllManualXml" aria-describedby="permissions_grid_Name">CanSendToAllManualXml</td><td role="gridcell" style="text-align:center;" title="User is able to export all xmls that are set as manual from a button the verifications page" aria-describedby="permissions_grid_Description">User is able to export all xmls that are set as manual from a button the verifications page</td><td role="gridcell" style="text-align:center;display:none;" title="105" aria-describedby="permissions_grid_ID">105</td></tr><tr role="row" id="106" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanSendToFiserv" aria-describedby="permissions_grid_Name">CanSendToFiserv</td><td role="gridcell" style="text-align:center;" title="User is able to post application to Fiserv" aria-describedby="permissions_grid_Description">User is able to post application to Fiserv</td><td role="gridcell" style="text-align:center;display:none;" title="106" aria-describedby="permissions_grid_ID">106</td></tr><tr role="row" id="88" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanSendToMegasys" aria-describedby="permissions_grid_Name">CanSendToMegasys</td><td role="gridcell" style="text-align:center;" title="User is able to post application to Megasys" aria-describedby="permissions_grid_Description">User is able to post application to Megasys</td><td role="gridcell" style="text-align:center;display:none;" title="88" aria-describedby="permissions_grid_ID">88</td></tr><tr role="row" id="86" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanSendToNortridge" aria-describedby="permissions_grid_Name">CanSendToNortridge</td><td role="gridcell" style="text-align:center;" title="User is able to post application to Nortridge" aria-describedby="permissions_grid_Description">User is able to post application to Nortridge</td><td role="gridcell" style="text-align:center;display:none;" title="86" aria-describedby="permissions_grid_ID">86</td></tr><tr role="row" id="94" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanSendToParadata" aria-describedby="permissions_grid_Name">CanSendToParadata</td><td role="gridcell" style="text-align:center;" title="User is able to post application to Paradata" aria-describedby="permissions_grid_Description">User is able to post application to Paradata</td><td role="gridcell" style="text-align:center;display:none;" title="94" aria-describedby="permissions_grid_ID">94</td></tr><tr role="row" id="81" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanSetNotBooked" aria-describedby="permissions_grid_Name">CanSetNotBooked</td><td role="gridcell" style="text-align:center;" title="User is able to change deal status to Not Booked" aria-describedby="permissions_grid_Description">User is able to change deal status to Not Booked</td><td role="gridcell" style="text-align:center;display:none;" title="81" aria-describedby="permissions_grid_ID">81</td></tr><tr role="row" id="95" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanSetToContractError" aria-describedby="permissions_grid_Name">CanSetToContractError</td><td role="gridcell" style="text-align:center;" title="User is able to set to contract error" aria-describedby="permissions_grid_Description">User is able to set to contract error</td><td role="gridcell" style="text-align:center;display:none;" title="95" aria-describedby="permissions_grid_ID">95</td></tr><tr role="row" id="80" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanUnbook" aria-describedby="permissions_grid_Name">CanUnbook</td><td role="gridcell" style="text-align:center;" title="User is able to unbook deals" aria-describedby="permissions_grid_Description">User is able to unbook deals</td><td role="gridcell" style="text-align:center;display:none;" title="80" aria-describedby="permissions_grid_ID">80</td></tr><tr role="row" id="85" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanWaiveRulesInVF" aria-describedby="permissions_grid_Name">CanWaiveRulesInVF</td><td role="gridcell" style="text-align:center;" title="User is able to waive rules in verifications" aria-describedby="permissions_grid_Description">User is able to waive rules in verifications</td><td role="gridcell" style="text-align:center;display:none;" title="85" aria-describedby="permissions_grid_ID">85</td></tr><tr role="row" id="84" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="text-align:center;" title="CanWaiveStipsInVF" aria-describedby="permissions_grid_Name">CanWaiveStipsInVF</td><td role="gridcell" style="text-align:center;" title="User is able to waive stipulations in verifications" aria-describedby="permissions_grid_Description">User is able to waive stipulations in verifications</td><td role="gridcell" style="text-align:center;display:none;" title="84" aria-describedby="permissions_grid_ID">84</td></tr></tbody></table></div></div></div><div class="ui-jqgrid-resize-mark" id="rs_mpermissions_grid">&nbsp;</div><table id="permissions_grid_pager" class="ui-state-default ui-jqgrid-pager ui-corner-bottom" dir="ltr" style="width: 1359px;"><div id="pg_permissions_grid_pager" class="ui-pager-control" role="group"><table cellspacing="0" cellpadding="0" border="0" class="ui-pg-table" style="width:100%;table-layout:fixed;height:100%;" role="row"><tbody><tr><td id="permissions_grid_pager_left" align="left"></td><td id="permissions_grid_pager_center" align="center" style="white-space: pre; width: 277px;"><table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;" class="ui-pg-table"><tbody><tr><td id="first_permissions_grid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-first"></span></td><td id="prev_permissions_grid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-prev"></span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td dir="ltr">Page <input class="ui-pg-input" type="text" size="2" maxlength="7" value="0" role="textbox" disabled="disabled"> of <span id="sp_1_permissions_grid_pager">1</span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td id="next_permissions_grid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-next"></span></td><td id="last_permissions_grid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-end"></span></td><td dir="ltr"><select class="ui-pg-selbox" role="listbox" disabled="disabled"><option role="option" value="5">5</option><option role="option" value="10">10</option><option role="option" value="20">20</option><option role="option" value="50" selected="selected">50</option></select></td></tr></tbody></table></td><td id="permissions_grid_pager_right" align="right"><div dir="ltr" style="text-align:right" class="ui-paging-info">View 1 - 38 of 38</div></td></tr></tbody></table></div></table></div>
+        
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    var oldValues = new Array();
+    $(document).ready(function () {
+        
+
+        $("#security_header").hide();
+        Update();
+        
+        initSearchForGrid("#permissions_grid");
+    });
+
+    function save() {
+        //required for config wizard
+    }
+    
+    function Show() {
+        $("#permissions_grid").jqGrid({
+            url: '/Security/Permissions/List/',
+            datatype: 'json',
+            mtype: 'GET',
+            colNames: ['Permission Name', 'Description', 'ID'],
+            colModel: [
+                { name: 'Name', sortable: true, index: 'Name', align: 'center' },
+                { name: 'Description', sortable: true, index: 'Description', align: 'center' },
+                { name: 'ID', index: 'ID', align: 'center', hidden: true}],
+            pager: jQuery('#permissions_grid_pager'),
+            rowNum: 50,
+            rowList: [5, 10, 20, 50],
+            sortname: 'PermissionName',
+            sortorder: "desc",
+            viewrecords: true,
+            ignoreCase: true,
+            loadonce: true,
+            shrinkToFit: true,
+            height: (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) * .56,
+            width: $("#content").width() - 10
+        });
+    }
+</script>
+    </div>
+    
+</div>
+
+
+<script type="text/javascript" language="javascript">
+
+    $(document).ready(function () {
+        $(window).load(function () {
+            disableUnlessCanEdit();
+        });
+    });
+    
+</script>
+                                            </div>
+                                        
+                                            <div class="ft alpha omega grid_9" style="width:100%">
+                                   
+                                                <div class="powered_by">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!-- END MAIN CONTENT ROUNDED BOX -->
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <p hidden="8288e1b1-03ab-4b5b-8de3-3f45f8be312d6">
+
+    
+
+</p><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious" style="display: none;"></button><button type="button" id="cboxNext" style="display: none;"></button><button id="cboxSlideshow" style="display: none;"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div></body></html>

@@ -1,0 +1,139 @@
+.left_column_header {
+  font-size: 14pt;
+  font-weight: bold;
+  padding: 0px 0px 0px 10px;
+  
+    text-decoration:none;
+    text-align:left;
+    font-weight:bold;
+    color:#01AFF3;
+}
+
+.right_column_header
+{
+
+  font-size: 14pt;
+  font-weight: bold;
+  padding: 0px 0px 10px 0px;
+  border-bottom: 1px dotted #999999;
+  color:#01AFF3;    
+}
+.right_column_a
+{
+  font-size: 14pt;
+  font-weight: bold;
+  color:#01AFF3;
+}
+
+#leftcolumn { text-align:left; padding-top: 10px; width:232px; float:left;}
+#rightcolumn { text-align:left; padding-top: 10px; width: 762px; float: right;background:none;}
+
+
+#rightcolumn {
+  text-align: left;
+  padding-top: 14px;
+  width: 100%;
+  float: left;
+}
+
+#leftmenuNav a {
+    display: block
+}
+
+#leftmenuNav a:hover, #leftmenuNav a:active {
+    color: #272626;
+    
+    font-size: 10pt;
+    padding-left: 20px;
+    cursor: pointer;
+    background-color: #EFEFEF
+}
+#leftmenuNav a:link, #leftmenuNav a:visited {
+    color: #333;
+    text-decoration: none;
+    font-size: 10pt;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+
+.left_menu_item {
+    border-top: 1px solid #cccccc;
+    font-size: 11pt;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: left;
+    z-index: 1;
+}
+
+.left_menu_item_hover {
+ border-top: 1px solid #cccccc;
+  font-size: 11pt;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+    color: #01AFF3;
+  background-color: #eeeeee;
+  text-align: left;
+    z-index: 0;
+}
+.left_menu_item_hover a{
+    color: #01AFF3;  
+    text-align: left;
+    display:block; 
+ 
+}
+
+div.left_menu_item_container div:last-child
+{ 
+    -webkit-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+}
+
+
+div.left_menu_item_container div:last-child:hover
+{ 
+    -webkit-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+}
+
+div.left_menu_item_container div:last-child:active
+{
+    -webkit-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+}
+
+.left_menu_item_selected {
+  font-size: 11pt;
+  color: #01AFF3;
+  cursor: pointer;
+  background-color: #eeeeee;
+  text-align: left;
+  
+  padding: 5px 10px 5px 20px;
+}
+
+[title=Search]
+{
+border: none;
+} 
+
+
+.left_menu_item_container {
+ 
+}
+
+.left_menu_item_search {
+  border-bottom: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.href_link
+{
+  text-decoration:none;
+  font-size:11pt;
+  text-align:left;   
+}

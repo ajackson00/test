@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://gls.defisolutions.com/Admin/XmlExportConfig -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Index</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"beacon-5.newrelic.com","errorBeacon":"bam.nr-data.net","licenseKey":"8d33e8cd0a","applicationID":"2159295","transactionName":"NgBSMEFUX0sFBkFfDQ9KdAtHe1RMJwpbQhAOCVwBQRppVQggTUYNExFzC11TWF9LLFtSBxk=","queueTime":0,"applicationTime":1430,"ttGuid":"E8DC808FB4A60720","agent":"js-agent.newrelic.com/nr-411.min.js"}</script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"Vg8FWV9UGwEBUVhQDgQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e){function n(t,e,n){n||(n={});for(var r=o[t],a=r&&r.length||0,s=n[i]||(n[i]={}),u=0;a>u;u++)r[u].apply(s,e);return s}function r(t,e){var n=o[t]||(o[t]=[]);n.push(e)}var o={},i="nr@context";e.exports={on:r,emit:n}},{}],2:[function(t){function e(t,e,n,i,s){return u?u-=1:r("err",[s||new UncaughtException(t,e,n)]),"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t(5),a=window.onerror,s=!1,u=0;t("loader").features.push("err"),window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(d){"stack"in d&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(4),s=!0)}i.on("fn-start",function(){s&&(u+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&u>0&&(u-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:4,3:3,4:6,5:1,6:14,handle:"D5DuLP",loader:"G9z0Bl"}],3:[function(t){function e(t){r.inPlace(t,["addEventListener","removeEventListener"],"-",n)}function n(t){return t[1]}var r=t(1),o=(t(3),t(2));if(e(window),"getPrototypeOf"in Object){for(var i=document;i&&!i.hasOwnProperty("addEventListener");)i=Object.getPrototypeOf(i);i&&e(i);for(var a=XMLHttpRequest.prototype;a&&!a.hasOwnProperty("addEventListener");)a=Object.getPrototypeOf(a);a&&e(a)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&e(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=e["nr@wrapped"]?t[1]=e["nr@wrapped"]:e["nr@wrapped"]=t[1]=r(e,"fn-"):"function"==typeof e.handleEvent&&r.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:15,2:1,3:14}],4:[function(t){var e=(t(3),t(1)),n=t(2);e.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=e(t[0],"fn-")})},{1:15,2:1,3:14}],5:[function(t){function e(t){var e=t[0];"string"==typeof e&&(e=new Function(e)),t[0]=n(e,"fn-")}var n=(t(3),t(1)),r=t(2);n.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",e)},{1:15,2:1,3:14}],6:[function(t){function e(){o.inPlace(this,s,"fn-")}function n(t,e){o.inPlace(e,["onreadystatechange"],"fn-")}function r(t,e){return e}var o=t(1),i=t(2),a=window.XMLHttpRequest,s=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];window.XMLHttpRequest=function(t){var n=new a(t);try{i.emit("new-xhr",[],n),o.inPlace(n,["addEventListener","removeEventListener"],"-",function(t,e){return e}),n.addEventListener("readystatechange",e,!1)}catch(r){try{i.emit("internal-error",r)}catch(s){}}return n},window.XMLHttpRequest.prototype=a.prototype,o.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",r),i.on("send-xhr-start",n),i.on("open-xhr-start",n)},{1:15,2:1}],7:[function(t){function e(){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;u>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,d="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(d);if(f&&(r.rxSize=f),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}t("loader").features.push("xhr");var o=t("handle"),i=t(1),a=t(5),s=["load","error","abort","timeout"],u=s.length,d=t(2);t(3),t(4),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var d=e(o);d&&(r.txSize=d)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",e)}catch(r){}}};for(var f=0;u>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&e()},{1:8,2:11,3:3,4:6,5:1,handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e){var n=r[t];return n?n.apply(this,e):(o[t]||(o[t]=[]),void o[t].push(e))}var r={},o={};e.exports=n,n.queues=o,n.handlers=r},{}],11:[function(t,e){function n(t){if(!t||"object"!=typeof t&&"function"!=typeof t)return-1;if(t===window)return 0;if(o.call(t,"__nr"))return t.__nr;try{return Object.defineProperty(t,"__nr",{value:r,writable:!0,enumerable:!1}),r}catch(e){return t.__nr=r,r}finally{r+=1}}var r=1,o=Object.prototype.hasOwnProperty;e.exports=n},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&u&&u.body){p.proto="https"===c.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=p.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,u=s.document,d="addEventListener",f="attachEvent",c=(""+location).split("?")[0],p=e.exports={offset:i(),origin:c,features:[]};u[d]?(u[d]("DOMContentLoaded",o,!1),s[d]("load",n,!1)):(u[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],14:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],15:[function(t,e){function n(t,e,r,s){function nrWrapper(){try{var n,a=u(arguments),d=this,f=r&&r(a,d)||{}}catch(c){i([c,"",[a,d,s],f])}o(e+"start",[a,d,s],f);try{return n=t.apply(d,a)}catch(p){throw o(e+"err",[a,d,p],f),p}finally{o(e+"end",[a,d,n],f)}}return a(t)?t:(e||(e=""),nrWrapper[n.flag]=!0,nrWrapper)}function r(t,e,r,o){r||(r="");var i,s,u,d="-"===r.charAt(0);for(u=0;u<e.length;u++)s=e[u],i=t[s],a(i)||(t[s]=n(i,d?s+r:r,o,s,t))}function o(t,e,n){try{s.emit(t,e,n)}catch(r){i([r,t,e,n])}}function i(t){try{s.emit("internal-error",t)}catch(e){}}function a(t){return!(t&&"function"==typeof t&&t.apply&&!t[n.flag])}var s=t(1),u=t(2);e.exports=n,n.inPlace=r,n.flag="nr@wrapper"},{1:1,2:14}]},{},["G9z0Bl",2,7]);</script>
+        
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
+    <title>Index</title>
+    <link rel="stylesheet" href="./Index_files/defi_web_merged.css">
+    
+
+        
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/defi_web_merged.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/main_style.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/columns.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/admin_content.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/forms.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/colorbox.css">
+        <link rel="apple-touch-icon" href="https://gls.defisolutions.com/apple-touch-icon.png">
+            <script>
+                // Edit to suit your needs.
+                var ADAPT_CONFIG = {
+                    // Where is your CSS?
+                    path: "/Content/css/assets/",
+
+                    // false = Only run once, when page first loads.
+                    // true = Change on window resize and page tilt.
+                    dynamic: true,
+
+                    // First range entry is the minimum.
+                    // Last range entry is the maximum.
+                    // Separate ranges by "to" keyword.
+                    range: [
+                        '0px    to 760px  = mobile.min.css',
+                        '760px  to 980px  = 720.min.css',
+                        '980px  to 1280px = 960.min.css',
+                        '1280px to 1600px = 1200.min.css',
+                        '1600px to 1940px = 1560.min.css',
+                        '1940px to 2540px = 1920.min.css',
+                        '2540px           = 2520.min.css'
+                    ]
+                };
+            </script>
+        
+            <script type="text/javascript" src="./Index_files/head.load.min.js"></script>
+            <script src="./Index_files/adapt.min.js"></script><link rel="stylesheet" href="https://gls.defisolutions.com/Content/css/assets/1200.min.css">
+            <script type="text/javascript" src="./Index_files/jquery-1.10.2.min.js"></script>
+            <script type="text/javascript" src="./Index_files/jquery-ui-1.10.4.min.js"></script>
+            <script type="text/ecmascript" src="./Index_files/jquery-migrate-1.2.1.min.js"></script>
+            <script type="text/javascript" src="./Index_files/jquery.tmpl.js"> </script>
+            <script type="text/javascript" src="./Index_files/json2.js"> </script>
+            <script type="text/javascript" src="./Index_files/grid.locale-en.js"> </script>
+            <script type="text/javascript" src="./Index_files/ui.multiselect.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.jqGrid.min.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.tablednd.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.contextmenu.js"> </script>
+            <script type="text/javascript" src="./Index_files/grid.addons.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.jqGrid.src.js"> </script>
+            <script type="text/javascript" src="./Index_files/defi.jquery.multiselect.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.form.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.Wizardry.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.blockUI.js"> </script>
+            <script type="text/javascript" src="./Index_files/underscore.js"> </script>
+            <script type="text/javascript" src="./Index_files/admin.js"> </script>
+            <script type="text/javascript" src="./Index_files/columns.js"> </script>
+            <script type="text/javascript" src="./Index_files/main.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.validate.js"> </script>
+            <script type="text/javascript" src="./Index_files/ValidateForm.js"> </script>
+            <script type="text/javascript" src="./Index_files/additional-methods.js"> </script>
+            <script type="text/javascript" src="./Index_files/jsrender.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.maskmoney.js"> </script>  
+            <script type="text/javascript" src="./Index_files/jquery.maskedinput.js"> </script>
+            <script type="text/javascript" src="./Index_files/ControlValues.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.formatCurrency-1.4.0.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery.colorbox-min.js"></script>
+            <script type="text/javascript" src="./Index_files/Dropdown-Values.js"> </script>
+            <script type="text/javascript" src="./Index_files/knockout-2.2.1.js"> </script>
+            <script type="text/javascript" src="./Index_files/knockout.mapping.js"> </script>
+            <script type="text/javascript" src="./Index_files/knockout.bindings.js"> </script>
+            <script type="text/javascript" src="./Index_files/jquery-TimePicker-1.0.0.js"> </script>
+            <script type="text/javascript" src="./Index_files/moment.min.js"> </script>  
+            <script type="text/javascript" src="./Index_files/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
+            <script type="text/javascript" src="./Index_files/defi-utils.js"> </script>
+            <script src="./Index_files/jquery.qtip.js"> </script>
+            <script src="./Index_files/jquery.noty.js"> </script>
+            <script type="text/javascript" src="./Index_files/autoNumeric-1.9.1.js"> </script>    
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/jquery.multiselect.css">    
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/ui.jqgrid.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/jquery-ui-1.8.1.custom.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/ui.multiselect.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/jquery.qtip.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/smart_tab.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/smart_tab_vertical.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/jquery.noty.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/noty_theme_default.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="./Index_files/timePicker.css">
+            <style>
+                .fa {
+                    color: #01AFF3;
+                }
+            </style>
+
+        
+
+        <script language="javascript" type="text/javascript">
+            var idleTime = 0;
+
+            function timerIncrement() {
+                idleTime = idleTime + 1;
+                if (idleTime == 10) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 5 minutes due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime == 11) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 4 minutes due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime == 12) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 3 minutes due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime == 13) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 2 minutes due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime == 14) {
+                    $.noty.closeAll();
+                    notyModal('You will be logged out in 1 minute due to inactivity. Click here to continue working.');
+                }
+
+                if (idleTime > 14) {
+                    window.location.href = "/Account/Logoff";
+                }
+            }
+            $.ajaxSetup({ cache: false });
+
+            function showNoty(html, excludeButtons) {
+                var canEdit = 'False' == 'True';
+                html += "<table width=\"100%\"><tr><td>";
+
+                if (canEdit && !excludeButtons) {
+                    html += "<div id=\"buttons\"><input class=\"standard_button\" type=\"button\" onclick=\"saveClick();\" value=\"Save\" id=\"btnSaveRule\" /> <input class=\"standard_button\" type=\"button\" onclick=\"cancelClick();\" value=\"Cancel\" id=\"btnCancel\" /></div>";
+                }
+                html += "</td></tr></table>";
+                var n = noty({ "text": html, "layout": "topCenter", "type": "alert", "animateOpen": { "height": "toggle" }, "speed": 0, "timeout": false, "closeButton": true, "closeOnSelfClick": false, "closeOnSelfOver": false, "modal": true });
+
+                disableUnlessCanEdit();
+
+                return n;
+            }
+
+            function openHelp(helpId) {
+                var winBlankPopup = window.open("/CustomerPortal/Wiki/Content?wikiId=" + helpId);
+                if (winBlankPopup) {
+                    winBlankPopup.focus();
+                    winBlankPopup.close();
+                }
+            }
+
+                
+            $(document).ready(function () {
+                //Increment the idle time counter every minute.
+                //var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+                //Zero the idle timer on mouse movement.
+                $(this).mousemove(function (e) {
+                    idleTime = 0;
+                });
+                $(this).keypress(function (e) {
+                    idleTime = 0;
+                });
+                $(window).load(function () {
+                            
+                    var content = "";
+                    content = '<span id="pageName">Xml Export Config';                                                        
+                            
+                            
+
+                    content += '</span><br><font color="grey" size="2"><span id="pageDescription">Create mapping for Xml export</span></font>';
+                    $("#Caption:not(.setByWizard)").html(content);
+                                                                                                              
+
+                });
+            });
+                
+
+            function disableUnlessCanEdit() {
+                var canEdit = 'False' == 'True';
+
+                if (!canEdit) {
+
+                    $(':button').hide();
+
+                    $.each($("input"), function () {
+                        $(this).attr('disabled', true);
+                    });
+
+                    $.each($("textarea"), function () {
+                        $(this).attr('disabled', true);
+                    });
+
+                    $.each($("select"), function () {
+                        $(this).attr('disabled', true);
+                    });
+
+                    $('.btn').hide();
+
+                    $('#queueSelect').removeAttr('disabled');
+                }
+            }
+        </script>
+
+        
+     
+
+    </head>
+    <body>
+        <meta content="TNHNaufO4TpKWZEy86ubP/0g1EcpKmSOHev4yG80NcrIgvMKNP+os5koWYhhWph6UlIaftV4cXbMEL+CGzrB8IRxOdPRYczA4NP+guB3CfTWdKzCIGa/P3TQRxazLU07Sjcb4+vSyCaZgzeFXwkIVxuTbG8=" name="__AjaxRequestVerificationToken">
+        <div id="wrapper" style="width:95%; margin: auto;">
+            <div id="main_container" class="container_12" style="width:100%">
+                <div id="sub_main_container" class="container_12 alpha omega" style="width:100%">
+                    <div id="header_wrapper" class="container_12 alpha omega" style="width:100%">
+                        <div id="header" class="container_12 alpha omega" style="width:100%">
+                            <div id="logo" class="logo">
+                                <a href="https://gls.defisolutions.com/Home/Landing"><img id="companyLogoImage" src="./Index_files/GetLogo" alt="Your Logo Here" title="Your Logo Here"></a>
+                            </div>
+                            <div id="top_user_nav">
+                                <ul>
+                                    
+
+    <div>
+    
+    <li><a href="https://gls.defisolutions.com/Account/ChangePassword" title="ChangePassword">Change Password</a></li>
+    
+    <li><a href="https://gls.defisolutions.com/Account/Logoff/">Log off ajackson</a></li>
+    
+    <li><a href="https://gls.defisolutions.com/Home/Landing">Home</a></li>
+    
+    </div>
+
+<script lang="javascript" type="text/javascript">
+    $('#queueSelect').change(function () {
+        var val = $(this).val();
+
+        if (val == '') return;
+
+        if (val == 'UW') {
+            window.location = '/Underwriter/Home';
+            return;
+        }
+        
+        if (val == 'VF') {
+            window.location = '/Funder/Home';
+            return;
+        }
+        
+        if (val == 'FU') {
+            window.location = '/Underwriter/Home/Followup';
+            return;
+        }
+        
+        if (val == 'P') {
+            window.location = '/Funder/Home/Personal';
+            return;
+        }
+
+        window.location = '/Underwriter/Home?activeType=' + $(this).val();
+    });
+
+</script>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container_12" id="buffer" style="width:100%">&nbsp;</div>
+               
+                    <div id="body_wrapper" class="container_12" style="width:100%;">
+                        <div id="body" class="container_12" style="width:100%;">
+                            <table style="width:100%">
+                                <tbody><tr>
+                                    <td id="leftmenu" class="alpha ui-corner-all" style="vertical-align: top; width: 10%;">
+                                        
+<a id="back" style="margin-left: 40px; cursor: pointer"><span>Back</span></a>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#leftmenu").css('width', '10%');
+        $("#back").click(function () {
+            window.location.href = '/Home/ConfigurationNormal';
+        });
+    });
+</script>
+                                    </td>
+                                    <!-- START MAIN CONTENT ROUNDED BOX -->
+                                    <td id="main" class="ui-corner-all omega grid_9" style="width:100%">
+                                        <div style="background-color: #ffffff">
+                                
+                                            <div id="content" class="body_content alpha omega grid_9 ui-corner-all" style="width:100%">
+                                                <div id="Caption" class="right_column_header"><span id="pageName">Xml Export Config</span><br><font color="grey" size="2"><span id="pageDescription">Create mapping for Xml export</span></font></div>
+                                                
+
+
+
+
+
+
+
+<form id="sourceForm" novalidate="novalidate">
+    <div id="inboundSource">
+        <div class="table_scroller">
+            <div class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" id="gbox_sourcesGrid" dir="ltr" style="width: 1222px;"><div class="ui-widget-overlay jqgrid-overlay" id="lui_sourcesGrid"></div><div class="loading ui-state-default ui-state-active" id="load_sourcesGrid" style="display: none;">Loading...</div><div class="ui-jqgrid-view" id="gview_sourcesGrid" style="width: 1222px;"><div class="ui-jqgrid-titlebar ui-jqgrid-caption ui-widget-header ui-corner-top ui-helper-clearfix" style="display: none;"><a role="link" class="ui-jqgrid-titlebar-close ui-corner-all HeaderButton" style="right: 0px;"><span class="ui-icon ui-icon-circle-triangle-n"></span></a><span class="ui-jqgrid-title"></span></div><div class="ui-state-default ui-jqgrid-hdiv" style="width: 1222px;"><div class="ui-jqgrid-hbox"><table class="ui-jqgrid-htable" style="width:1204px" role="grid" aria-labelledby="gbox_sourcesGrid" cellspacing="0" cellpadding="0" border="0"><thead><tr class="ui-jqgrid-labels" role="rowheader"><th id="sourcesGrid_Id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_sourcesGrid_Id" class="ui-jqgrid-sortable">Id<span class="s-ico" style=""><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="sourcesGrid_Name" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 396px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_sourcesGrid_Name" class="ui-jqgrid-sortable">Integration Name<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="sourcesGrid_IsActive" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 396px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_sourcesGrid_IsActive" class="ui-jqgrid-sortable">Active<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="sourcesGrid_EventType" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 397px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_sourcesGrid_EventType" class="ui-jqgrid-sortable">Event Type<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th></tr></thead></table></div></div><div class="ui-jqgrid-bdiv" style="height: 430.08000000000004px; width: 1222px;"><div style="position:relative;"><div></div><table id="sourcesGrid" tabindex="0" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" aria-labelledby="gbox_sourcesGrid" class="ui-jqgrid-btable" style="width: 1204px;"><tbody><tr class="jqgfirstrow" role="row" style="height:auto"><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:396px;"></td><td role="gridcell" style="height:0px;width:396px;"></td><td role="gridcell" style="height:0px;width:397px;"></td></tr><tr role="row" id="1" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr" editable="1"><td role="gridcell" style="display:none;" title="568" aria-describedby="sourcesGrid_Id">568</td><td role="gridcell" style="" title="Legacy Schema" aria-describedby="sourcesGrid_Name">Legacy Schema</td><td role="gridcell" style="" title="" aria-describedby="sourcesGrid_IsActive"><input type="checkbox" checked="" value="True" offval="False" id="1_IsActive" name="IsActive" role="checkbox" class="editable"></td><td role="gridcell" style="" title="Always" aria-describedby="sourcesGrid_EventType">Always</td></tr></tbody></table></div></div></div><div class="ui-jqgrid-resize-mark" id="rs_msourcesGrid">&nbsp;</div><table id="sourcesGrid_pager" class="ui-state-default ui-jqgrid-pager ui-corner-bottom" dir="ltr" style="width: 1222px;">
+            <div id="pg_sourcesGrid_pager" class="ui-pager-control" role="group"><table cellspacing="0" cellpadding="0" border="0" class="ui-pg-table" style="width:100%;table-layout:fixed;height:100%;" role="row"><tbody><tr><td id="sourcesGrid_pager_left" align="left"></td><td id="sourcesGrid_pager_center" align="center" style="white-space: pre; width: 272px;"><table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;" class="ui-pg-table"><tbody><tr><td id="first_sourcesGrid_pager" class="ui-pg-button ui-corner-all ui-state-disabled" style="cursor: default;"><span class="ui-icon ui-icon-seek-first"></span></td><td id="prev_sourcesGrid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-prev"></span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td dir="ltr">Page <input class="ui-pg-input" type="text" size="2" maxlength="7" value="0" role="textbox" disabled="disabled"> of <span id="sp_1_sourcesGrid_pager">1</span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td id="next_sourcesGrid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-next"></span></td><td id="last_sourcesGrid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-end"></span></td><td dir="ltr"><select class="ui-pg-selbox" role="listbox" disabled="disabled"><option role="option" value="5">5</option><option role="option" value="10">10</option><option role="option" value="20">20</option><option role="option" value="50" selected="selected">50</option></select></td></tr></tbody></table></td><td id="sourcesGrid_pager_right" align="right"><div dir="ltr" style="text-align:right" class="ui-paging-info">View 1 - 1 of 1</div></td></tr></tbody></table></div></table></div>
+            
+            <br>
+            <div id="buttons" style="float:right">
+                <input class="standard_button" type="button" onclick="addSource();" value="New" id="btnNew" disabled="disabled" style="display: none;">
+                <input class="standard_button" type="button" onclick="save();" value="Save" id="btnSave" disabled="disabled" style="display: none;">
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal" style="display: none" title="Edit Export Configuration">
+        <div id="xmlDiv">
+            <input type="hidden" id="sourceId" data-bind="value: Id" disabled="disabled">
+            <table class="noty_message" style="width:90%">
+                <tbody><tr>
+                    <td>Name</td>
+                    <td><input type="text" id="name" name="name" data-bind="value: Name" required="" disabled="disabled"></td>
+                    <td>Event Type</td>
+                    <td>
+                        <select id="eventType" name="eventType" data-bind="value: EventType" required="" disabled="disabled">
+                            <option id="1" value="1">On Saved</option>
+                            <option id="2" value="2">On Decisioned</option>
+                            <option id="3" value="3">On Contract Created</option>
+                            <option id="4" value="4">On Verifications Saved</option>
+                            <option id="5" value="5">On Booked</option>
+                            <option id="7" value="7">On Received</option>
+                            <option id="9" value="9">Manual</option>
+                            <option id="8" value="8">Always</option>
+                            <option id="6" value="6">On Expired</option>
+                            
+                        </select>
+                    </td>
+                    <td><input class="standard_button" type="button" onclick="confirmDeleteSource();" value="Delete Configuration" id="btnDeleteSource" style="width: 150px; display: none;" disabled="disabled"></td>
+                    <!--To do: Add onclick function to Clone Config-->
+                    <td><input class="standard_button" type="button" onclick="cloneSource();" value="Clone Configuration" id="btnCloneSource" style="width: 150px; display: none;" disabled="disabled"></td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div id="setupSections">
+            <ul>
+                <li><a href="https://gls.defisolutions.com/Admin/XmlExportConfig#fieldsSetup">Fields</a></li>
+                <li><a href="https://gls.defisolutions.com/Admin/XmlExportConfig#protocolsSetup">Protocol</a></li>
+                <li><a href="https://gls.defisolutions.com/Admin/XmlExportConfig#preview">Preview</a></li>
+            </ul>
+            <div id="fieldsSetup">
+                
+
+<script type="text/javascript">
+    var canEditXmlSchema = 'False' != 'True' ? false : true;
+</script>
+<style type="text/css">
+    /* stop jqgrid from alwyas having horozontal scrollbar */
+    .ui-jqgrid .ui-jqgrid-bdiv {
+        position: relative; 
+        margin: 0em; 
+        padding:0; 
+        /*overflow: auto;*/ 
+        overflow-x:hidden; 
+        overflow-y:auto; 
+        text-align:left;
+    }
+
+    .fixed-width-first {
+        width:300px;
+        min-width:300px;
+        max-width:300px
+    }
+
+    .fixed-width-other {
+        width: 150px;
+        min-width: 150px;
+        max-width: 150px;
+    }
+</style>
+
+<script id="xmlElementTemplate" type="text/html">
+    <!-- ko template: { name: 'rowTemplate', data: $data } -->
+    <!-- /ko -->
+    <!-- ko foreach: Attributes -->
+    <!-- ko template: { name: 'rowTemplate', data: $data } -->
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko foreach: Elements -->
+    <!-- ko template: { name: 'xmlElementTemplate', data: $data } -->
+    <!-- /ko -->
+    <!-- /ko -->
+</script>
+
+<a id="btnToggleAll" style="text-decoration: underline; cursor: pointer;" onclick="toggleAll();"></a>
+<div id="editDiv" style="min-width: 500px" class="ui-jqgrid ui-widget ui-widget-content ui-jqgrid-view  ui-corner-all">
+    <div class="ui-state-default ui-jqgrid-hdiv" style="width: 100%">
+        <div class="ui-jqgrid-hbox" style="width: 100%">
+            <table class="ui-jqgrid-htable" style="width:100%; table-layout: inherit">
+                <thead>
+                    <tr class="ui-jqgrid-labels">
+                        <th class="fixed-width-first ui-state-default ui-th-column ui-th-ltr">Name</th>
+                        <th class="fixed-width-other ui-state-default ui-th-column ui-th-ltr">EntryType</th>
+                        <th class="fixed-width-other ui-state-default ui-th-column ui-th-ltr">Value</th>
+                        <th class="fixed-width-other ui-state-default ui-th-column ui-th-ltr">Group</th>
+                        <th class="fixed-width-other ui-state-default ui-th-column ui-th-ltr">Element</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="ui-jqgrid-bdiv" style="height: 400px; overflow-y: auto;overflow-x:hidden; width:100%">
+        <table class="ui-jqgrid-btable" style="width: 100%; table-layout: inherit">
+            <tbody data-bind="template: { name: &#39;xmlElementTemplate&#39;, data: sourceData }">
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<div id="itemDiv" data-bind="template: { name: &#39;editSourceItemTemplate&#39;, data: sourceData }">
+</div>
+<br>
+<div id="modelButtons" style="float:right">
+    <input class="standard_button" type="button" onclick="updateSchema();" value="Update Schema" style="width: 130px; display: none;" id="btnSaveSchema" disabled="disabled">
+    <input class="standard_button" type="button" onclick="saveModel();" value="Save" id="btnSaveModel" disabled="disabled" style="display: none;">
+    <input class="standard_button" type="button" onclick="revertSchema();" value="Revert Schema" style="width: 130px; display: none;" id="btnRevertSchema" disabled="disabled">
+    <input class="standard_button" type="button" onclick="closeDialog();" value="Close" id="btnCloseDialog" disabled="disabled" style="display: none;"> 
+</div>
+
+<script id="rowTemplate" type="text/html">
+    <tr class="ui-widget-content jqgrow ui-row-ltr" data-bind="visible: Visible,
+        click: setAsSelected,
+        event: { mouseover: toggleHover, mouseout: toggleHover },
+        css: { 'ui-state-hover': Hovered, 'ui-state-highlight': Selected },
+        attr: { title: XPath() }
+    ">
+        <td style="text-align:left;" class="fixed-width-first">
+            <div class="treeclick tree-wrap tree-wrap-ltr" data-bind="style: { width: (SpaceCount() * 18) + 'px' }, click: toggle">
+                <div class="ui-icon"
+                     data-bind="css: { 'ui-icon-radio-off tree-leaf': isLeaf(), 'tree-minus': !isLeaf(), 'ui-icon-triangle-1-s': !isLeaf() && Expanded(), 'ui-icon-triangle-1-e': !isLeaf() && !Expanded() }, style: { left: ((SpaceCount() - 1) * 18) + 'px' }"></div>
+            </div>
+            <span class="cell-wrapperleaf" data-bind="text: Name">
+            </span>
+            <a href="#" data-bind="click:insertXml, visible: canInsertXml() && !insertingXml()">(+)</a>
+            <a href="#" data-bind="click:cancelInserting, visible: insertingXml()">(X)</a>
+        </td>
+        <td style="text-align:left;" class="fixed-width-other" data-bind="text: EntryType"></td>
+        <td style="text-align:left;" class="fixed-width-other" data-bind="text: StaticValue"></td>
+        <td style="text-align:left;" class="fixed-width-other" data-bind="text: DataElementGroupName"></td>
+        <td style="text-align:left;" class="fixed-width-other" data-bind="text: DataElementName"></td>
+    </tr>
+</script>
+
+<script id="editSourceItemTemplate" type="text/html">  
+    <table class="noty_message" style="width:90%" data-bind="with: SelectedNode()">
+        <tr data-bind="visible: insertingXml()">
+            <td></td>
+            <td>
+                <label>Warning: You may only add new elements or attributes. Edit and delete are not supported.</label>
+            </td>
+        </tr>
+        <tr data-bind="visible: insertingXml()">
+            <td style="width: 150px;"><label>Create as</label></td>
+            <td>
+                <input type="radio" name="xmlField" value="Element" id="rdoElement" data-bind="checked: xmlFieldType"><label for="rdoElement">Element</label>
+                <input type="radio" name="xmlField" value="Attribute" id="rdoAttribute" data-bind="checked: xmlFieldType"><label for="rdoAttribute">Attribute</label>
+            </td>
+        </tr>
+        <tr data-bind="visible: insertingXml()">
+            <td>
+                <label for="xmlField">Xml Field Name</label>
+            </td>
+            <td>
+                <input type="text" id="xmlField" style="width: 200px;" data-bind="enable: insertingXml(), value: xmlField" />
+            </td>
+        </tr>
+        <tr data-bind="visible: insertingXml()">
+            <td>
+                <label for="txtXPath">XPath</label>
+            </td>
+            <td>
+                <input type="text" id="txtXPath" style="width: 90%;" disabled="disabled" data-bind="value: xPathString" />
+            </td>
+        </tr>
+        
+
+        <tr data-bind="visible: !insertingXml()">
+            <td>
+                <label for="entryType">Entry Type</label>
+            </td>
+            <td>
+                <select id="entryType" name="entryType" class="formClass" data-bind="value: EntryTypeId, event: { change: $parent.changeOfEntryType },
+                options: $parent.getEntryTypes(), optionsText: 'name', optionsValue: 'id'" />
+            </td>
+        </tr>
+        <tr data-bind="visible: !insertingXml()">
+            <td>
+                <label for="value">Value</label>
+            </td>
+            <td>
+                <input id="value" type="text" name="value" class="formClass" data-bind="value: StaticValue, enable: EntryTypeId() == '1', required: EntryTypeId() == '1'" />
+            </td>
+        </tr>
+        <tr data-bind="visible: !insertingXml()">
+            <td><label for="dataElementGroupId">Group</label></td>
+            <td>
+                <select id="dataElementGroupId" name="dataElementGroupId" class="formClass"
+                        data-bind="options: $parent.filteredGroups(), optionsText: 'GroupName', optionsCaption: 'Select', optionsValue: 'Id', enable: (EntryTypeId() == '2' || EntryTypeId() == '5'), required: (EntryTypeId() == '2' || EntryTypeId() == '5'),
+                                    value: DataElementGroupId, event: { change: $parent.setGroupName }"></select>
+            </td>
+        </tr>
+        <tr data-bind="visible: !insertingXml()">
+            <td><label for="dataElementId">Element</label></td>
+            <td>
+                <select id="dataElementId" name="dataElementId" class="formClass"
+                        data-bind="options: $parent.elementsFor, optionsText: 'Name', optionsValue: 'Id', enable: (EntryTypeId() == '2' || EntryTypeId() == '5'), required: (EntryTypeId() == '2' || EntryTypeId() == '5'),
+                                    value: DataElementId, event: { change: $parent.setElementName }"></select>
+            </td>
+        </tr>
+    </table>
+</script>
+
+
+
+            </div>
+            <div id="protocolsSetup">
+                <div id="protocolsDiv" data-bind="template: { name: &#39;editProtocolsTemplate&#39;, data: sourceData }">
+                </div>
+                <br>
+                <div id="protocolsModelButtons" style="float:right">
+                    <input class="standard_button" type="button" onclick="saveModel();" value="Save" id="btnSaveProtocolsModel" disabled="disabled" style="display: none;">
+                    <input class="standard_button" type="button" onclick="closeDialog();" value="Close" id="btnCloseProtocolsDialog" disabled="disabled" style="display: none;"> 
+                </div>
+            </div>
+            <div id="preview">
+                <label for="previewAppNumber">Application Number:</label>
+                <input type="text" id="previewAppNumber" onkeyup="updatePreviewLink()" disabled="disabled">
+                <a href="https://gls.defisolutions.com/Admin/XmlExportConfig#" id="previewLink" target="_blank" style="display:none">Preview</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalInsideForm">
+    </div>
+</form>
+    
+<div id="uploadDiv" style="display:none;" title="New Export Configuration">
+    <form id="uploadForm" novalidate="novalidate">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" required="" disabled="disabled">
+        <br>
+        <label for="rootElementName">Root Element Name: </label>
+        <input type="text" id="rootElementName" name="rootElementName" required="" disabled="disabled">
+        <br>
+        <label for="eventType">Event Type:&nbsp;&nbsp;</label>
+        <select id="eventType" name="eventType" data-bind="value: EventType" required="" disabled="disabled">
+            <option id="1" value="1">On Saved</option>
+            <option id="2" value="2">On Decisioned</option>
+            <option id="3" value="3">On Contract Created</option>
+            <option id="4" value="4">On Verifications Saved</option>
+            <option id="5" value="5">On Booked</option>
+            <option id="6" value="6">On Received</option>
+            <option id="9" value="9">Manual</option>
+            <option id="7" value="7">Always</option>
+        </select>
+        <br>
+        <br>
+        <input id="uploader" name="uploader" type="file" style="height:30px; font-size: 10pt;" required="" disabled="disabled">
+        <button id="uploadFilesButton" class="standard_button" style="height: 30px; display: none;">Upload</button>
+    </form>
+</div>
+<script type="text/javascript" src="./Index_files/xmlExportConfig.js"></script>
+<script type="text/javascript" src="./Index_files/baseSourceMapping.js"></script>
+<style>
+    #uploadDiv {
+        text-align: right;
+    }
+    #uploadDiv input, #uploadDiv select {
+        display: inline;
+        margin:5px 20px 1px 35px;
+     }
+    .btn-custom:hover {
+        cursor:pointer
+        }
+    .ui-widget-overlay {
+        position: fixed !important;
+    }
+</style>
+
+<script type="text/javascript">
+    var sourceType = 0;
+    $(function () {
+        
+    });
+</script>
+
+<script id="editProtocolsTemplate" type="text/html">
+    <table>
+        <tr>
+            <td><b><span id="protocolDesc" data-bind="text: Description()"></span></b></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                Protocol: 
+            </td>
+            <td>
+                <select id="protocolType" name="protocolType" data-bind="value: ProtocolType">
+                    <option value="None">None</option>
+                    <option value="FtpPull">Ftp Pull</option>
+                    <option value="FtpPush">Ftp Push</option>
+                    <option value="SFtpPush">SFtp Push</option>
+                    <option value="HttpPost">Http Post</option>
+                    
+                </select>
+            </td>
+        </tr>
+        <tr data-bind="visible: utf8Visible()" ><td>Use UTF-8?</td><td><input id="protocolUseUtf8" name="protocolUseUtf8" title="File will be UTF-8 encoded if checked. Otherwise, UTF-16" type="checkbox" data-bind="checked: UseUtf8"/></td></tr>
+        <tr data-bind="visible: dateDirsVisible()"><td>Use Date Directories?</td><td><input id="protocolUseDateDirectories" name="protocolUseDateDirectories" title="Files will be uploaded to a folder named by the current date (MM-dd-yyyy)." type="checkbox" data-bind="checked: UseDateDirectories"/></td></tr>        
+        <tr data-bind="visible: hostVisible()"><td>Host: </td><td><input id="protocolHost" name="protocolHost" type="text" data-bind="value: Host"/></td></tr>
+        <tr data-bind="visible: userVisible()"><td>User Name: </td><td><input id="protocolUserName" name="protocolUserName" type="text" data-bind="value: UserName"/></td></tr>
+        <tr data-bind="visible: passwordVisible()"><td>Password: </td><td><input id="protocolPassword" name="protocolPassword" type="text" data-bind="value: Password"/></td></tr>        
+        <tr data-bind="visible: portVisible()"><td>Port: </td><td><input id="protocolPort" name="protocolPort" title="Default is 21 for Ftp, 22 for SFtp" type="text" data-bind="value: Port, numeric: true"/></td></tr>
+        <tr data-bind="visible: relPathVisible()"><td>Relative Path (if any):</td><td><input id="protocolRelativePath" name="protocolRelativePath" title="Sub folder relative to the root directory" type="text" data-bind="value: RelativePath"/></td></tr>        
+    </table>
+</script>
+
+
+<script type="text/javascript" language="javascript">
+
+    $(document).ready(function () {
+        $(window).load(function () {
+            disableUnlessCanEdit();
+        });
+    });
+    
+</script>
+                                            </div>
+                                        
+                                            <div class="ft alpha omega grid_9" style="width:100%">
+                                   
+                                                <div class="powered_by">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!-- END MAIN CONTENT ROUNDED BOX -->
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <p hidden="d502eb50-89dd-4fc4-9fdc-2b20eaf8e8de3">
+
+    
+
+</p><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious" style="display: none;"></button><button type="button" id="cboxNext" style="display: none;"></button><button id="cboxSlideshow" style="display: none;"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div><script src="./Index_files/nr-411.min.js"></script><script type="text/javascript" src="./Index_files/8d33e8cd0a"></script></body></html>

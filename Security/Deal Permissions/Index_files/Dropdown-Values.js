@@ -62,11 +62,9 @@ function GetDropdownValues(FieldName, dropdownId) {
         case 'Tier':
 
             var tiers = getTiers();
-            console.log("tier: ", tiers[0]);
             for (var i = 0; i < tiers.length; i++) {
                 console.log("i: ", i);
-                listItems += ("<option value=" + "'"+ tiers[i] +"'" + ">" + tiers[i] + "</option>");
-                
+                listItems += ("<option value=" + "'"+ tiers[i].trim() +"'" + ">" + tiers[i].trim() + "</option>");
             }
             console.log("list items", listItems);
             break;

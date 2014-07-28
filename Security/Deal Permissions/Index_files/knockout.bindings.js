@@ -630,7 +630,7 @@ ko.bindingHandlers.VIN = {
 
             if (condition) {
                 if ($(element).val() != "" && $(element).val().length == 17) {
-                    displayVehicleInformation($(element), section + "Vehicle_");
+                    displayVehicleInformation($(element), section);
                 }
             }
         }

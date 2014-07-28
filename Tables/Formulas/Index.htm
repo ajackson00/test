@@ -224,7 +224,7 @@
 
     </head>
     <body>
-        <meta content="QirGjrHRqRqg3zlIRFHSlUX8VA7paB13+FXRLBNOU1Smi1qH6SW+1nOBSLV2e65614w18aeI4PNcmT0UZp+/mNzTw2wRUYMTG3iplhJjh3oCl7+YiE/BC4nPMXRNbKAs9JHnBB5b38XmxtD+FfJXrZlGj1g=" name="__AjaxRequestVerificationToken">
+        <meta content="Y3YprvXFbFVFcjFYLtQW7zgfO5vVd0Awd+TqcpF37ZZpCiTSrDifmHBc5M/k96ficVQinPTp3HKxhpqn2NI4Z5y2rHNCjAsdpRWYT0INHWJq+bvuEcqBWK1qSAR8jd06vsXQJ35ozAZvS+1lhCN6YBLaxqo=" name="__AjaxRequestVerificationToken">
         <div id="wrapper" style="width:95%; margin: auto;">
             <div id="main_container" class="container_12" style="width:100%">
                 <div id="sub_main_container" class="container_12 alpha omega" style="width:100%">
@@ -405,7 +405,37 @@ var result = Math.floor(((dbUnpaidBalance/dbActualValue)*100) * 100) / 100;</td>
 
 var result = parseFloat(dbPayment) / parseFloat(dbIncome) * 100;" aria-describedby="grid_FormulaText">// Robert Roskam, 7/10/2014, Adjusted to match Credit, v?
 
-var result = parseFloat(dbPayment) / parseFloat(dbIncome) * 100;</td></tr><tr role="row" id="6" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="258" aria-describedby="grid_Id">258</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="FinanceCharge+AmountFinanced" aria-describedby="grid_Name">FinanceCharge+AmountFinanced</td><td role="gridcell" style="" title="//Kyle Cerny, 7/16/2014, Actually Fixed null situations, v2
+var result = parseFloat(dbPayment) / parseFloat(dbIncome) * 100;</td></tr><tr role="row" id="6" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="241" aria-describedby="grid_Id">241</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="TotalNumberOfPayments+Downpayment" aria-describedby="grid_Name">TotalNumberOfPayments+Downpayment</td><td role="gridcell" style="" title="//Robert Roskam, 6/10/2014, Fixed null cases, v2
+//Adds two fields together
+var result = (!&#39;dbTotalNumberOfPayments&#39; ? 0 : parseFloat(&#39;dbTotalNumberOfPayments&#39;)) + (!&#39;dbDownpayment&#39; ? 0 : parseFloat(&#39;dbDownpayment&#39;));
+" aria-describedby="grid_FormulaText">//Robert Roskam, 6/10/2014, Fixed null cases, v2
+//Adds two fields together
+var result = (!'dbTotalNumberOfPayments' ? 0 : parseFloat('dbTotalNumberOfPayments')) + (!'dbDownpayment' ? 0 : parseFloat('dbDownpayment'));
+</td></tr><tr role="row" id="7" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="242" aria-describedby="grid_Id">242</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Calculated APR Funding" aria-describedby="grid_Name">Calculated APR Funding</td><td role="gridcell" style="" title="//Robert Roskam, 04/18/2014, Added header comment &amp; made into JS, v14
+
+// Get Days to First Payment
+var DaysToFirstPayment = dbDaysToFirstPayment;
+
+//Note: the 30 is assuming a monthly payment cycle
+var OddDays = DaysToFirstPayment - 30;
+
+//Do the calculation for interest over the OddDays period
+var OddDaysInterest = excel.ROUND(OddDays*dbAmountFinanced*(dbAPR/365),2);
+
+//Calculate the rate and round to four digits
+var result =  excel.ROUND((excel.RATE(dbNumberOfPayments, -dbPaymentAmount, (dbAmountFinanced+OddDaysInterest/100))*12),4)*100;" aria-describedby="grid_FormulaText">//Robert Roskam, 04/18/2014, Added header comment &amp; made into JS, v14
+
+// Get Days to First Payment
+var DaysToFirstPayment = dbDaysToFirstPayment;
+
+//Note: the 30 is assuming a monthly payment cycle
+var OddDays = DaysToFirstPayment - 30;
+
+//Do the calculation for interest over the OddDays period
+var OddDaysInterest = excel.ROUND(OddDays*dbAmountFinanced*(dbAPR/365),2);
+
+//Calculate the rate and round to four digits
+var result =  excel.ROUND((excel.RATE(dbNumberOfPayments, -dbPaymentAmount, (dbAmountFinanced+OddDaysInterest/100))*12),4)*100;</td></tr><tr role="row" id="8" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="258" aria-describedby="grid_Id">258</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="FinanceCharge+AmountFinanced" aria-describedby="grid_Name">FinanceCharge+AmountFinanced</td><td role="gridcell" style="" title="//Kyle Cerny, 7/16/2014, Actually Fixed null situations, v2
 //Adding the two values together
 var FinanceCharge=(&#39;dbFinanceCharge&#39;.trim()==&#39;&#39;)?0: parseFloat(&#39;dbFinanceCharge&#39;);
 var AmountFinanced=(&#39;dbAmountFinanced&#39;.trim()==&#39;&#39;)?0: parseFloat(&#39;dbAmountFinanced&#39;);
@@ -415,7 +445,7 @@ var result = 0.00 + FinanceCharge + AmountFinanced;" aria-describedby="grid_Form
 var FinanceCharge=("dbFinanceCharge".trim()=="")?0: parseFloat("dbFinanceCharge");
 var AmountFinanced=("dbAmountFinanced".trim()=="")?0: parseFloat("dbAmountFinanced");
 
-var result = 0.00 + FinanceCharge + AmountFinanced;</td></tr><tr role="row" id="7" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="259" aria-describedby="grid_Id">259</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="SharedCreditTotal" aria-describedby="grid_Name">SharedCreditTotal</td><td role="gridcell" style="" title="//Robert Roskam, 5/13/14, Creation, v1  
+var result = 0.00 + FinanceCharge + AmountFinanced;</td></tr><tr role="row" id="9" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="259" aria-describedby="grid_Id">259</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="SharedCreditTotal" aria-describedby="grid_Name">SharedCreditTotal</td><td role="gridcell" style="" title="//Robert Roskam, 5/13/14, Creation, v1  
 
 //Store json strings into variables
 var TradelinesApp = dbTradelinesApp;
@@ -459,41 +489,11 @@ TradelinesApp.forEach(function(TradelineApp){
 });
 
 //Output the result
-var result = totalBalance;</td></tr><tr role="row" id="8" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="260" aria-describedby="grid_Id">260</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfPaymentsxPaymentAmount " aria-describedby="grid_Name">NumberOfPaymentsxPaymentAmount </td><td role="gridcell" style="" title="//Robert Roskam, 6/10/2014, Created, v2
+var result = totalBalance;</td></tr><tr role="row" id="10" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="260" aria-describedby="grid_Id">260</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfPaymentsxPaymentAmount " aria-describedby="grid_Name">NumberOfPaymentsxPaymentAmount </td><td role="gridcell" style="" title="//Robert Roskam, 6/10/2014, Created, v2
 //Multiplied two variables together 
 var result = (!&#39;dbNumberOfPayments&#39; ? 0 : parseFloat(&#39;dbNumberOfPayments&#39;))*(!&#39;dbPaymentAmount&#39; ? 0 : parseFloat(&#39;dbPaymentAmount&#39;));" aria-describedby="grid_FormulaText">//Robert Roskam, 6/10/2014, Created, v2
 //Multiplied two variables together 
-var result = (!'dbNumberOfPayments' ? 0 : parseFloat('dbNumberOfPayments'))*(!'dbPaymentAmount' ? 0 : parseFloat('dbPaymentAmount'));</td></tr><tr role="row" id="9" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="241" aria-describedby="grid_Id">241</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="TotalNumberOfPayments+Downpayment" aria-describedby="grid_Name">TotalNumberOfPayments+Downpayment</td><td role="gridcell" style="" title="//Robert Roskam, 6/10/2014, Fixed null cases, v2
-//Adds two fields together
-var result = (!&#39;dbTotalNumberOfPayments&#39; ? 0 : parseFloat(&#39;dbTotalNumberOfPayments&#39;)) + (!&#39;dbDownpayment&#39; ? 0 : parseFloat(&#39;dbDownpayment&#39;));
-" aria-describedby="grid_FormulaText">//Robert Roskam, 6/10/2014, Fixed null cases, v2
-//Adds two fields together
-var result = (!'dbTotalNumberOfPayments' ? 0 : parseFloat('dbTotalNumberOfPayments')) + (!'dbDownpayment' ? 0 : parseFloat('dbDownpayment'));
-</td></tr><tr role="row" id="10" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="242" aria-describedby="grid_Id">242</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Calculated APR Funding" aria-describedby="grid_Name">Calculated APR Funding</td><td role="gridcell" style="" title="//Robert Roskam, 04/18/2014, Added header comment &amp; made into JS, v14
-
-// Get Days to First Payment
-var DaysToFirstPayment = dbDaysToFirstPayment;
-
-//Note: the 30 is assuming a monthly payment cycle
-var OddDays = DaysToFirstPayment - 30;
-
-//Do the calculation for interest over the OddDays period
-var OddDaysInterest = excel.ROUND(OddDays*dbAmountFinanced*(dbAPR/365),2);
-
-//Calculate the rate and round to four digits
-var result =  excel.ROUND((excel.RATE(dbNumberOfPayments, -dbPaymentAmount, (dbAmountFinanced+OddDaysInterest/100))*12),4)*100;" aria-describedby="grid_FormulaText">//Robert Roskam, 04/18/2014, Added header comment &amp; made into JS, v14
-
-// Get Days to First Payment
-var DaysToFirstPayment = dbDaysToFirstPayment;
-
-//Note: the 30 is assuming a monthly payment cycle
-var OddDays = DaysToFirstPayment - 30;
-
-//Do the calculation for interest over the OddDays period
-var OddDaysInterest = excel.ROUND(OddDays*dbAmountFinanced*(dbAPR/365),2);
-
-//Calculate the rate and round to four digits
-var result =  excel.ROUND((excel.RATE(dbNumberOfPayments, -dbPaymentAmount, (dbAmountFinanced+OddDaysInterest/100))*12),4)*100;</td></tr><tr role="row" id="11" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="278" aria-describedby="grid_Id">278</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsSharedAddress" aria-describedby="grid_Name">IsSharedAddress</td><td role="gridcell" style="" title="//Robert Roskam, 5/13/14, Creation, v1  
+var result = (!'dbNumberOfPayments' ? 0 : parseFloat('dbNumberOfPayments'))*(!'dbPaymentAmount' ? 0 : parseFloat('dbPaymentAmount'));</td></tr><tr role="row" id="11" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="278" aria-describedby="grid_Id">278</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsSharedAddress" aria-describedby="grid_Name">IsSharedAddress</td><td role="gridcell" style="" title="//Robert Roskam, 5/13/14, Creation, v1  
 //Compares street address and zipcode of applicant and co-applicant
 //If equal to each other, then return true; else, false.
 var result = (dbAppStNum == dbCoAppStNum &amp;&amp; dbAppZipCode == dbCoAppZipCode);" aria-describedby="grid_FormulaText">//Robert Roskam, 5/13/14, Creation, v1  
@@ -535,7 +535,45 @@ if (isSharedAddress &amp;&amp; sharedCreditTotal &gt;= 1000 ) {
 }
 
 //Send result out
-var result = MultiApplicantType;</td></tr><tr role="row" id="13" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="351" aria-describedby="grid_Id">351</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="unused" aria-describedby="grid_Name">unused</td><td role="gridcell" style="" title="var result = dbtest;" aria-describedby="grid_FormulaText">var result = dbtest;</td></tr><tr role="row" id="14" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="329" aria-describedby="grid_Id">329</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsBelowMinIncReq - UW" aria-describedby="grid_Name">IsBelowMinIncReq - UW</td><td role="gridcell" style="" title="//Robert Roskam, 5/20/14, Fixed empty string bug, v4
+var result = MultiApplicantType;</td></tr><tr role="row" id="13" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="328" aria-describedby="grid_Id">328</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsDualIncome" aria-describedby="grid_Name">IsDualIncome</td><td role="gridcell" style="" title="//Robert Roskam, 5/20/14, Fixed empty string addition bug, v5
+
+//db storing of values to variables
+var appTotalInc = (&#39;dbAppInc&#39;==&#39;&#39; ? 0 : parseFloat(&#39;dbAppInc&#39;)) + (&#39;dbAppOtherInc&#39;==&#39;&#39; ? 0 : parseFloat(&#39;dbAppOtherInc&#39;));
+var coappTotalInc = (&#39;dbCoappInc&#39;==&#39;&#39; ? 0 : parseFloat(&#39;dbCoappInc&#39;)) + (&#39;dbCoappOtherInc&#39;==&#39;&#39; ? 0 : parseFloat(&#39;dbCoappOtherInc&#39;));
+var multiApplicantType = &#39;dbMultiApplicantType&#39;.trim();
+
+var isDualInc = false;
+
+//Checks the multiapplicant type and compares the limits for income to qualify
+if (multiApplicantType == &#39;cobuyer&#39; &amp;&amp; (appTotalInc &gt;= 2000 &amp;&amp;  coappTotalInc &gt;= 1500  || appTotalInc &gt;= 1500 &amp;&amp;  coappTotalInc &gt;= 2000 )) {
+	isDualInc = true;
+} else if (multiApplicantType == &#39;coresident&#39; &amp;&amp; appTotalInc &gt;= 2000 &amp;&amp; coappTotalInc &gt;= 2000) {
+	isDualInc = true;
+} else if (multiApplicantType == &#39;cosigner&#39; &amp;&amp; appTotalInc &gt;= 2000 &amp;&amp;  coappTotalInc &gt;= 2000) {
+	isDualInc = true;
+}
+
+//Send result out
+var result = isDualInc;" aria-describedby="grid_FormulaText">//Robert Roskam, 5/20/14, Fixed empty string addition bug, v5
+
+//db storing of values to variables
+var appTotalInc = ('dbAppInc'=='' ? 0 : parseFloat('dbAppInc')) + ('dbAppOtherInc'=='' ? 0 : parseFloat('dbAppOtherInc'));
+var coappTotalInc = ('dbCoappInc'=='' ? 0 : parseFloat('dbCoappInc')) + ('dbCoappOtherInc'=='' ? 0 : parseFloat('dbCoappOtherInc'));
+var multiApplicantType = 'dbMultiApplicantType'.trim();
+
+var isDualInc = false;
+
+//Checks the multiapplicant type and compares the limits for income to qualify
+if (multiApplicantType == 'cobuyer' &amp;&amp; (appTotalInc &gt;= 2000 &amp;&amp;  coappTotalInc &gt;= 1500  || appTotalInc &gt;= 1500 &amp;&amp;  coappTotalInc &gt;= 2000 )) {
+	isDualInc = true;
+} else if (multiApplicantType == 'coresident' &amp;&amp; appTotalInc &gt;= 2000 &amp;&amp; coappTotalInc &gt;= 2000) {
+	isDualInc = true;
+} else if (multiApplicantType == 'cosigner' &amp;&amp; appTotalInc &gt;= 2000 &amp;&amp;  coappTotalInc &gt;= 2000) {
+	isDualInc = true;
+}
+
+//Send result out
+var result = isDualInc;</td></tr><tr role="row" id="14" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="329" aria-describedby="grid_Id">329</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsBelowMinIncReq - UW" aria-describedby="grid_Name">IsBelowMinIncReq - UW</td><td role="gridcell" style="" title="//Robert Roskam, 5/20/14, Fixed empty string bug, v4
 
 //db storing of values to variables
 var AppInc = !&#39;dbAppInc&#39; ? 0 : parseFloat(&#39;dbAppInc&#39;);
@@ -637,7 +675,269 @@ var result = calculatedCashDown;</td></tr><tr role="row" id="16" tabindex="-1" c
 var result = parseFloat(&#39;dbNetTrade&#39;) + parseFloat(&#39;dbCalculatedCashDown&#39;);" aria-describedby="grid_FormulaText">//Robert Roskam, 5/15/14, Creation, v1
 //Adds together net trade and calculated cash down.
 
-var result = parseFloat("dbNetTrade") + parseFloat("dbCalculatedCashDown");</td></tr><tr role="row" id="17" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="352" aria-describedby="grid_Id">352</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="VF Bookout_RNR" aria-describedby="grid_Name">VF Bookout_RNR</td><td role="gridcell" style="" title="//Robyn Rode, 5/27/14, Creation, v1
+var result = parseFloat("dbNetTrade") + parseFloat("dbCalculatedCashDown");</td></tr><tr role="row" id="17" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="333" aria-describedby="grid_Id">333</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="MinOfUsuryOrPolicyAPR" aria-describedby="grid_Name">MinOfUsuryOrPolicyAPR</td><td role="gridcell" style="" title="// Robert Roskam, 6/12/2014, Wrong APR value, v3
+// Takes the lesser of Max APR or state Usury Rate
+
+var result = (parseFloat(&#39;dbMaxAPR&#39;) &lt;= parseFloat(&#39;dbUsury&#39;))?  parseFloat(&#39;dbMaxAPR&#39;): parseFloat(&#39;dbUsury&#39;);
+
+           " aria-describedby="grid_FormulaText">// Robert Roskam, 6/12/2014, Wrong APR value, v3
+// Takes the lesser of Max APR or state Usury Rate
+
+var result = (parseFloat("dbMaxAPR") &lt;= parseFloat("dbUsury"))?  parseFloat("dbMaxAPR"): parseFloat("dbUsury");
+
+           </td></tr><tr role="row" id="18" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="334" aria-describedby="grid_Id">334</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Total Back End Products" aria-describedby="grid_Name">Total Back End Products</td><td role="gridcell" style="" title="warranty+gap+aandh+creditlife" aria-describedby="grid_FormulaText">warranty+gap+aandh+creditlife</td></tr><tr role="row" id="19" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="335" aria-describedby="grid_Id">335</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsPreferredMake" aria-describedby="grid_Name">IsPreferredMake</td><td role="gridcell" style="" title="// Robert Roskam, 5/16/14, Creation, v1
+// Checks to see if this vehicle is one of our preferred makes
+
+var thisMake = &#39;dbVehicle&#39;.trim()
+var preferredMakes = [&#39;TOYOTA&#39;, &#39;HONDA&#39;, &#39;ACURA&#39;, &#39;LEXUS&#39; , &#39;INFINITI&#39;];
+
+var result = (0 &lt;= preferredMakes.indexOf(thisMake.toUpperCase()));" aria-describedby="grid_FormulaText">// Robert Roskam, 5/16/14, Creation, v1
+// Checks to see if this vehicle is one of our preferred makes
+
+var thisMake = "dbVehicle".trim()
+var preferredMakes = ["TOYOTA", "HONDA", "ACURA", "LEXUS" , "INFINITI"];
+
+var result = (0 &lt;= preferredMakes.indexOf(thisMake.toUpperCase()));</td></tr><tr role="row" id="20" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="337" aria-describedby="grid_Id">337</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Unused" aria-describedby="grid_Name">Unused</td><td role="gridcell" style="" title="dbTest" aria-describedby="grid_FormulaText">dbTest</td></tr><tr role="row" id="21" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="339" aria-describedby="grid_Id">339</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="InfiniteLoopTest" aria-describedby="grid_Name">InfiniteLoopTest</td><td role="gridcell" style="" title="var test = &#39;dbtest&#39;;
+var result = 0;" aria-describedby="grid_FormulaText">var test = "dbtest";
+var result = 0;</td></tr><tr role="row" id="22" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="340" aria-describedby="grid_Id">340</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="HasOpenBK" aria-describedby="grid_Name">HasOpenBK</td><td role="gridcell" style="" title="// Robert Roskam, 07/22/14, TU workaround, v3
+//This formula returns true if an Applicant has 2 or more bankruptcies, or if Co-Applicant has 2 or more bankruptcies
+var hasOpenBK = false;
+var appBKCount = 0;
+var coAppBKCount = 0;
+
+var appPubRec = dbAppPubRec;
+var coAppPubRec = dbCoAppPubRec;
+var activeBureau = &#39;dbActiveBureau&#39;.toUpperCase();
+
+//This is a workaround for TU
+var appFullBureau = dbappFullBureau;
+var coappFullBureau = dbcoappFullBureau;
+
+/*These should represent all  Bankruptcy Status Codes
+ Note: this section is extremely long because there is no good reference material for most of the bureaus.
+EQ
+	A - Discharged CH-7
+	C - Filed CH-13
+	D - Filed CH-11
+	E - Dismissed or closed CH-11
+	
+	F - Discharged CH-11
+	G - Filed CH-12
+	H - Discharged CH-12
+	I - Involuntary CH-7
+	
+	J - Dismissed or closed CH-12
+	K - Dismissed or closed CH-13
+	L - Discharged CH-13
+	M - Dismissed or closed CH-7
+	V - Voluntary CH-7
+	
+EX
+	13 - Bankruptcy Chapter 13-petition filed  
+	15 - Bankruptcy chapter 7-discharged
+	16 - Bankruptcy chapter 13-dismissed
+	17 - Bankruptcy chapter 13-discharged 
+	
+	22 - Bankruptcy chapter 11-dismissed 
+	23 - Bankruptcy chapter 7-petition filed
+	24 - Bankruptcy chapter 7-dismissed
+	25 - Bankruptcy chapter 11-petition filed 
+	
+	26 - Bankruptcy chapter 11-discharged 
+	27 - Bankruptcy chapter 12-petition filed 
+	28 - Bankruptcy chapter 12-discharged 
+	29 - Bankruptcy chapter 12-dismissed 
+	
+TU
+
+	1D - Discharged CH-11
+	1F - Filed CH-11
+	1V - Voluntary CH-11 (does this exist?)
+	1X - Dismissed or closed CH-11
+	
+	2D - Discharged CH-12
+	2F - Filed CH-12
+	2V - Voluntary CH-12 (does this exist?)
+	2X - Dismissed or closed CH-12
+
+	3D - Discharged CH-13
+	3F - Filed CH-13
+	3V - Voluntary CH-13 (does this exist?)
+	3X - Dismissed or closed CH-13
+	
+	7D - Discharged CH-7
+	7F - Involuntary CH-7
+	7V - Voluntary CH-7
+	7X - Dismissed or closed CH-7
+	
+*/
+
+var statusCodes = [];
+statusCodes[&#39;EQ&#39;] = [&#39;C&#39;,&#39;D&#39;,&#39;G&#39;,&#39;I&#39;,&#39;V&#39;]; 
+statusCodes[&#39;EX&#39;] = [&#39;13&#39;,&#39;23&#39;,&#39;25&#39;,&#39;27&#39;];  
+statusCodes[&#39;TU&#39;] = [&#39;1F&#39;,&#39;1V&#39;,&#39;2F&#39;,&#39;2V&#39;,&#39;3F&#39;,&#39;3V&#39;,&#39;7F&#39;,&#39;7V&#39;];  
+
+
+if (activeBureau != &#39;TU&#39;){
+	appPubRec.forEach(function(publicRecord){
+		if (statusCodes[activeBureau].indexOf(publicRecord.StatusCode) &gt; -1)
+		{
+			hasOpenBK = true;
+			return true;	//This return statement exits the function(publicRecord) delegate, not the parent function
+		}
+	});
+} else if (activeBureau == &#39;TU&#39;) {
+	appFullBureau.Response.creditBureau.product.subject.subjectRecord.custom.credit.publicRecord.forEach(function(publicRecord){
+		if (statusCodes[activeBureau].indexOf(publicRecord.type) &gt; -1)
+		{
+			hasOpenBK = true;
+			return true;	//This return statement exits the function(publicRecord) delegate, not the parent function
+		}
+	});
+}
+	
+if (hasOpenBK == false){
+	if (activeBureau != &#39;TU&#39;){
+
+		dbCoAppPubRec.forEach(function(publicRecord){
+			if (statusCodes[activeBureau].indexOf(publicRecord.StatusCode) &gt; -1)
+			{
+				hasOpenBK = true;
+				return true;	//This return statement exits the function(publicRecord) delegate, not the parent function
+			}
+		});
+	} else if (activeBureau == &#39;TU&#39;) {
+	coappFullBureau.Response.creditBureau.product.subject.subjectRecord.custom.credit.publicRecord.forEach(function(publicRecord){
+		if (statusCodes[activeBureau].indexOf(publicRecord.type) &gt; -1)
+		{
+			hasOpenBK = true;
+			return true;	//This return statement exits the function(publicRecord) delegate, not the parent function
+		}
+	});
+	}
+}
+
+var result = hasOpenBK;
+" aria-describedby="grid_FormulaText">// Robert Roskam, 07/22/14, TU workaround, v3
+//This formula returns true if an Applicant has 2 or more bankruptcies, or if Co-Applicant has 2 or more bankruptcies
+var hasOpenBK = false;
+var appBKCount = 0;
+var coAppBKCount = 0;
+
+var appPubRec = dbAppPubRec;
+var coAppPubRec = dbCoAppPubRec;
+var activeBureau = "dbActiveBureau".toUpperCase();
+
+//This is a workaround for TU
+var appFullBureau = dbappFullBureau;
+var coappFullBureau = dbcoappFullBureau;
+
+/*These should represent all  Bankruptcy Status Codes
+ Note: this section is extremely long because there is no good reference material for most of the bureaus.
+EQ
+	A - Discharged CH-7
+	C - Filed CH-13
+	D - Filed CH-11
+	E - Dismissed or closed CH-11
+	
+	F - Discharged CH-11
+	G - Filed CH-12
+	H - Discharged CH-12
+	I - Involuntary CH-7
+	
+	J - Dismissed or closed CH-12
+	K - Dismissed or closed CH-13
+	L - Discharged CH-13
+	M - Dismissed or closed CH-7
+	V - Voluntary CH-7
+	
+EX
+	13 - Bankruptcy Chapter 13-petition filed  
+	15 - Bankruptcy chapter 7-discharged
+	16 - Bankruptcy chapter 13-dismissed
+	17 - Bankruptcy chapter 13-discharged 
+	
+	22 - Bankruptcy chapter 11-dismissed 
+	23 - Bankruptcy chapter 7-petition filed
+	24 - Bankruptcy chapter 7-dismissed
+	25 - Bankruptcy chapter 11-petition filed 
+	
+	26 - Bankruptcy chapter 11-discharged 
+	27 - Bankruptcy chapter 12-petition filed 
+	28 - Bankruptcy chapter 12-discharged 
+	29 - Bankruptcy chapter 12-dismissed 
+	
+TU
+
+	1D - Discharged CH-11
+	1F - Filed CH-11
+	1V - Voluntary CH-11 (does this exist?)
+	1X - Dismissed or closed CH-11
+	
+	2D - Discharged CH-12
+	2F - Filed CH-12
+	2V - Voluntary CH-12 (does this exist?)
+	2X - Dismissed or closed CH-12
+
+	3D - Discharged CH-13
+	3F - Filed CH-13
+	3V - Voluntary CH-13 (does this exist?)
+	3X - Dismissed or closed CH-13
+	
+	7D - Discharged CH-7
+	7F - Involuntary CH-7
+	7V - Voluntary CH-7
+	7X - Dismissed or closed CH-7
+	
+*/
+
+var statusCodes = [];
+statusCodes["EQ"] = ["C","D","G","I","V"]; 
+statusCodes["EX"] = ["13","23","25","27"];  
+statusCodes["TU"] = ["1F","1V","2F","2V","3F","3V","7F","7V"];  
+
+
+if (activeBureau != "TU"){
+	appPubRec.forEach(function(publicRecord){
+		if (statusCodes[activeBureau].indexOf(publicRecord.StatusCode) &gt; -1)
+		{
+			hasOpenBK = true;
+			return true;	//This return statement exits the function(publicRecord) delegate, not the parent function
+		}
+	});
+} else if (activeBureau == "TU") {
+	appFullBureau.Response.creditBureau.product.subject.subjectRecord.custom.credit.publicRecord.forEach(function(publicRecord){
+		if (statusCodes[activeBureau].indexOf(publicRecord.type) &gt; -1)
+		{
+			hasOpenBK = true;
+			return true;	//This return statement exits the function(publicRecord) delegate, not the parent function
+		}
+	});
+}
+	
+if (hasOpenBK == false){
+	if (activeBureau != "TU"){
+
+		dbCoAppPubRec.forEach(function(publicRecord){
+			if (statusCodes[activeBureau].indexOf(publicRecord.StatusCode) &gt; -1)
+			{
+				hasOpenBK = true;
+				return true;	//This return statement exits the function(publicRecord) delegate, not the parent function
+			}
+		});
+	} else if (activeBureau == "TU") {
+	coappFullBureau.Response.creditBureau.product.subject.subjectRecord.custom.credit.publicRecord.forEach(function(publicRecord){
+		if (statusCodes[activeBureau].indexOf(publicRecord.type) &gt; -1)
+		{
+			hasOpenBK = true;
+			return true;	//This return statement exits the function(publicRecord) delegate, not the parent function
+		}
+	});
+	}
+}
+
+var result = hasOpenBK;
+</td></tr><tr role="row" id="23" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="351" aria-describedby="grid_Id">351</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="unused" aria-describedby="grid_Name">unused</td><td role="gridcell" style="" title="var result = dbtest;" aria-describedby="grid_FormulaText">var result = dbtest;</td></tr><tr role="row" id="24" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="352" aria-describedby="grid_Id">352</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="VF Bookout_RNR" aria-describedby="grid_Name">VF Bookout_RNR</td><td role="gridcell" style="" title="//Robyn Rode, 5/27/14, Creation, v1
 //Takes the dealer stated bookout unless VF bookout is present
 
 var value=dbStatedValue;
@@ -649,7 +949,7 @@ var result = value;" aria-describedby="grid_FormulaText">//Robyn Rode, 5/27/14, 
 var value=dbStatedValue;
 if("dbVFContractWSV" !=dbStatedValue) value =dbBookoutValue;
 
-var result = value;</td></tr><tr role="row" id="18" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="353" aria-describedby="grid_Id">353</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="InitialTier" aria-describedby="grid_Name">InitialTier</td><td role="gridcell" style="" title="var tier, coAppTier;
+var result = value;</td></tr><tr role="row" id="25" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="353" aria-describedby="grid_Id">353</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="InitialTier" aria-describedby="grid_Name">InitialTier</td><td role="gridcell" style="" title="var tier, coAppTier;
 var FICOScore = (!&#39;dbFICOScore&#39; ? 9999 : &#39;dbFICOScore&#39;);
 var RVScore = (!&#39;dbRVScore&#39; ? 0 : &#39;dbRVScore&#39;);
 var COFICOScore = (!&#39;dbCOFICOScore&#39; ? 0 : &#39;dbCOFICOScore&#39;); 
@@ -1009,7 +1309,7 @@ else if (MultiAppType == "cobuyer")
 }
 else {tier;}
 */
-var result = tier;</td></tr><tr role="row" id="19" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="354" aria-describedby="grid_Id">354</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="RunApollo" aria-describedby="grid_Name">RunApollo</td><td role="gridcell" style="" title="Retval" aria-describedby="grid_FormulaText">Retval</td></tr><tr role="row" id="20" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="357" aria-describedby="grid_Id">357</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="CoAppTier" aria-describedby="grid_Name">CoAppTier</td><td role="gridcell" style="" title="// Kwame Hubbard 5/27 v1.0
+var result = tier;</td></tr><tr role="row" id="26" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="354" aria-describedby="grid_Id">354</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="RunApollo" aria-describedby="grid_Name">RunApollo</td><td role="gridcell" style="" title="Retval" aria-describedby="grid_FormulaText">Retval</td></tr><tr role="row" id="27" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="357" aria-describedby="grid_Id">357</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="CoAppTier" aria-describedby="grid_Name">CoAppTier</td><td role="gridcell" style="" title="// Kwame Hubbard 5/27 v1.0
 // Determines the initial credit tier based on the GLS Initial Tier Matrix.
 // ************************************************************************
 // * IF THE TIERING MATRIX CHANGES BE SURE TO UPDATE THE InitTier formula!!
@@ -1183,240 +1483,7 @@ else if ((FICOScore &gt;= 580 &amp;&amp; FICOScore &lt;= 619) &amp;&amp; (RVScor
 else {tier = 5;}
 
 var result = tier;
-</td></tr><tr role="row" id="21" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="375" aria-describedby="grid_Id">375</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Recommended Vin==RIC VIN" aria-describedby="grid_Name">Recommended Vin==RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on approval to VIN on RIC manual entry
-var result = (&#39;dbRecommendedVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on approval to VIN on RIC manual entry
-var result = ("dbRecommendedVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="22" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="376" aria-describedby="grid_Id">376</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="TitleApp VIN = RIC Vin" aria-describedby="grid_Name">TitleApp VIN = RIC Vin</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Title Application to VIN on RIC manual entry
-var result = (&#39;TitleAppVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Title Application to VIN on RIC manual entry
-var result = ("TitleAppVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="23" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="377" aria-describedby="grid_Id">377</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="OdometerDisc VIN = RIC Vin" aria-describedby="grid_Name">OdometerDisc VIN = RIC Vin</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Odometer Disclosure to VIN on RIC manual entry
-var result = (&#39;dbOdoVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Odometer Disclosure to VIN on RIC manual entry
-var result = ("dbOdoVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="24" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="378" aria-describedby="grid_Id">378</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="BookOut VIN = RIC VIN" aria-describedby="grid_Name">BookOut VIN = RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Book Out Sheet to VIN on RIC manual entry
-var result = (&#39;dbBookOutVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Book Out Sheet to VIN on RIC manual entry
-var result = ("dbBookOutVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="25" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="379" aria-describedby="grid_Id">379</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Buyers Order VIN = RIC VIN" aria-describedby="grid_Name">Buyers Order VIN = RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Buyer&#39;s Order to VIN on RIC manual entry
-var result = (&#39;dbBuyersOrderVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Buyer's Order to VIN on RIC manual entry
-var result = ("dbBuyersOrderVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="26" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="380" aria-describedby="grid_Id">380</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Warranty VIN = RIC VIN" aria-describedby="grid_Name">Warranty VIN = RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Warranty to VIN on RIC manual entry
-var result = (&#39;dbWarrantyVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Warranty to VIN on RIC manual entry
-var result = ("dbWarrantyVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="27" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="381" aria-describedby="grid_Id">381</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="GAP VIN = RIC VIN" aria-describedby="grid_Name">GAP VIN = RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on GAP Contract to VIN on RIC manual entry
-var result = (&#39;dbGAPVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on GAP Contract to VIN on RIC manual entry
-var result = ("dbGAPVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="28" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="382" aria-describedby="grid_Id">382</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Insurance Verification VIN = RIC Vin" aria-describedby="grid_Name">Insurance Verification VIN = RIC Vin</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Insurance Verification  to VIN on RIC manual entry
-var result = (&#39;dbInsuranceVerVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the VIN on Insurance Verification  to VIN on RIC manual entry
-var result = ("dbInsuranceVerVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="29" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="384" aria-describedby="grid_Id">384</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Approval Vehicle Make = RIC Vehicle Make" aria-describedby="grid_Name">Approval Vehicle Make = RIC Vehicle Make</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the vehicle make on approval to vehicle make on RIC
-var result = (&#39;dbRecVehicleMake&#39; == &#39;dbRICVehicleMake&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the vehicle make on approval to vehicle make on RIC
-var result = ("dbRecVehicleMake" == "dbRICVehicleMake"? "Yes" : "No");</td></tr><tr role="row" id="30" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="385" aria-describedby="grid_Id">385</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Approval Vehicle Model = RIC Vehicle Model" aria-describedby="grid_Name">Approval Vehicle Model = RIC Vehicle Model</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-//Comparison of the vehicle model on approval to vehicle make on RIC
-
-var result = (&#39;dbRecVehicleModel&#39; == &#39;dbRICVehicleModel&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-//Comparison of the vehicle model on approval to vehicle make on RIC
-
-var result = ("dbRecVehicleModel" == "dbRICVehicleModel"? "Yes" : "No");</td></tr><tr role="row" id="31" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="386" aria-describedby="grid_Id">386</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Application Primary Buyer&#39;s FirstName = RIC Buyer&#39;s First Name" aria-describedby="grid_Name">Application Primary Buyer's FirstName = RIC Buyer's First Name</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the primary buyer&#39;s first name between application and RIC tab
-var result = (&#39;dbAppBuyerFName&#39; == &#39;dbRICBuyerFName&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
-
-//Comparison of the primary buyer's first name between application and RIC tab
-var result = ("dbAppBuyerFName" == "dbRICBuyerFName"? "Yes" : "No");</td></tr><tr role="row" id="32" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="387" aria-describedby="grid_Id">387</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsAppScoresOutsideGLSPolicy" aria-describedby="grid_Name">IsAppScoresOutsideGLSPolicy</td><td role="gridcell" style="" title="//Peter Wivagg (from Defi Solutions), 06/02/2014, Creation, v1
-
-var isAppOutsideGLSPolicy = false;
-var scoresCollection = [];
-var multiAppType = &#39;dbMultiAppType&#39;;
-
-var applicantFICO = &#39;dbApplicantFICO&#39;;
-var applicantRV = &#39;dbApplicantRV&#39;;
-var coApplicantFICO = &#39;dbCoApplicantFICO&#39;;
-var coApplicantRV = &#39;dbCoApplicantRV&#39;;
-
-if (multiAppType == &#39;cosigner&#39;)
-{
-	//Use averaged scores to qualify
-	var averageScores = [];
-
-	applicantFICO = (applicantFICO == 0) ? 500 : applicantFICO;			//If FICO is 0, then use 500 for averaging purposes
-	coApplicantFICO = (coApplicantFICO == 0) ? 500 : coApplicantFICO;	//If FICO is 0, then use 500 for averaging purposes
-
-	//Average FICO scores
-	var averageFICO = Math.round((applicantFICO + coApplicantFICO) / 2);
-
-	averageScores[&#39;FICO&#39;] = averageFICO;
-
-	//Average RV scores
-	var averageRV = Math.round((applicantRV + coApplicantRV) / 2);
-
-	averageScores[&#39;RV&#39;] = averageRV;
-
-	scoresCollection[scoresCollection.length] = averageScores;	//Add averaged scores to ScoresCollection array
-
-}
-else if ((multiAppType == &#39;coresident&#39;) || (multiAppType == &#39;cobuyer&#39;))
-{
-	//Each Applicant and Co-Applicant must qualify individually
-	
-	var applicantScores = [];
-	applicantScores[&#39;FICO&#39;] = applicantFICO;
-	applicantScores[&#39;RV&#39;] = applicantRV;
-	scoresCollection[scoresCollection.length] = applicantScores;	//Add applicant&#39;s scores to ScoresCollection array
-
-	var coApplicantScores = [];
-	coApplicantScores[&#39;FICO&#39;] = coApplicantFICO;
-	coApplicantScores[&#39;RV&#39;] = coApplicantRV;
-	scoresCollection[scoresCollection.length] = coApplicantScores;	//Add co-applicant&#39;s scores to ScoresCollection array
-
-}
-else	//No multiAppType 
-{
-	//Just use Applicant&#39;s scores
-	var applicantScores = [];
-	applicantScores[&#39;FICO&#39;] = applicantFICO;
-	applicantScores[&#39;RV&#39;] = applicantRV;
-	scoresCollection[scoresCollection.length] = applicantScores;	//Add applicant&#39;s scores to ScoresCollection array
-}
-
-for (var i = 0; i = 0 &amp;&amp; RV = 0 &amp;&amp; RV = 1 &amp;&amp; FICO = 450 &amp;&amp; FICO = 0 &amp;&amp; RV = 475 &amp;&amp; FICO = 0 &amp;&amp; RV = 520 &amp;&amp; FICO = 0 &amp;&amp; RV = 540 &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 499)) {isAppOutsideGLSPolicy = true; break;}
-}
-
-var result = isAppOutsideGLSPolicy;" aria-describedby="grid_FormulaText">//Peter Wivagg (from Defi Solutions), 06/02/2014, Creation, v1
-
-var isAppOutsideGLSPolicy = false;
-var scoresCollection = [];
-var multiAppType = "dbMultiAppType";
-
-var applicantFICO = "dbApplicantFICO";
-var applicantRV = "dbApplicantRV";
-var coApplicantFICO = "dbCoApplicantFICO";
-var coApplicantRV = "dbCoApplicantRV";
-
-if (multiAppType == "cosigner")
-{
-	//Use averaged scores to qualify
-	var averageScores = [];
-
-	applicantFICO = (applicantFICO == 0) ? 500 : applicantFICO;			//If FICO is 0, then use 500 for averaging purposes
-	coApplicantFICO = (coApplicantFICO == 0) ? 500 : coApplicantFICO;	//If FICO is 0, then use 500 for averaging purposes
-
-	//Average FICO scores
-	var averageFICO = Math.round((applicantFICO + coApplicantFICO) / 2);
-
-	averageScores["FICO"] = averageFICO;
-
-	//Average RV scores
-	var averageRV = Math.round((applicantRV + coApplicantRV) / 2);
-
-	averageScores["RV"] = averageRV;
-
-	scoresCollection[scoresCollection.length] = averageScores;	//Add averaged scores to ScoresCollection array
-
-}
-else if ((multiAppType == "coresident") || (multiAppType == "cobuyer"))
-{
-	//Each Applicant and Co-Applicant must qualify individually
-	
-	var applicantScores = [];
-	applicantScores["FICO"] = applicantFICO;
-	applicantScores["RV"] = applicantRV;
-	scoresCollection[scoresCollection.length] = applicantScores;	//Add applicant's scores to ScoresCollection array
-
-	var coApplicantScores = [];
-	coApplicantScores["FICO"] = coApplicantFICO;
-	coApplicantScores["RV"] = coApplicantRV;
-	scoresCollection[scoresCollection.length] = coApplicantScores;	//Add co-applicant's scores to ScoresCollection array
-
-}
-else	//No multiAppType 
-{
-	//Just use Applicant's scores
-	var applicantScores = [];
-	applicantScores["FICO"] = applicantFICO;
-	applicantScores["RV"] = applicantRV;
-	scoresCollection[scoresCollection.length] = applicantScores;	//Add applicant's scores to ScoresCollection array
-}
-
-for (var i = 0; i &lt; scoresCollection.length; i++)
-{
-	var FICO = scoresCollection[i]["FICO"];
-	var RV = scoresCollection[i]["RV"];
-
-	if(FICO == null &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 549)) {isAppOutsideGLSPolicy = true; break;}
-	if(FICO == 0 &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 549)) {isAppOutsideGLSPolicy = true; break;}
-	if(FICO &gt;= 1 &amp;&amp; FICO &lt;= 449) {isAppOutsideGLSPolicy = true; break;}
-	if((FICO &gt;= 450 &amp;&amp; FICO &lt;= 474) &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 589)) {isAppOutsideGLSPolicy = true; break;}
-	if((FICO &gt;= 475 &amp;&amp; FICO &lt;= 519) &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 569)) {isAppOutsideGLSPolicy = true; break;}
-	if((FICO &gt;= 520 &amp;&amp; FICO &lt;= 539) &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 549)) {isAppOutsideGLSPolicy = true; break;}
-	if(FICO &gt;= 540 &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 499)) {isAppOutsideGLSPolicy = true; break;}
-}
-
-var result = isAppOutsideGLSPolicy;</td></tr><tr role="row" id="33" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="328" aria-describedby="grid_Id">328</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsDualIncome" aria-describedby="grid_Name">IsDualIncome</td><td role="gridcell" style="" title="//Robert Roskam, 5/20/14, Fixed empty string addition bug, v5
-
-//db storing of values to variables
-var appTotalInc = (&#39;dbAppInc&#39;==&#39;&#39; ? 0 : parseFloat(&#39;dbAppInc&#39;)) + (&#39;dbAppOtherInc&#39;==&#39;&#39; ? 0 : parseFloat(&#39;dbAppOtherInc&#39;));
-var coappTotalInc = (&#39;dbCoappInc&#39;==&#39;&#39; ? 0 : parseFloat(&#39;dbCoappInc&#39;)) + (&#39;dbCoappOtherInc&#39;==&#39;&#39; ? 0 : parseFloat(&#39;dbCoappOtherInc&#39;));
-var multiApplicantType = &#39;dbMultiApplicantType&#39;.trim();
-
-var isDualInc = false;
-
-//Checks the multiapplicant type and compares the limits for income to qualify
-if (multiApplicantType == &#39;cobuyer&#39; &amp;&amp; (appTotalInc &gt;= 2000 &amp;&amp;  coappTotalInc &gt;= 1500  || appTotalInc &gt;= 1500 &amp;&amp;  coappTotalInc &gt;= 2000 )) {
-	isDualInc = true;
-} else if (multiApplicantType == &#39;coresident&#39; &amp;&amp; appTotalInc &gt;= 2000 &amp;&amp; coappTotalInc &gt;= 2000) {
-	isDualInc = true;
-} else if (multiApplicantType == &#39;cosigner&#39; &amp;&amp; appTotalInc &gt;= 2000 &amp;&amp;  coappTotalInc &gt;= 2000) {
-	isDualInc = true;
-}
-
-//Send result out
-var result = isDualInc;" aria-describedby="grid_FormulaText">//Robert Roskam, 5/20/14, Fixed empty string addition bug, v5
-
-//db storing of values to variables
-var appTotalInc = ('dbAppInc'=='' ? 0 : parseFloat('dbAppInc')) + ('dbAppOtherInc'=='' ? 0 : parseFloat('dbAppOtherInc'));
-var coappTotalInc = ('dbCoappInc'=='' ? 0 : parseFloat('dbCoappInc')) + ('dbCoappOtherInc'=='' ? 0 : parseFloat('dbCoappOtherInc'));
-var multiApplicantType = 'dbMultiApplicantType'.trim();
-
-var isDualInc = false;
-
-//Checks the multiapplicant type and compares the limits for income to qualify
-if (multiApplicantType == 'cobuyer' &amp;&amp; (appTotalInc &gt;= 2000 &amp;&amp;  coappTotalInc &gt;= 1500  || appTotalInc &gt;= 1500 &amp;&amp;  coappTotalInc &gt;= 2000 )) {
-	isDualInc = true;
-} else if (multiApplicantType == 'coresident' &amp;&amp; appTotalInc &gt;= 2000 &amp;&amp; coappTotalInc &gt;= 2000) {
-	isDualInc = true;
-} else if (multiApplicantType == 'cosigner' &amp;&amp; appTotalInc &gt;= 2000 &amp;&amp;  coappTotalInc &gt;= 2000) {
-	isDualInc = true;
-}
-
-//Send result out
-var result = isDualInc;</td></tr><tr role="row" id="34" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="358" aria-describedby="grid_Id">358</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="HasMultipleBK" aria-describedby="grid_Name">HasMultipleBK</td><td role="gridcell" style="" title="// Robert Roskam, 07/22/14, TU workaround, v3
+</td></tr><tr role="row" id="28" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="358" aria-describedby="grid_Id">358</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="HasMultipleBK" aria-describedby="grid_Name">HasMultipleBK</td><td role="gridcell" style="" title="// Robert Roskam, 07/22/14, TU workaround, v3
 //This formula returns true if an Applicant has 2 or more bankruptcies, or if Co-Applicant has 2 or more bankruptcies
 var hasMultipleBK = false;
 var appBKCount = 0;
@@ -1678,7 +1745,202 @@ if (hasMultipleBK == false){
 }
 
 var result = hasMultipleBK;
-</td></tr><tr role="row" id="35" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="362" aria-describedby="grid_Id">362</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Apollo Version" aria-describedby="grid_Name">Apollo Version</td><td role="gridcell" style="" title="var result = (&#39;currver&#39; == &#39;&#39;) ? &#39;Test&#39; : &#39;currver&#39;" aria-describedby="grid_FormulaText">var result = ("currver" == "") ? "Test" : "currver"</td></tr><tr role="row" id="36" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="363" aria-describedby="grid_Id">363</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="UNUSED" aria-describedby="grid_Name">UNUSED</td><td role="gridcell" style="" title="var result = foo;" aria-describedby="grid_FormulaText">var result = foo;</td></tr><tr role="row" id="37" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="391" aria-describedby="grid_Id">391</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="TimeInFile" aria-describedby="grid_Name">TimeInFile</td><td role="gridcell" style="" title="//Robert Roskam, 6/6/2014, Needed to catch null Open Date Fields, v3
+</td></tr><tr role="row" id="29" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="362" aria-describedby="grid_Id">362</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Apollo Version" aria-describedby="grid_Name">Apollo Version</td><td role="gridcell" style="" title="var result = (&#39;currver&#39; == &#39;&#39;) ? &#39;Test&#39; : &#39;currver&#39;" aria-describedby="grid_FormulaText">var result = ("currver" == "") ? "Test" : "currver"</td></tr><tr role="row" id="30" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="363" aria-describedby="grid_Id">363</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="UNUSED" aria-describedby="grid_Name">UNUSED</td><td role="gridcell" style="" title="var result = foo;" aria-describedby="grid_FormulaText">var result = foo;</td></tr><tr role="row" id="31" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="375" aria-describedby="grid_Id">375</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Recommended Vin==RIC VIN" aria-describedby="grid_Name">Recommended Vin==RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on approval to VIN on RIC manual entry
+var result = (&#39;dbRecommendedVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on approval to VIN on RIC manual entry
+var result = ("dbRecommendedVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="32" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="376" aria-describedby="grid_Id">376</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="TitleApp VIN = RIC Vin" aria-describedby="grid_Name">TitleApp VIN = RIC Vin</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Title Application to VIN on RIC manual entry
+var result = (&#39;TitleAppVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Title Application to VIN on RIC manual entry
+var result = ("TitleAppVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="33" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="377" aria-describedby="grid_Id">377</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="OdometerDisc VIN = RIC Vin" aria-describedby="grid_Name">OdometerDisc VIN = RIC Vin</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Odometer Disclosure to VIN on RIC manual entry
+var result = (&#39;dbOdoVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Odometer Disclosure to VIN on RIC manual entry
+var result = ("dbOdoVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="34" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="378" aria-describedby="grid_Id">378</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="BookOut VIN = RIC VIN" aria-describedby="grid_Name">BookOut VIN = RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Book Out Sheet to VIN on RIC manual entry
+var result = (&#39;dbBookOutVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Book Out Sheet to VIN on RIC manual entry
+var result = ("dbBookOutVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="35" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="379" aria-describedby="grid_Id">379</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Buyers Order VIN = RIC VIN" aria-describedby="grid_Name">Buyers Order VIN = RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Buyer&#39;s Order to VIN on RIC manual entry
+var result = (&#39;dbBuyersOrderVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Buyer's Order to VIN on RIC manual entry
+var result = ("dbBuyersOrderVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="36" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="380" aria-describedby="grid_Id">380</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Warranty VIN = RIC VIN" aria-describedby="grid_Name">Warranty VIN = RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Warranty to VIN on RIC manual entry
+var result = (&#39;dbWarrantyVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Warranty to VIN on RIC manual entry
+var result = ("dbWarrantyVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="37" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="381" aria-describedby="grid_Id">381</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="GAP VIN = RIC VIN" aria-describedby="grid_Name">GAP VIN = RIC VIN</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on GAP Contract to VIN on RIC manual entry
+var result = (&#39;dbGAPVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on GAP Contract to VIN on RIC manual entry
+var result = ("dbGAPVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="38" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="382" aria-describedby="grid_Id">382</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Insurance Verification VIN = RIC Vin" aria-describedby="grid_Name">Insurance Verification VIN = RIC Vin</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Insurance Verification  to VIN on RIC manual entry
+var result = (&#39;dbInsuranceVerVIN&#39; == &#39;dbRICVIN&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the VIN on Insurance Verification  to VIN on RIC manual entry
+var result = ("dbInsuranceVerVIN" == "dbRICVIN"? "Yes" : "No");</td></tr><tr role="row" id="39" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="384" aria-describedby="grid_Id">384</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Approval Vehicle Make = RIC Vehicle Make" aria-describedby="grid_Name">Approval Vehicle Make = RIC Vehicle Make</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the vehicle make on approval to vehicle make on RIC
+var result = (&#39;dbRecVehicleMake&#39; == &#39;dbRICVehicleMake&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the vehicle make on approval to vehicle make on RIC
+var result = ("dbRecVehicleMake" == "dbRICVehicleMake"? "Yes" : "No");</td></tr><tr role="row" id="40" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="385" aria-describedby="grid_Id">385</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Approval Vehicle Model = RIC Vehicle Model" aria-describedby="grid_Name">Approval Vehicle Model = RIC Vehicle Model</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+//Comparison of the vehicle model on approval to vehicle make on RIC
+
+var result = (&#39;dbRecVehicleModel&#39; == &#39;dbRICVehicleModel&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+//Comparison of the vehicle model on approval to vehicle make on RIC
+
+var result = ("dbRecVehicleModel" == "dbRICVehicleModel"? "Yes" : "No");</td></tr><tr role="row" id="41" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="386" aria-describedby="grid_Id">386</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" value="false" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Application Primary Buyer&#39;s FirstName = RIC Buyer&#39;s First Name" aria-describedby="grid_Name">Application Primary Buyer's FirstName = RIC Buyer's First Name</td><td role="gridcell" style="" title="//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the primary buyer&#39;s first name between application and RIC tab
+var result = (&#39;dbAppBuyerFName&#39; == &#39;dbRICBuyerFName&#39;? &#39;Yes&#39; : &#39;No&#39;);" aria-describedby="grid_FormulaText">//Robyn Rode, 06/02/2014, Creation, v1
+
+//Comparison of the primary buyer's first name between application and RIC tab
+var result = ("dbAppBuyerFName" == "dbRICBuyerFName"? "Yes" : "No");</td></tr><tr role="row" id="42" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="387" aria-describedby="grid_Id">387</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="IsAppScoresOutsideGLSPolicy" aria-describedby="grid_Name">IsAppScoresOutsideGLSPolicy</td><td role="gridcell" style="" title="//Peter Wivagg (from Defi Solutions), 06/02/2014, Creation, v1
+
+var isAppOutsideGLSPolicy = false;
+var scoresCollection = [];
+var multiAppType = &#39;dbMultiAppType&#39;;
+
+var applicantFICO = &#39;dbApplicantFICO&#39;;
+var applicantRV = &#39;dbApplicantRV&#39;;
+var coApplicantFICO = &#39;dbCoApplicantFICO&#39;;
+var coApplicantRV = &#39;dbCoApplicantRV&#39;;
+
+if (multiAppType == &#39;cosigner&#39;)
+{
+	//Use averaged scores to qualify
+	var averageScores = [];
+
+	applicantFICO = (applicantFICO == 0) ? 500 : applicantFICO;			//If FICO is 0, then use 500 for averaging purposes
+	coApplicantFICO = (coApplicantFICO == 0) ? 500 : coApplicantFICO;	//If FICO is 0, then use 500 for averaging purposes
+
+	//Average FICO scores
+	var averageFICO = Math.round((applicantFICO + coApplicantFICO) / 2);
+
+	averageScores[&#39;FICO&#39;] = averageFICO;
+
+	//Average RV scores
+	var averageRV = Math.round((applicantRV + coApplicantRV) / 2);
+
+	averageScores[&#39;RV&#39;] = averageRV;
+
+	scoresCollection[scoresCollection.length] = averageScores;	//Add averaged scores to ScoresCollection array
+
+}
+else if ((multiAppType == &#39;coresident&#39;) || (multiAppType == &#39;cobuyer&#39;))
+{
+	//Each Applicant and Co-Applicant must qualify individually
+	
+	var applicantScores = [];
+	applicantScores[&#39;FICO&#39;] = applicantFICO;
+	applicantScores[&#39;RV&#39;] = applicantRV;
+	scoresCollection[scoresCollection.length] = applicantScores;	//Add applicant&#39;s scores to ScoresCollection array
+
+	var coApplicantScores = [];
+	coApplicantScores[&#39;FICO&#39;] = coApplicantFICO;
+	coApplicantScores[&#39;RV&#39;] = coApplicantRV;
+	scoresCollection[scoresCollection.length] = coApplicantScores;	//Add co-applicant&#39;s scores to ScoresCollection array
+
+}
+else	//No multiAppType 
+{
+	//Just use Applicant&#39;s scores
+	var applicantScores = [];
+	applicantScores[&#39;FICO&#39;] = applicantFICO;
+	applicantScores[&#39;RV&#39;] = applicantRV;
+	scoresCollection[scoresCollection.length] = applicantScores;	//Add applicant&#39;s scores to ScoresCollection array
+}
+
+for (var i = 0; i = 0 &amp;&amp; RV = 0 &amp;&amp; RV = 1 &amp;&amp; FICO = 450 &amp;&amp; FICO = 0 &amp;&amp; RV = 475 &amp;&amp; FICO = 0 &amp;&amp; RV = 520 &amp;&amp; FICO = 0 &amp;&amp; RV = 540 &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 499)) {isAppOutsideGLSPolicy = true; break;}
+}
+
+var result = isAppOutsideGLSPolicy;" aria-describedby="grid_FormulaText">//Peter Wivagg (from Defi Solutions), 06/02/2014, Creation, v1
+
+var isAppOutsideGLSPolicy = false;
+var scoresCollection = [];
+var multiAppType = "dbMultiAppType";
+
+var applicantFICO = "dbApplicantFICO";
+var applicantRV = "dbApplicantRV";
+var coApplicantFICO = "dbCoApplicantFICO";
+var coApplicantRV = "dbCoApplicantRV";
+
+if (multiAppType == "cosigner")
+{
+	//Use averaged scores to qualify
+	var averageScores = [];
+
+	applicantFICO = (applicantFICO == 0) ? 500 : applicantFICO;			//If FICO is 0, then use 500 for averaging purposes
+	coApplicantFICO = (coApplicantFICO == 0) ? 500 : coApplicantFICO;	//If FICO is 0, then use 500 for averaging purposes
+
+	//Average FICO scores
+	var averageFICO = Math.round((applicantFICO + coApplicantFICO) / 2);
+
+	averageScores["FICO"] = averageFICO;
+
+	//Average RV scores
+	var averageRV = Math.round((applicantRV + coApplicantRV) / 2);
+
+	averageScores["RV"] = averageRV;
+
+	scoresCollection[scoresCollection.length] = averageScores;	//Add averaged scores to ScoresCollection array
+
+}
+else if ((multiAppType == "coresident") || (multiAppType == "cobuyer"))
+{
+	//Each Applicant and Co-Applicant must qualify individually
+	
+	var applicantScores = [];
+	applicantScores["FICO"] = applicantFICO;
+	applicantScores["RV"] = applicantRV;
+	scoresCollection[scoresCollection.length] = applicantScores;	//Add applicant's scores to ScoresCollection array
+
+	var coApplicantScores = [];
+	coApplicantScores["FICO"] = coApplicantFICO;
+	coApplicantScores["RV"] = coApplicantRV;
+	scoresCollection[scoresCollection.length] = coApplicantScores;	//Add co-applicant's scores to ScoresCollection array
+
+}
+else	//No multiAppType 
+{
+	//Just use Applicant's scores
+	var applicantScores = [];
+	applicantScores["FICO"] = applicantFICO;
+	applicantScores["RV"] = applicantRV;
+	scoresCollection[scoresCollection.length] = applicantScores;	//Add applicant's scores to ScoresCollection array
+}
+
+for (var i = 0; i &lt; scoresCollection.length; i++)
+{
+	var FICO = scoresCollection[i]["FICO"];
+	var RV = scoresCollection[i]["RV"];
+
+	if(FICO == null &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 549)) {isAppOutsideGLSPolicy = true; break;}
+	if(FICO == 0 &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 549)) {isAppOutsideGLSPolicy = true; break;}
+	if(FICO &gt;= 1 &amp;&amp; FICO &lt;= 449) {isAppOutsideGLSPolicy = true; break;}
+	if((FICO &gt;= 450 &amp;&amp; FICO &lt;= 474) &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 589)) {isAppOutsideGLSPolicy = true; break;}
+	if((FICO &gt;= 475 &amp;&amp; FICO &lt;= 519) &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 569)) {isAppOutsideGLSPolicy = true; break;}
+	if((FICO &gt;= 520 &amp;&amp; FICO &lt;= 539) &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 549)) {isAppOutsideGLSPolicy = true; break;}
+	if(FICO &gt;= 540 &amp;&amp; (RV &gt;= 0 &amp;&amp; RV &lt;= 499)) {isAppOutsideGLSPolicy = true; break;}
+}
+
+var result = isAppOutsideGLSPolicy;</td></tr><tr role="row" id="43" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="391" aria-describedby="grid_Id">391</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="TimeInFile" aria-describedby="grid_Name">TimeInFile</td><td role="gridcell" style="" title="//Robert Roskam, 6/6/2014, Needed to catch null Open Date Fields, v3
 //Time In File: calculates the amount of time the bureau has existed
 
 // Instantiate the date strings in date objects
@@ -1750,7 +2012,7 @@ var date2_ms = firstTradeOnFileDate;
 var difference_ms = Math.abs(date2_ms - date1_ms);
 
 // Convert back to days and return
-var result = Math.round(difference_ms/ONE_DAY);</td></tr><tr role="row" id="38" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="392" aria-describedby="grid_Id">392</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="HasMultipleRepos" aria-describedby="grid_Name">HasMultipleRepos</td><td role="gridcell" style="" title="//Robert Roskam , 07/11/2014, Modified Defi&#39;s logic, v2
+var result = Math.round(difference_ms/ONE_DAY);</td></tr><tr role="row" id="44" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="392" aria-describedby="grid_Id">392</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="HasMultipleRepos" aria-describedby="grid_Name">HasMultipleRepos</td><td role="gridcell" style="" title="//Robert Roskam , 07/11/2014, Modified Defi&#39;s logic, v2
 
 var activeBureau = &#39;dbActiveBureau&#39;.toUpperCase();
 var hasMultipleRepos = false;
@@ -1878,7 +2140,7 @@ if (applicantRepoCount &gt;= 2 || coApplicantRepoCount &gt;= 2)
 }
 
 var result = hasMultipleRepos;
-</td></tr><tr role="row" id="39" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="750" aria-describedby="grid_Id">750</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfRepos" aria-describedby="grid_Name">NumberOfRepos</td><td role="gridcell" style="" title="//Robert Roskam , 07/11/2014, Modified Defi&#39;s logic, v2
+</td></tr><tr role="row" id="45" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="750" aria-describedby="grid_Id">750</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfRepos" aria-describedby="grid_Name">NumberOfRepos</td><td role="gridcell" style="" title="//Robert Roskam , 07/11/2014, Modified Defi&#39;s logic, v2
 
 var appTradeline = dbApplicantTradelineCollection;
 var coappTradeline = dbCoApplicantTradelineCollection;
@@ -1996,7 +2258,7 @@ allTradelines.forEach(function(tradeline){
 
 
 var result = repoCount;
-</td></tr><tr role="row" id="40" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="751" aria-describedby="grid_Id">751</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfBK" aria-describedby="grid_Name">NumberOfBK</td><td role="gridcell" style="" title="// Robert Roskam, 07/22/14, TU workaround, v3
+</td></tr><tr role="row" id="46" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="751" aria-describedby="grid_Id">751</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfBK" aria-describedby="grid_Name">NumberOfBK</td><td role="gridcell" style="" title="// Robert Roskam, 07/22/14, TU workaround, v3
 
 
 var appPubRec = dbAppPubRec;
@@ -2172,7 +2434,7 @@ if (activeBureau != "TU"){
 		}
 	});
 }
-var result = totalBKCount;</td></tr><tr role="row" id="41" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="757" aria-describedby="grid_Id">757</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfInquiries" aria-describedby="grid_Name">NumberOfInquiries</td><td role="gridcell" style="" title="//Robert Roskam, 6/10/2014, Turned off co-app, v2
+var result = totalBKCount;</td></tr><tr role="row" id="47" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="757" aria-describedby="grid_Id">757</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfInquiries" aria-describedby="grid_Name">NumberOfInquiries</td><td role="gridcell" style="" title="//Robert Roskam, 6/10/2014, Turned off co-app, v2
 //Number of Inquiries: occurring between 6 days and 6 months of the application entry date
 
 // Instantiate the date strings in date objects
@@ -2242,7 +2504,7 @@ inquiryDates.forEach(function(curDate){
 
 
 // Convert back to days and return
-var result = inquiryCount;</td></tr><tr role="row" id="42" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="758" aria-describedby="grid_Id">758</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfCollectionItems" aria-describedby="grid_Name">NumberOfCollectionItems</td><td role="gridcell" style="" title="//Robert Roskam, 7/14/2014, Turned on co-app, v3
+var result = inquiryCount;</td></tr><tr role="row" id="48" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="758" aria-describedby="grid_Id">758</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="NumberOfCollectionItems" aria-describedby="grid_Name">NumberOfCollectionItems</td><td role="gridcell" style="" title="//Robert Roskam, 7/14/2014, Turned on co-app, v3
 //Number of Collection Items: collection account must be open and have at least $100 balance
 
 var countOfCollectionTradelines = 0;
@@ -2334,7 +2596,7 @@ allTradelines.forEach(function(Tradeline){
 });
 
 // Return the total
-var result = countOfCollectionTradelines;</td></tr><tr role="row" id="43" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="760" aria-describedby="grid_Id">760</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="RIC Calculated Unpaid Balance" aria-describedby="grid_Name">RIC Calculated Unpaid Balance</td><td role="gridcell" style="" title="//Kyle Cerny, 06/05/2014, Create formula, v1
+var result = countOfCollectionTradelines;</td></tr><tr role="row" id="49" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="760" aria-describedby="grid_Id">760</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="RIC Calculated Unpaid Balance" aria-describedby="grid_Name">RIC Calculated Unpaid Balance</td><td role="gridcell" style="" title="//Kyle Cerny, 06/05/2014, Create formula, v1
 var SalesPrice =(&#39;dbSalesPrice&#39;.trim()==&#39;&#39;)?0: parseFloat(&#39;dbSalesPrice&#39;);
 var SalesTax =(&#39;dbSalesTax&#39;.trim()==&#39;&#39;)?0: parseFloat(&#39;dbSalesTax&#39;);
 var DocFee =(&#39;dbDocFee&#39;.trim()==&#39;&#39;)?0: parseFloat(&#39;dbDocFee&#39;);
@@ -2350,35 +2612,7 @@ var CashDown =("dbCashDown".trim()=="")?0:parseFloat("dbCashDown");
 var NetTrade =("dbNetTrade".trim()=="")?0:parseFloat("dbNetTrade");
 var Rebate =("dbRebate".trim()=="")?0:parseFloat("dbRebate");
 
-var result= 0.00 + SalesPrice + SalesTax + DocFee - (CashDown + NetTrade + Rebate);</td></tr><tr role="row" id="44" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="872" aria-describedby="grid_Id">872</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="MaxTermGLS" aria-describedby="grid_Name">MaxTermGLS</td><td role="gridcell" style="" title="//Robert Roskam, 7/10/2014, Moved in preferred make from CP matrices, v3
-//Picks max term based on the less of 60 or the policy term, 
-//if the vehicle year is between 2008-2006
-
-var maxTerm = (dbVehicleYear = 2006 &amp;&amp; dbMatrixMaxTerm &gt; 60) ? 60 : dbMatrixMaxTerm;
-
-maxTerm = &#39;dbPreferredMake&#39;.trim().toUpperCase() == &#39;TRUE&#39; ? maxTerm + 6 : maxTerm;
-
-
-var result = maxTerm &gt;= 72 ? 72 : maxTerm ;" aria-describedby="grid_FormulaText">//Robert Roskam, 7/10/2014, Moved in preferred make from CP matrices, v3
-//Picks max term based on the less of 60 or the policy term, 
-//if the vehicle year is between 2008-2006
-
-var maxTerm = (dbVehicleYear &lt;= 2008 &amp;&amp; dbVehicleYear &gt;= 2006 &amp;&amp; dbMatrixMaxTerm &gt; 60) ? 60 : dbMatrixMaxTerm;
-
-maxTerm = "dbPreferredMake".trim().toUpperCase() == "TRUE" ? maxTerm + 6 : maxTerm;
-
-
-var result = maxTerm &gt;= 72 ? 72 : maxTerm ;</td></tr><tr role="row" id="45" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="873" aria-describedby="grid_Id">873</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="MaxTermGLS Status" aria-describedby="grid_Name">MaxTermGLS Status</td><td role="gridcell" style="" title="//Robert Roskam, 6/11/2014, Changed result codes to be in-line, v3
-//Returns true if the current deal is in policy
-var result = (dbPolicyTerm&gt;=dbCurrentDealTerm) ? &#39;Pass&#39; : &#39;Fail&#39;;" aria-describedby="grid_FormulaText">//Robert Roskam, 6/11/2014, Changed result codes to be in-line, v3
-//Returns true if the current deal is in policy
-var result = (dbPolicyTerm&gt;=dbCurrentDealTerm) ? "Pass" : "Fail";</td></tr><tr role="row" id="46" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="875" aria-describedby="grid_Id">875</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Set Apollo Auto Pricing" aria-describedby="grid_Name">Set Apollo Auto Pricing</td><td role="gridcell" style="" title="// Pete Angeline, 6/10/14, Initial Coding
-// Determines what the value for Apollo Pricing field should be given the apollo
-// command the user currently has selected
-var result = (&#39;apollocmd&#39; == &#39;&#39;) ? true : &#39;apollocmd&#39; != &#39;Provide A Deal Score Only&#39;;" aria-describedby="grid_FormulaText">// Pete Angeline, 6/10/14, Initial Coding
-// Determines what the value for Apollo Pricing field should be given the apollo
-// command the user currently has selected
-var result = ("apollocmd" == "") ? true : "apollocmd" != "Provide A Deal Score Only";</td></tr><tr role="row" id="47" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="763" aria-describedby="grid_Id">763</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="TierBump" aria-describedby="grid_Name">TierBump</td><td role="gridcell" style="" title="//Kwame Hubbard 6/15/2014, fixed time-in-file issue, v3
+var result= 0.00 + SalesPrice + SalesTax + DocFee - (CashDown + NetTrade + Rebate);</td></tr><tr role="row" id="50" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="763" aria-describedby="grid_Id">763</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="TierBump" aria-describedby="grid_Name">TierBump</td><td role="gridcell" style="" title="//Kwame Hubbard 6/15/2014, fixed time-in-file issue, v3
 //TKR - 6/17/14 - fixed issues found by Andy where formula should use &lt; TimeInFile rather than &lt;=. 
 //                was changed to lower the TimeInFile values by 1 so logic didn&#39;t need to change.
 // Bumps the inital tier up based on the following factors:
@@ -2554,32 +2788,8 @@ if(bumpIt)
 	finalTier = finalTier + 1;
 }
 
-var result = finalTier;</td></tr><tr role="row" id="48" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="876" aria-describedby="grid_Id">876</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Set Apollo Auto Structuring" aria-describedby="grid_Name">Set Apollo Auto Structuring</td><td role="gridcell" style="" title="// Pete Angeline, 6/10/14, Initial Coding
-// Determines what the value for Apollo Structure field should be given the apollo
-// command the user currently has selected
-var result = (&#39;apollocmd&#39; == &#39;&#39;) ? true : &#39;apollocmd&#39; == &#39;Auto Structure&#39;;" aria-describedby="grid_FormulaText">// Pete Angeline, 6/10/14, Initial Coding
-// Determines what the value for Apollo Structure field should be given the apollo
-// command the user currently has selected
-var result = ("apollocmd" == "") ? true : "apollocmd" == "Auto Structure";</td></tr><tr role="row" id="49" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="882" aria-describedby="grid_Id">882</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="RIC Requested Due Date vs Due Date Change" aria-describedby="grid_Name">RIC Requested Due Date vs Due Date Change</td><td role="gridcell" style="" title="
-
-var value = 0;
-if(&#39;dbDueDateChange&#39;==&#39;Yes&#39; &amp;&amp; &#39;dbFirstDueDate&#39; != &#39;dbNewDueDate&#39;)
-{
-   value=1;
-}
-var result=value;" aria-describedby="grid_FormulaText">
-
-var value = 0;
-if("dbDueDateChange"=="Yes" &amp;&amp; "dbFirstDueDate" != "dbNewDueDate")
-{
-   value=1;
-}
-var result=value;</td></tr><tr role="row" id="50" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="883" aria-describedby="grid_Id">883</td><td role="gridcell" style="" title="" aria-describedby="grid_IsActive"><input type="checkbox" checked="checked" value="true" offval="no" disabled="disabled"></td><td role="gridcell" style="" title="Pre-GLS Tier" aria-describedby="grid_Name">Pre-GLS Tier</td><td role="gridcell" style="" title="var glsTier = parseInt(&#39;glsTierVar&#39;);
-var finalTier = parseInt(&#39;finalTierVar&#39;);
-var result = !glsTier ? finalTier : glsTier;" aria-describedby="grid_FormulaText">var glsTier = parseInt("glsTierVar");
-var finalTier = parseInt("finalTierVar");
-var result = !glsTier ? finalTier : glsTier;</td></tr></tbody></table></div></div></div><div class="ui-jqgrid-resize-mark" id="rs_mgrid">&nbsp;</div><table id="grid_pager" class="ui-state-default ui-jqgrid-pager ui-corner-bottom" dir="ltr" style="width: 1359px;">
-    <div id="pg_grid_pager" class="ui-pager-control" role="group"><table cellspacing="0" cellpadding="0" border="0" class="ui-pg-table" style="width:100%;table-layout:fixed;height:100%;" role="row"><tbody><tr><td id="grid_pager_left" align="left"></td><td id="grid_pager_center" align="center" style="white-space: pre; width: 271px;"><table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;" class="ui-pg-table"><tbody><tr><td id="first_grid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-first"></span></td><td id="prev_grid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-prev"></span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td dir="ltr">Page <input class="ui-pg-input" type="text" size="2" maxlength="7" value="0" role="textbox" disabled="disabled"> of <span id="sp_1_grid_pager">3</span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td id="next_grid_pager" class="ui-pg-button ui-corner-all"><span class="ui-icon ui-icon-seek-next"></span></td><td id="last_grid_pager" class="ui-pg-button ui-corner-all"><span class="ui-icon ui-icon-seek-end"></span></td><td dir="ltr"><select class="ui-pg-selbox" role="listbox" disabled="disabled"><option role="option" value="5">5</option><option role="option" value="10">10</option><option role="option" value="20">20</option><option role="option" value="50" selected="selected">50</option></select></td></tr></tbody></table></td><td id="grid_pager_right" align="right"><div dir="ltr" style="text-align:right" class="ui-paging-info">View 1 - 50 of 136</div></td></tr></tbody></table></div></table></div>
+var result = finalTier;</td></tr></tbody></table></div></div></div><div class="ui-jqgrid-resize-mark" id="rs_mgrid">&nbsp;</div><table id="grid_pager" class="ui-state-default ui-jqgrid-pager ui-corner-bottom" dir="ltr" style="width: 1359px;">
+    <div id="pg_grid_pager" class="ui-pager-control" role="group"><table cellspacing="0" cellpadding="0" border="0" class="ui-pg-table" style="width:100%;table-layout:fixed;height:100%;" role="row"><tbody><tr><td id="grid_pager_left" align="left"></td><td id="grid_pager_center" align="center" style="white-space: pre; width: 271px;"><table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;" class="ui-pg-table"><tbody><tr><td id="first_grid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-first"></span></td><td id="prev_grid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-prev"></span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td dir="ltr">Page <input class="ui-pg-input" type="text" size="2" maxlength="7" value="0" role="textbox" disabled="disabled"> of <span id="sp_1_grid_pager">3</span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td id="next_grid_pager" class="ui-pg-button ui-corner-all"><span class="ui-icon ui-icon-seek-next"></span></td><td id="last_grid_pager" class="ui-pg-button ui-corner-all"><span class="ui-icon ui-icon-seek-end"></span></td><td dir="ltr"><select class="ui-pg-selbox" role="listbox" disabled="disabled"><option role="option" value="5">5</option><option role="option" value="10">10</option><option role="option" value="20">20</option><option role="option" value="50" selected="selected">50</option></select></td></tr></tbody></table></td><td id="grid_pager_right" align="right"><div dir="ltr" style="text-align:right" class="ui-paging-info">View 1 - 50 of 137</div></td></tr></tbody></table></div></table></div>
     
     <br>
     <div id="buttons" style="float:right">
@@ -2800,7 +3010,7 @@ var result = !glsTier ? finalTier : glsTier;</td></tr></tbody></table></div></di
             </div>
         </div>
         
-            <p hidden="28f49919-5fee-49ec-8e99-338e2f707d823">
+            <p hidden="2c8e2044-b83c-4950-98f0-31900a3945f5f">
 
     
 

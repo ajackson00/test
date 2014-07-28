@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0080)https://gls-qa.defisolutions.com/Admin/AppVerificationRule?appVerificationType=1 -->
+<!-- saved from url=(0055)https://gls-qa.defisolutions.com/Admin?ruleGroupType=58 -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index</title>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -178,11 +178,11 @@
                 $(window).load(function () {
                             
                     var content = "";
-                    content = '<span id="pageName">Existing Applications';                                                        
+                    content = '<span id="pageName">Existing Customer Rules';                                                        
                             
                             
 
-                    content += '</span><br><font color="grey" size="2"><span id="pageDescription">Define what an existing application is to your business.  If identified as an existing application, the application will be updated and processed.</span></font>';
+                    content += '</span><br><font color="grey" size="2"><span id="pageDescription">Define rules to find existing customers</span></font>';
                     $("#Caption:not(.setByWizard)").html(content);
                                                                                                               
 
@@ -221,7 +221,7 @@
 
     </head>
     <body>
-        <meta content="UebYoTU2NZhHJ9UvoMkUS7mZfoECLCbDjJv7hbuC027FDfJUVuVoaWCFf3kJ5PJoR+CELDI4A79Rg/Gw9A+89l2FEe7A50dPhJzn5Z4Be95MVHotSEKYa2uTwbBZGZiXF+9k/HfpUZKxbBN52YbIHVOGQSA=" name="__AjaxRequestVerificationToken">
+        <meta content="wFDmje5aBg/TJfToWY5wvJjAXPnKiV2yFEPTKXCHFjZculMPC3IQ2ebYh5LC88P2L+ljHgzuN9RitloufQUhQ563WwopgxKotjdjkAGO1UFSW2sSLWWrbH/90/bYWG4EWjy2kxSe4biDoCZArm6yuxq0xSA=" name="__AjaxRequestVerificationToken">
         <div id="wrapper" style="width:95%; margin: auto;">
             <div id="main_container" class="container_12" style="width:100%">
                 <div id="sub_main_container" class="container_12 alpha omega" style="width:100%">
@@ -302,7 +302,7 @@
                                         <div style="background-color: #ffffff">
                                 
                                             <div id="content" class="body_content alpha omega grid_9 ui-corner-all" style="width:100%">
-                                                <div id="Caption" class="right_column_header"><span id="pageName">Existing Applications</span><br><font color="grey" size="2"><span id="pageDescription">Define what an existing application is to your business.  If identified as an existing application, the application will be updated and processed.</span></font></div>
+                                                <div id="Caption" class="right_column_header"><span id="pageName">Existing Customer Rules</span><br><font color="grey" size="2"><span id="pageDescription">Define rules to find existing customers</span></font></div>
                                                 
 
 
@@ -310,311 +310,964 @@
 
 
 
+<style>
+    input::-webkit-input-placeholder{
+        color:#aaa;
+    }
+    input:-moz-placeholder {
+        color:#aaa;
+    }
+    input:-ms-input-placeholder {
+        color:    #aaa;
+    }
+    
+</style>
+
+<form>
+    <input data-val="true" data-val-required="The RuleGroupType field is required." id="RuleGroupType" name="RuleGroupType" type="hidden" value="58">
+    <div id="rule">
+        
+        <div id="outboundDataSourceDiv" style="display:none">
+            <div id="outboundDataSourceRuleTypeDiv">
+                <br>
+                <label for="isForOdsUw"><b>Configure for</b></label>&nbsp;&nbsp;&nbsp;
+                <select id="isForOdsUw">
+                    <option value="1">UW</option>
+                    
+                </select>
+            </div>
+        </div>
+        
+        <div id="vendorTypeDiv" style="display:none">
+            <div id="vendorRuleTypeDiv">
+                <br>
+                <label for=""><b>Product</b></label>&nbsp;&nbsp;&nbsp;
+                <select id="vendorRuleType" class="formClass">
+                    <option value="1">Bookout</option>
+                    <option value="2">LexisNexis RiskView</option>
+                    <option value="5">LexisNexis RiskView Attribute</option>
+                    <option value="3">LexisNexis InstantId</option>
+                    <option value="4">ID Analytics Credit Optics</option>
+                    <option value="6">The Work Number</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                <select id="isForUw">
+                    <option value="1">UW</option>
+                    <option value="2">VF</option>
+                </select>
+            </div>
+
+            <div id="executionTypeDiv" style="display: none">
+                <br>
+                <label for="executionTypeDropdown"><b>Get</b></label> &nbsp;&nbsp;&nbsp;
+                <select id="executionTypeDropdown" class="formClass">
+                    <option value="0">Never</option>
+                    <option value="1">Always</option>
+                    <option value="2">Based on rules</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;
+                <input type="button" class="standard_button" value="Save" id="btnExecutionType">
+            </div>
+
+            <div id="executionApplicantTypeDiv" style="display: none">
+                <br>
+                <label for="executionApplicantTypeDropdown"><b>For</b></label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <select id="executionApplicantTypeDropdown" class="formClass">
+                    <option value="0">Both Applicants</option>
+                    <option value="1">Applicant Only</option>
+                    <option value="2">Co-Applicant Only</option>
+                </select>
+            </div>
+        </div>
+        
+        <br>
+        <div id="searchDiv">
+             <div>
+ <table><tbody><tr>
+     <th title="Search">Search</th>
+     <td><input type="text" id="txtSearch"> </td>
+   </tr></tbody></table>
+</div>
+
+
+        </div>
+        <div class="table_scroller" style="">
+            <div class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" id="gbox_rulesGrid" dir="ltr" style="width: 1232px;"><div class="ui-widget-overlay jqgrid-overlay" id="lui_rulesGrid"></div><div class="loading ui-state-default ui-state-active" id="load_rulesGrid" style="display: none;">Loading...</div><div class="ui-jqgrid-view" id="gview_rulesGrid" style="width: 1232px;"><div class="ui-jqgrid-titlebar ui-jqgrid-caption ui-widget-header ui-corner-top ui-helper-clearfix" style="display: none;"><a role="link" class="ui-jqgrid-titlebar-close ui-corner-all HeaderButton" style="right: 0px;"><span class="ui-icon ui-icon-circle-triangle-n"></span></a><span class="ui-jqgrid-title"></span></div><div class="ui-state-default ui-jqgrid-hdiv" style="width: 1232px;"><div class="ui-jqgrid-hbox"><table class="ui-jqgrid-htable" style="width: 1232px;" role="grid" aria-labelledby="gbox_rulesGrid" cellspacing="0" cellpadding="0" border="0"><thead><tr class="ui-jqgrid-labels" role="rowheader"><th id="rulesGrid_Id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_rulesGrid_Id" class="ui-jqgrid-sortable">Id<span class="s-ico" style=""><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="rulesGrid_IsActive" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 241px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_rulesGrid_IsActive" class="ui-jqgrid-sortable">Active<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="rulesGrid_RuleCode" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 241px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_rulesGrid_RuleCode" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="rulesGrid_Published" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 241px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_rulesGrid_Published" class="ui-jqgrid-sortable">Published<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="rulesGrid_Name" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 241px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_rulesGrid_Name" class="ui-jqgrid-sortable">Name<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="rulesGrid_RuleDefinition" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 243px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_rulesGrid_RuleDefinition" class="ui-jqgrid-sortable">Rule Definition<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="rulesGrid_AppType" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_rulesGrid_AppType" class="ui-jqgrid-sortable">AppType<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th></tr></thead></table></div></div><div class="ui-jqgrid-bdiv" style="height: 477.68000000000006px; width: 1232px;"><div style="position:relative;"><div></div><table id="rulesGrid" tabindex="0" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" aria-labelledby="gbox_rulesGrid" class="ui-jqgrid-btable" style="width: 1232px;"><tbody><tr class="jqgfirstrow" role="row" style="height:auto"><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height: 0px; width: 241px;"></td><td role="gridcell" style="height: 0px; width: 241px;"></td><td role="gridcell" style="height: 0px; width: 241px;"></td><td role="gridcell" style="height: 0px; width: 241px;"></td><td role="gridcell" style="height: 0px; width: 243px;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td></tr></tbody></table></div></div></div><div class="ui-jqgrid-resize-mark" id="rs_mrulesGrid">&nbsp;</div><table id="rulesGrid_pager" class="ui-state-default ui-jqgrid-pager ui-corner-bottom" dir="ltr" style="width: 1232px;">
+            <div id="pg_rulesGrid_pager" class="ui-pager-control" role="group"><table cellspacing="0" cellpadding="0" border="0" class="ui-pg-table" style="width:100%;table-layout:fixed;height:100%;" role="row"><tbody><tr><td id="rulesGrid_pager_left" align="left"></td><td id="rulesGrid_pager_center" align="center" style="white-space: pre; width: 271px;"><table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;" class="ui-pg-table"><tbody><tr><td id="first_rulesGrid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-first"></span></td><td id="prev_rulesGrid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-prev"></span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td dir="ltr">Page <input class="ui-pg-input" type="text" size="2" maxlength="7" value="0" role="textbox"> of <span id="sp_1_rulesGrid_pager">0</span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td id="next_rulesGrid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-next"></span></td><td id="last_rulesGrid_pager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-end"></span></td><td dir="ltr"><select class="ui-pg-selbox" role="listbox"><option role="option" value="5">5</option><option role="option" value="10">10</option><option role="option" value="20">20</option><option role="option" value="50" selected="selected">50</option></select></td></tr></tbody></table></td><td id="rulesGrid_pager_right" align="right"><div dir="ltr" style="text-align:right" class="ui-paging-info">No records to view</div></td></tr></tbody></table></div></table></div>
+            
+        </div>
+    </div>
+<div class="body_footer">
+    <input type="button" class="standard_button" value="New" id="btnAddRule"></div>
+<br>
+    <div id="createRulesDiv" class="popup_style" style="padding-left: 10px; width:500px;">
+    </div>
+<br>
+</form>
 
 <script type="text/javascript">
-
-    $.ajaxSetup({ cache: false });
-    var oldValues = new Array();
-
-
-    function cancel() {
-        var newValues = GetControlValues();
-        var compareValues = CompareArrays(newValues, oldValues);
-        if (!compareValues) {
-            if (confirm("Clicking ok will cancel your changes!")) {
-                $("#mainDiv").empty();
-                getMetaData();
-            }
-        }
-        else {
-            $("#mainDiv").empty();
-            getMetaData();
-        }
-    }
-
-    var appVerificationType = $("#appVerificationType").val();
-    
-    if (_.isUndefined(appVerificationType)) {
-        appVerificationType = getParameterByName("appVerificationType");
-    }
-
-    function getParameterByName(name) {
-        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-        var regexS = "[\\?&]" + name + "=([^&#]*)";
-        var regex = new RegExp(regexS);
-        var results = regex.exec(window.location.search);
-        if (results == null)
-            return "";
-        else
-            return decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-    
-    VerificationRuleModel = function () {
-        this.rules = null;
-        this.sources = null;
-        this.statuses = null;
-    };
-
-    var ruleModel = new VerificationRuleModel();
-
     $(function () {
         
-        
-        getMetaData();
-
-        $("#btnSave").click(function () {
-            save();
-        });
-
-        $("#btnCancel").click(function () {
-            cancel();
-        });
-
-        AddValidationRules();
     });
-  
+</script>
 
-    function getMetaData() {  
-        var verificationTypeId = $("#AppVerificationType").val();
-        var param = { AppVerificationType: verificationTypeId };
+<script id="createNewRuleHeaderTemplate" type="text/x-jquery-tmpl">
+    <div>
+        <input id="ruleId" type="hidden" value="${Id}"/>
+        <table  width=100%>
+            <tr>
+                <td colspan ="3" class = "headerBorder"></td>
+            </tr>
+            <tr>
+                <td class = "first">
+                    <table>
+                        <tr>
+                            <td style="width:140px"><label for="ruleCode" id="lblRuleCode">  ID </label> </td>
+                            <td> <input type="text" id="ruleCode" class="formClass" value="${RuleCode}" disabled="disabled" /> </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="width:140px"><label for="version" id="lblVersion">  Version </label> </td>
+                            <td> <input type="text" id="version" class="formClass" value="${Version}" disabled="disabled" /> </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="width:140px"><label for="ruleName">Name </label>   </td>
+                            <td><input name="ruleName" type="text" class = "formClass" id="ruleName" value="${Name}" /></td>
+                            <td><label id="errorName" style="color:red;" /></td>
+                        </tr>
+                        <tr>
+                            <td style="width:140px"><label for="ruleDescription">Description </label> </td>
+                            <td><input type="text" id="ruleDescription" class = "formClass" name="ruleDescription" value="${Description}"/>   </td>
+                            <td><label id="errorDescription" style="color:red;" /></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>   
+                            <td style="width:140px"><label for="isRuleActive">Active </label> </td>
+                            <td><input type="checkbox" class = "formClass" id="isRuleActive" checked="checked"/></td>
+                            <td></td>
+                        </tr>
+                        {{if $("#Caption").text().indexOf("Queue View") === -1 }}
+                        <tr id="formulaRow">
+                            <td><label for="isFormulaType">Use Formula</label> </td><td><input type="checkbox" class = "formClass" id="isFormulaType"/></td>
+                        </tr>               
+                        <tr>
+                            <td><label for="isPublished">Published </label> </td><td><input type="checkbox" disabled="disabled" class = "formClass" id="isPublished"/></td>
+                        </tr>
+                        {{/if}}
+                    </table>
+                    {{if $("#Caption").text().indexOf("Funding Rules") != -1 || $("#Caption").text().indexOf("Funding Tolerance Rules") != -1}}
+                    <table>
+                        <tr>   
+                            <td style="width:140px"><label for="uwCanOverride">UW can override?</label> </td>
+                            <td><input type="checkbox" class = "formClass" id="uwCanOverride" checked="checked"/></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    {{if $item.isEconEnabled}}
+                    <table>
+                        <tr>   
+                            <td style="width:140px"><label for="uwCanOverride">Execute Rule In</label> </td>
+                            <td><select class="formClass" id="fundingRuleRunType">
+                                    <option value="1">VF Only</option>
+                                    <option value="2">EContract Validation Only</option>
+                                    <option value="3">Both</option>
+                                </select></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <div id="econValidationMessageDiv" style="display:none">
+                        <table>
+                            <tr>   
+                                <td style="width:140px"><label for="eConValidationMessage">Validation Message</label> </td>
+                                <td><select class="formClass" id="eConValidationMessage" name="eConValidationMessage">
+                                        {{each $item.econValidationMessages}}
+                                        {{if EConValidationMessage == text}}
+                                        <option selected="selected" value="${text}">${text}</option>
+                                        {{else}}
+                                        <option value="${text}">${text}</option>
+                                        {{/if}}
+                                        {{/each}}
+                                    </select></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    {{/if}}
+                    {{/if}}
 
-        $.getJSON("/admin/appVerificationRule/getMetaData", param, function (data) {
-            ruleModel.sources = $.parseJSON(data.Sources);
-            ruleModel.statuses = $.parseJSON(data.Statuses);
-            getVerificationRules();
-        });
-    }
+                    <table id="simpleRuleDiv">
+                        <tr>   
+                            <td style="width:140px"><label for="adverseActionSelect">Adverse Action </label></td>
+                            <td><select name="adverseActionSelect" class = "formClass" id="adverseActionSelect"></select></td>
+                            <td><label id="errorAdverseAction" style="color:red;" /></td>
+                        </tr>
+                    </table>
+                    <table id="paymentCallConfigurationDiv">
+                        <tr>
+                            <td style="width: 140px"><label for="paymentCallConfigurationSelect">Payment Call Config</label></td>
+                            <td><select id="paymentCallConfigurationSelect" class="formClass"></select></td>
+                            <td><label id="errorPaymentCallConfiguration" style="color:red;"></label></td>
+                        </tr>
+                    </table>
+                    <table id="outboundSourceConfigurationDiv">
+                        <tr>
+                            <td style="width: 140px"><label for="outboundDataSourceSelect">Outbound Data Source</label></td>
+                            <td><select id="outboundDataSourceSelect" class="formClass"></select></td>
+                            <td><label id="errorOutboundSourceConfiguration" style="color:red;"></label></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>   
+                            <td style="width:140px"><label style="display:none" for="AppType">Application Type </label></td>
+                            <td>
+                                <select style="display:none" id="AppType" class = "formClass">
+                                    <option value="A">All Applicants</option>
+                                    <option value="P">Primary Applicants Only</option>
+                                    <option value="C">Coapplicants Only</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                
+                    <div id="excludedIncomeDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label for="excludedIncomeType">Excluded Income Type </label> </td>
+                                <td colspan="2">
+                                    <select id="excludedIncomeType" name="excludedIncomeType" class="formClass">
+                                        {{if ExcludedIncomeType == 1}}
+                                        <option value="1" selected="selected">Applicant Primary</option>
+                                        {{else}}
+                                        <option value="1">Applicant Primary</option>
+                                        {{/if}}
+                                        {{if ExcludedIncomeType == 2}}
+                                        <option value="2" selected="selected">Applicant Secondary</option>
+                                        {{else}}
+                                        <option value="2">Applicant Secondary</option>
+                                        {{/if}}
+                                        {{if ExcludedIncomeType == 3}}
+                                        <option value="3" selected="selected">CoApplicant Primary</option>
+                                        {{else}}
+                                        <option value="3">CoApplicant Primary</option>
+                                        {{/if}}
+                                        {{if ExcludedIncomeType == 4}}
+                                        <option value="4" selected="selected">CoApplicant Secondary</option>
+                                        {{else}}
+                                        <option value="4">CoApplicant Secondary</option>
+                                        {{/if}}
+                                    </select>
+                                    <span id="excludedIncomeValueSpan"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="bureauAppDedupDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label for="dedupExpenseType">Expense Type </label> </td>
+                                <td colspan="2">
+                                    <select id="dedupExpenseType" name="dedupExpenseType" class="formClass">
+                                        {{if DedupExpenseType == 1}}
+                                        <option value="1" selected="selected">Housing</option>
+                                        {{else}}
+                                        <option value="1">Housing</option>
+                                        {{/if}}
+                                        {{if DedupExpenseType == 2}}
+                                        <option value="2" selected="selected">Auto</option>
+                                        {{else}}
+                                        <option value="2">Auto</option>
+                                        {{/if}}
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:140px"><label for="dedupExcludeType">Exclude Type </label> </td>
+                                <td colspan="2">
+                                    <select id="dedupExcludeType" name="dedupExcludeType" class="formClass">
+                                        {{if DedupExcludeType == 1}}
+                                        <option value="1" selected="selected">Bureau</option>
+                                        {{else}}
+                                        <option value="1">Bureau</option>
+                                        {{/if}}
+                                        {{if DedupExcludeType == 2}}
+                                        <option value="2" selected="selected">Application</option>
+                                        {{else}}
+                                        <option value="2">Application</option>
+                                        {{/if}}
+                                        {{if DedupExcludeType == 3}}
+                                        <option value="3" selected="selected">Lower of Two</option>
+                                        {{else}}
+                                        <option value="3">Lower of Two</option>
+                                        {{/if}}
+                                        {{if DedupExcludeType == 4}}
+                                        <option value="4" selected="selected">Higher of Two</option>
+                                        {{else}}
+                                        <option value="4">Higher of Two</option>
+                                        {{/if}}
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:140px"><label>Exclude Choice </label> </td>
+                                <td colspan="2">
+                                    <select id="dedupBureauExcludeChoice" name="dedupBureauExcludeChoice" class="formClass">
+                                        {{if DedupExcludeChoice == 1}} <option value="1" selected="selected">Oldest</option> {{else}} <option value="1">Oldest</option> {{/if}}
+                                        {{if DedupExcludeChoice == 2}} <option value="2" selected="selected">Newest</option> {{else}} <option value="2">Newest</option> {{/if}}
+                                        {{if DedupExcludeChoice == 3}} <option value="3" selected="selected">Highest</option> {{else}} <option value="3">Highest</option> {{/if}}
+                                        {{if DedupExcludeChoice == 4}} <option value="4" selected="selected">Lowest</option> {{else}} <option value="4">Lowest</option> {{/if}}
+                                        {{if DedupExcludeChoice == 5}} <option value="5" selected="selected">Closest</option> {{else}} <option value="5">Closest</option> {{/if}}
+                                    </select>
+                                    <select id="dedupAppExcludeChoice" name="dedupAppExcludeChoice" class="formClass">
+                                        {{if DedupExcludeChoice == 6 || DedupExcludeChoice2 == 6}} <option value="6" selected="selected">Applicant</option> {{else}} <option value="6">Applicant</option> {{/if}}
+                                        {{if DedupExcludeChoice == 7 || DedupExcludeChoice2 == 7}} <option value="7" selected="selected">CoApplicant</option> {{else}} <option value="7">CoApplicant</option> {{/if}}
+                                        {{if DedupExcludeChoice == 8 || DedupExcludeChoice2 == 8}} <option value="8" selected="selected">Both</option> {{else}} <option value="8">Both</option> {{/if}}
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="downPaymentDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label for="downPaymentType">Down Payment Calculation </label> </td>
+                                <td colspan="2">
+                                    <select id="downPaymentCalcType" name="downPaymentCalcType" class="formClass">
+                                        {{if DownPaymentCalcType == 1}}
+                                        <option value="1" selected="selected">Adjust Down</option>
+                                        {{else}}
+                                        <option value="1">Adjust Down</option>
+                                        {{/if}}
+                                        {{if DownPaymentCalcType == 2}}
+                                        <option value="2" selected="selected">Adjust as % Total down</option>
+                                        {{else}}
+                                        <option value="2">Adjust as % Total down</option>
+                                        {{/if}}
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:140px"><label for="downPaymentType">Down Payment Type </label> </td>
+                                <td colspan="2">
+                                    <select id="downPaymentType" name="downPaymentType" class="formClass">
+                                        {{if DownPaymentType == 1}}
+                                        <option value="1" selected="selected">Cash</option>
+                                        {{else}}
+                                        <option value="1">Cash</option>
+                                        {{/if}}
+                                        {{if DownPaymentType == 2}}
+                                        <option value="2" selected="selected">Rebate</option>
+                                        {{else}}
+                                        <option value="2">Rebate</option>
+                                        {{/if}}
+                                        {{if DownPaymentType == 3}}
+                                        <option value="3" selected="selected">Trade</option>
+                                        {{else}}
+                                        <option value="3">Trade</option>
+                                        {{/if}}
+                                    </select>
+                                    <span id="downPaymentValueSpan"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="housingStatusDiv">
+                        <table>
+                            <tr>   
+                                <td style="width:140px"><label for="runForCoApplicant">Run for CoApplicant </label> </td>
+                                <td><input type="checkbox" class = "formClass" id="runForCoApplicant"/></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><label for="minMaxType">Choose </label>
+                                    <select id="minMaxType" name="minMaxType" class="formClass">
+                                        {{if MinMaxType == 1}}
+                                        <option value="1" selected="selected">Min</option>
+                                        {{else}}
+                                        <option value="1">Min</option>
+                                        {{/if}}
+                                        {{if MinMaxType == 2}}
+                                        <option value="2" selected="selected">Max</option>
+                                        {{else}}
+                                        <option value="2">Max</option>
+                                        {{/if}}
+                                    </select>
+                                    &nbsp;
+                                    Of&nbsp; <input type="text" id="housingPaymentValue" name="housingPaymentValue" value="${HousingPaymentValue}" style="width:75px; text-align:right" />
+                                    &nbsp;
+                                    Or
+                                    <input type="text" id="housingPaymentPercent" name="housingPaymentPercent" value="${HousingPaymentPercent}" style="width:50px; text-align:right" /> of Gross Monthly Income
+                                </td>
+                            </tr>
+                        
+                        </table>
+                    </div>
+                    <div id="notificationTemplateDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label for="notificationTemplateId">Notification Template </label> </td>
+                                <td colspan="2">
+                                    <select id="notificationTemplateId" class = "formClass">
+                                        {{each $item.notificationTemplates }}
+                                        {{if Id == NotificationTemplateId }}
+                                        <option value="${Id}" selected="selected">${Name}</option>    
+                                        {{else}}
+                                        <option value="${Id}">${Name}</option>    
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="matrixRuleDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label for="matrixRuleId" id="lblMatrixRuleId">Matrix </label> </td>
+                                <td colspan="2">
+                                    <select id="matrixRuleId" class = "formClass">
+                                        {{each $item.matrices }}
+                                        {{if Id == RuleMatrixId }}
+                                        <option value="${Id}" selected="selected">${Code} - ${Description}</option>    
+                                        {{else}}
+                                        <option value="${Id}">${Code} - ${Description}</option>    
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="multiDecisionRuleDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label for="multiDecisionMatrixId">Multi Decision </label> </td>
+                                <td colspan="2">
+                                    <select id="multiDecisionMatrixId" class = "formClass">
+                                        {{each $item.multiDecisionMatrices }}
+                                        {{if Id == MultiDecisionMatrixId }}
+                                        <option value="${Id}" selected="selected">${Name}</option>    
+                                        {{else}}
+                                        <option value="${Id}">${Name}</option>    
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="autoRoutingRuleDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px">
+                                    <label for="roleHierarchyLevelId">Assign Level: </label> 
+                                </td>
+                                <td colspan="2">
+                                    <select id="roleHierarchyLevelId" class="formClass">
+                                        {{if RoleHierarchyLevel == 2}}
+                                        <option value="2" selected="selected">2 Levels Up</option>
+                                        {{else}}
+                                        <option value="2">2 Levels Up</option>
+                                        {{/if}}
+                                        {{if RoleHierarchyLevel == 1}}
+                                        <option value="1" selected="selected">1 Level Up</option>
+                                        {{else}}
+                                        <option value="1">1 Level Up</option>
+                                        {{/if}}
+                                        {{if RoleHierarchyLevel == -1}}
+                                        <option value="-1" selected="selected">1 Level Down</option>
+                                        {{else}}
+                                        <option value="-1">1 Level Down</option>
+                                        {{/if}}
+                                        {{if RoleHierarchyLevel == -2}}
+                                        <option value="-2" selected="selected">2 Levels Down</option>
+                                        {{else}}
+                                        <option value="-2">2 Levels Down</option>
+                                        {{/if}}
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="formatRuleDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label>Page </label> </td>
+                                <td colspan="2">
+                                    <select id="formatApplicationPageId" class = "formClass">
+                                        {{each $item.formatPages }}
+                                        {{if Id == FormatApplicationPageId }}
+                                        <option value="${Id}" selected="selected">${Name}</option>    
+                                        {{else}}
+                                        <option value="${Id}">${Name}</option>    
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:140px"><label>Format For </label> </td>
+                                <td colspan="2">
+                                    <select id="formatForDataElementGroupId" class = "formClass">
+                                        {{each $item.dataElementGroups }}
+                                        {{if Id == FormatForDataElementGroupId }}
+                                        <option value="${Id}" selected="selected">${GroupName}</option>    
+                                        {{else}}
+                                        <option value="${Id}">${GroupName}</option>    
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <select id="formatForDataElementId" class = "formClass">
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:140px"><label>Display As </label> </td>
+                                <td colspan="2">
+                                    <label>Color: </label>
+                                    <select id="formatColor" class = "formClass">
+                                        {{each $item.colors }}
+                                        {{if Id == FormatColor }}
+                                        <option value="${Id}" selected="selected">${Name}</option> 
+                                        {{else}}
+                                        <option value="${Id}">${Name}</option> 
+                                        {{/if}}   
+                                        {{/each}}
+                                    </select>
+                                    &nbsp;&nbsp;
+                                    <label>Bold: </label>
+                                    <input type="checkbox" id="formatIsBold"/>
+                                    &nbsp;&nbsp;
+                                    <label>Font Size (px): </label>
+                                    <input type="text" id="formatFontSize" style="width: 50px;" value="${FormatFontSize}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="forceNoteRuleDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label>Note For </label> </td>
+                                <td colspan="2">
+                                    <select id="forceNoteDataElementGroupId" class = "formClass">
+                                        {{each $item.dataElementGroups }}
+                                        {{if Id == ForceNoteDataElementGroupId }}
+                                        <option value="${Id}" selected="selected">${GroupName}</option>    
+                                        {{else}}
+                                        <option value="${Id}">${GroupName}</option>    
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <select id="forceNoteDataElementId" class = "formClass">
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="bookoutValueRuleDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label>Bookout Source </label> </td>
+                                <td colspan="2">
+                                    <select id="bookoutSourceId" class="formClass">
+                                        {{each $item.bookoutSources }}
+                                        {{if Id == BookoutSourceId }}
+                                        <option value="${Id}" selected="selected">${Name}</option>    
+                                        {{else}}
+                                        <option value="${Id}">${Name}</option>    
+                                        {{/if}}
+                                        {{/each}}
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:140px"><label>Value Field </label> </td>
+                                <td colspan="2">
+                                    <select id="bookoutValueType" class="formClass">
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="outcomeElementDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label id="lbloutcome" for="outcomeElement">UW Notes </label></td>
+                                <td><select name="outcomeElement" class = "formClass" id="outcomeElement"></select></td>
+                                <td><label id="errorAssignTo" style="color:red;" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="existingCustomerDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label for="minNumberOfMatches">Min Number Of Matches </label></td>
+                                <td>
+                                    <select name="minNumberOfMatches" class = "formClass" id="minNumberOfMatches">
+                                        {{if MinNumberOfMatches == 0 }}
+                                        <option value="0" selected="selected">N/A</option>
+                                        {{else}}
+                                        <option value="0">N/A</option>
+                                        {{/if}}
+                                        {{if MinNumberOfMatches == 1 }}
+                                        <option value="1" selected="selected">1</option>
+                                        {{else}}
+                                        <option value="1">1</option>
+                                        {{/if}}
+                                        {{if MinNumberOfMatches == 2 }}
+                                        <option value="2" selected="selected">2</option>
+                                        {{else}}
+                                        <option value="2">2</option>
+                                        {{/if}}
+                                    </select></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="bureauWaterfallRuleDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label for="bureauRuleChoice">Rule For: </label> </td>
+                                <td colspan="2">
+                                    <select id="bureauRuleChoice" name="bureauRuleChoice" class = "formClass">
+                                        <option value="">None</option>
+                                        {{if BureauRuleChoice == 'EX' }}
+                                        <option value="EX" selected="selected">Experian</option>
+                                        {{else}}
+                                        <option value="EX">Experian</option>
+                                        {{/if}}
+                                        {{if BureauRuleChoice == 'EXS' }}
+                                        <option value="EXS" selected="selected">Experian Soft</option>
+                                        {{else}}
+                                        <option value="EXS">Experian Soft</option>
+                                        {{/if}}
+                                        {{if BureauRuleChoice == 'EQ' }}
+                                        <option value="EQ" selected="selected">Equifax</option>
+                                        {{else}}
+                                        <option value="EQ">Equifax</option>
+                                        {{/if}}
+                                        {{if BureauRuleChoice == 'TU' }}
+                                        <option value="TU" selected="selected">Transunion</option>
+                                        {{else}}
+                                        <option value="TU">Transunion</option>
+                                        {{/if}}
+                                        {{if BureauRuleChoice == 'DMSEX' }}
+                                        <option value="DMSEX" selected="selected">DMS Experian</option>
+                                        {{else}}
+                                        <option value="DMSEX">DMS Experian</option>
+                                        {{/if}}
+                                        {{if BureauRuleChoice == 'DMSEQ' }}
+                                        <option value="DMSEQ" selected="selected">DMS Equifax</option>
+                                        {{else}}
+                                        <option value="DMSEQ">DMS Equifax</option>
+                                        {{/if}}
+                                        {{if BureauRuleChoice == 'DMSTU' }}
+                                        <option value="DMSTU" selected="selected">DMS Transunion</option>
+                                        {{else}}
+                                        <option value="DMSTU">DMS Transunion</option>
+                                        {{/if}}
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="tradelineRulesDiv">
+                        <table>
+                            <tr>
+                                <td style="width:140px"><label id="lblOption" for="tradelineRuleAmountOption">Select option </label></td>
+                                <td>
+                                    <select name="tradelineRuleAmountOption" class = "formClass" id="tradelineRuleAmountOption">
+                                        {{if TradelineRuleAmountOption == 1}}<option value="1" selected="selected">Actual Payment</option>{{else}}<option value="1">Actual Payment</option>{{/if}}
+                                        {{if TradelineRuleAmountOption == 2}} <option value="2" selected="selected">% of Balance</option> {{else}} <option value="2">% of Balance</option> {{/if}}
+                                        {{if TradelineRuleAmountOption == 3}} <option value="3" selected="selected">Comparision</option> {{else}} <option value="3">Comparision</option> {{/if}}
+                                        {{if TradelineRuleAmountOption == 4}} <option value="4" selected="selected">Specified Amount</option> {{else}} <option value="4">Specified Amount</option> {{/if}}
+                                    </select>
+                                    <input type="text" id="percentOfBalance" name="percentOfBalance" value="${PercentOfBalance}" style="width:100px"/>
+                                    <input type="text" id="tradelineAmountValue" name="tradelineAmountValue" value="${TradelineAmountValue}" style="width:100px"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:140px"><label id="lblOption1" for="pickGreaterValue">Comparision : </label></td>
+                                <td>
+                                    <select name="pickGreaterValue" class = "formClass" id="pickGreaterValue">
+                                        {{if PickGreaterValue == "True"}} <option value="True" selected="selected">Greater</option> {{else}} <option value="True">Greater</option> {{/if}}
+                                        {{if PickGreaterValue == "False"}} <option value="False" selected="selected">Lesser</option> {{else}} <option value="False">Lesser</option> {{/if}}
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table>
+                        <tr>
+                            <td  colspan="3"></td>
+                        </tr>
+                        <div id='AssignUsersToQueueViewDiv' style="display: block; margin-top: 20px"></div>
+                        <tr style="height:2px">
+                            <td id="mainRuleElement" colspan="3" style="height:2px" >
+                            </td>
+                        </tr>
+                        {{if $("#Caption").text().indexOf("Queue View") === -1 }}
+                        <tr style="height:2px">
+                            <td id="mainFormulaElement" colspan="3" style="height:2px" data-bind="template: { name: 'formulaElementTemplate', data: formulaData }" >
+                            </td>
+                        </tr>
+                        {{/if}}
+                        <tr id="buttnRow">
+                            <td style="width:140px"></td>
+                            <td> </td>
+                            <td><div  style="float:right"><input id="btnRevertRule" class="standard_button" type="button" onclick="revertRule();" value="Revert" id="btnRevertRule" />
+                                    &nbsp; &nbsp;
+                                    <input class="standard_button" type="button" onclick="showDropdownSelection();" style="width: 150px" value="Dropdown Selection" id="btnDropdownSelection" />&nbsp;&nbsp;
+                                    <input class="standard_button" type="button" onclick="saveRuleClick();" value="Save" id="btnSaveRule" />&nbsp;&nbsp;
+                                    <input class="standard_button" type="button" onclick="cancelClick();" value="Cancel" id="btnCancel" /></div></td>
+                        </tr>
+                    </table>
+                    <div id="dropdownSelectionDiv" class="ui-corner-all ui-jqgrid" style="display: none;min-width: 600px; max-height: 200px;overflow-y:scroll;">
+                    </div>
+                    <div id="dropdownSelectionButtonDiv" style="display: none" class="body_footer">
+                        <!-- button clicks are in selection admin -->
+                        <input type="button" class="standard_button" value="Update" id="btnUpdate" onclick="updateClick()" />
+                        &nbsp;&nbsp;
+                        <input type="button" class="standard_button" value="Hide" id="btnHide" onclick="hideClick()" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="clear:both"></div>
+</script>
+<script id="ruleElementTemplate" type="text/x-jquery-tmpl">
+    <div id="ruleElementsDiv" class="ruleElementContainer" data-index="${p}" style="display: block">
+        <input type="hidden" class="elementId" value="${element.Id}"/>
+        <select id="ruleTypeSelectid" name="ruleTypeSelectid${p}" class="ruleTypeSelect">
+            <option value="-1">Select</option>
+            {{each ruleTypeSelectList}}
+            <option value="${Id}">${Name}</option>
+            {{/each}}
+        </select>
 
-    function getVerificationRules() {
-        var verificationTypeId = $("#AppVerificationType").val();
-        var param = { AppVerificationType: verificationTypeId };
+        <select id="operatorSelectid" name="operatorSelectid${p}" class="operatorSelect" style="margin-left: 16px;">
+            <option value="-1">Select</option>
+        </select>
+      
+        <label id="errorruleTypeSelect" style="color:red; margin-left: 8px;" />
+        <span id='rulevalueinputDiv' style="width:50px; margin-left: 8px;"></span>
 
-        $.getJSON("/admin/appVerificationRule/getVerificationRules", param, function (data) {
-            ruleModel.rules = $.parseJSON(data.VerificationRules);
-            showRules();
-        });
-    }
-    
-    function showRules() {
+        <select class="ruleOperatorSelect" name="ruleOperatorSelect${p}" onchange="ruleOperatorSelectChange(this);" style="margin-left: 16px;" {{if element.RuleTypeId == ''}}disabled="disabled"{{/if}}>
+            <option value="-1">Select</option>
+            {{each ruleOperatorSelectList}}
+            {{if Id == element.NextRuleOperatorId }}
+            <option value="${Id}" selected>${CodeIdentifier}</option>
+            {{else}}
+            <option value="${Id}">${CodeIdentifier}</option>
+            {{/if}}
+            {{/each}}
+        </select>
+    </div>
 
-        $("#mainTemplate").tmpl(ruleModel, { isSelected: function (list, activeId) {
-            return _.filter(list, function (item) { return item.SelectedValue == activeId; }).length > 0;
-        }
-        }).appendTo("#mainDiv");
-
-        $(".sourceSelect").multiselect({ noneSelectedText: 'Select a source', selectedList: 4 });
-        $(".statusSelect").multiselect({ noneSelectedText: 'Select a status', selectedList: 4 });
-        oldValues = new Array();
-        oldValues = GetControlValues();
-        
-        var canEdit = 'False' == 'True';
-        
-        if (!canEdit) {
-            
-            $.each($("input"), function () {
-                $(this).attr('disabled', true);
-            });
-
-            $.each($("textarea"), function () {
-                $(this).attr('disabled', true);
-            });
-
-            $.each($("select"), function () {
-                $(this).attr('disabled', true);
-            });
-
-            $(".sourceSelect").multiselect('disable');
-            $(".statusSelect").multiselect('disable');
-        }
-    }
-
-    function save() {
-        var dataSaved = true;
-        var valid = $("form").valid();
-        if (!valid) {
-            dataSaved = false;
-            alert("Please enter valid data and try again.");
-            return dataSaved;
-        };
-
-        var rules = [];
-        $(".idClass").each(function () {
-            var id = $(this).val();
-            var tr = $(this).parent().parent();
-            var isActive = $(this).next("input:checkbox").is(":checked");
-            var verificationRuleType = $(tr).find("td:eq(3) > input:hidden").val();
-            var selectedValues = [];
-            if (verificationRuleType == 1) {
-                selectedValues = $(tr).find(".sourceSelect").val();
-            }
-            else if (verificationRuleType == 2) {
-                selectedValues = $(tr).find(".statusSelect").val();
-            }
-            else if (verificationRuleType == 7) {
-                console.log($(tr).find("input:text").val());
-                selectedValues.push($(tr).find("input:text").val());
-            }
-            rules.push({ Id: id, IsActive: isActive, SelectedValues: selectedValues });
-        });
-        console.log(rules);
-        $.ajax({
-            type: 'POST',
-            url: "/admin/appVerificationRule/save",
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify({ AppVerificationRuleModel: { VerificationRules: rules, AppVerificationType: $("#AppVerificationType").val() } }),
-            async: false,
-            success: function (data) {
-                alert('Data saved');
-            }
-        });
-        return dataSaved;
-    }
-
-    function checkInput(e, goods) {
-        var key, keychar;
-        key = getkey(e);
-        if (key == null) return true;
-
-        // get character
-        keychar = String.fromCharCode(key);
-        keychar = keychar.toLowerCase();
-        goods = goods.toLowerCase();
-
-        // check goodkeys
-        if (goods.indexOf(keychar) != -1)
-            return true;
-
-        // control keys
-        if (key == null || key == 0 || key == 8 || key == 9 || key == 13 || key == 27)
-            return true;
-
-        // else return false
-        return false;
-    }
-
-    function getkey(e) {
-        if (window.event)
-            return window.event.keyCode;
-        else if (e)
-            return e.which;
-        else
-            return null;
-    }
-
-    function AddValidationRules() {
-
-    $.validator.addMethod('positiveNumber',
-    function (value) { 
-        return Number(value) > 0;
-    }, 'Enter a positive number.');
-
-
-        $('form').validate({
-
-            errorPlacement: function (error, element) {
-                return true;
-            },
-
-            onfocusout: function (element) {
-                $(element).valid();
-            },
-
-            rules: {
-
-                xDays: {
-                    required: function (element) {
-                        return $(element).parent().parent().find(":checkbox").is(":checked") == true;
-                } }
-            },
-
-            messages: {
-            },
-
-            errorElement: "span",
-
-            highlight: function (element) {
-                $(element).css('border-color', 'red');
-            },
-
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).css('border-color', '#CCCCCC');
-            }
-        });
-    }
     
 </script>
-<input data-val="true" data-val-required="The AppVerificationType field is required." id="appVerificationType" name="appVerificationType" type="hidden" value="1" disabled="disabled">
-<br>
-<form novalidate="novalidate">
-<input data-val="true" data-val-required="The AppVerificationType field is required." id="AppVerificationType" name="AppVerificationType" type="hidden" value="1" disabled="disabled">
 
-<div id="mainDiv" class="ui-corner-all">
-    
-<table id="ruleTable" class="tableGrid ui-widget ui-corner-all">         <tbody><tr>             <th style="width: 20px">Active</th>             <th style="width: 50px">ID</th>             <th>Name</th>             <th>Selection</th>         </tr>                  <tr>             <td>                 <input type="hidden" class="idClass" value="196" disabled="disabled">                                  <input type="checkbox" class="formClass" disabled="disabled">                              </td>             <td style="width: 50px">EA1</td>             <td>“Update” flag from the source exists</td>             <td>                 <input type="hidden" value="1" disabled="disabled">                                  <select class="sourceSelect formClass" multiple="multiple" disabled="disabled" aria-disabled="true" style="display: none;">                                                               <option value="43">Dealer Track</option>                                                                                    <option value="45">RouteOne</option>                                                           </select><button type="button" class="ui-multiselect ui-widget ui-state-default ui-corner-all ui-state-disabled" aria-haspopup="true" disabled="disabled" aria-disabled="true" style="width: 231.22222232818604px;"><span class="ui-icon ui-icon-triangle-2-n-s"></span><span>Select a source</span></button>                              </td>         </tr>                  <tr>             <td>                 <input type="hidden" class="idClass" value="197" disabled="disabled">                                  <input type="checkbox" class="formClass" disabled="disabled">                              </td>             <td style="width: 50px">EA2</td>             <td>Application is in any of the following statuses</td>             <td>                 <input type="hidden" value="2" disabled="disabled">                                  <select class="statusSelect formClass" multiple="multiple" disabled="disabled" aria-disabled="true" style="display: none;">                                                               <option value="390">Application Received</option>                                                                                    <option value="391">Initial Processing</option>                                                                                    <option value="392">Auto Approved</option>                                                                                    <option value="393">Auto Declined</option>                                                                                    <option value="394">Recommended Review</option>                                                                                    <option value="395">Approved</option>                                                                                    <option value="396">Conditional Approval</option>                                                                                    <option value="397">Manually Declined</option>                                                                                    <option value="398">Contract Received</option>                                                                                    <option value="399">Ready to Book</option>                                                                                    <option value="400">Booked</option>                                                                                    <option value="401">In Process</option>                                                                                    <option value="402">Underwriting Review</option>                                                                                    <option value="403">Funding Review</option>                                                                                    <option value="404">Returned</option>                                                                                    <option value="405">Incomplete/Not Received</option>                                                                                    <option value="406">System ERROR</option>                                                                                    <option value="407">Credit Bureau Error</option>                                                                                    <option value="408">RApproved</option>                                                                                    <option value="409">Recommended Decline</option>                                                                                    <option value="410">Queue For Funding</option>                                                                                    <option value="411">Expired</option>                                                                                    <option value="412">Return to Underwriting</option>                                                                                    <option value="413">Cancelled</option>                                                                                    <option value="414">Draft Received</option>                                                                                    <option value="456">Return to Lender</option>                                                                                    <option value="474">Book/Dont Fund</option>                                                                                    <option value="519">Econ Validation</option>                                                                                    <option value="846">RS</option>                                                           </select><button type="button" class="ui-multiselect ui-widget ui-state-default ui-corner-all ui-state-disabled" aria-haspopup="true" disabled="disabled" aria-disabled="true" style="width: 231.22222232818604px;"><span class="ui-icon ui-icon-triangle-2-n-s"></span><span>Select a status</span></button>                              </td>         </tr>                  <tr>             <td>                 <input type="hidden" class="idClass" value="198" disabled="disabled">                                  <input type="checkbox" class="formClass" disabled="disabled">                              </td>             <td style="width: 50px">EA3</td>             <td>Same Dealership</td>             <td>                 <input type="hidden" value="3" disabled="disabled">                                                                    </td>         </tr>                  <tr>             <td>                 <input type="hidden" class="idClass" value="199" disabled="disabled">                                  <input type="checkbox" class="formClass" disabled="disabled">                              </td>             <td style="width: 50px">EA4</td>             <td>Same number of applicants</td>             <td>                 <input type="hidden" value="4" disabled="disabled">                                                                    </td>         </tr>                  <tr>             <td>                 <input type="hidden" class="idClass" value="200" disabled="disabled">                                  <input type="checkbox" class="formClass" disabled="disabled">                              </td>             <td style="width: 50px">EA5</td>             <td>Same social(s)</td>             <td>                 <input type="hidden" value="5" disabled="disabled">                                                                    </td>         </tr>                  <tr>             <td>                 <input type="hidden" class="idClass" value="201" disabled="disabled">                                  <input type="checkbox" class="formClass" disabled="disabled">                              </td>             <td style="width: 50px">EA6</td>             <td>Same order</td>             <td>                 <input type="hidden" value="6" disabled="disabled">                                                                    </td>         </tr>                  <tr>             <td>                 <input type="hidden" class="idClass" value="202" disabled="disabled">                                  <input type="checkbox" class="formClass" disabled="disabled">                              </td>             <td style="width: 50px">EA7</td>             <td>Within x days of the initial decision</td>             <td>                 <input type="hidden" value="7" disabled="disabled">                                                   <input id="xDays" type="text" name="xDays" onkeypress="return checkInput(event,&#39;0123456789&#39;)" class="formClass" value="" disabled="disabled">                                               </td>         </tr>              </tbody></table></div>
-<br>
-<div class="body_footer">
- <input type="button" class="standard_button" value="Save" id="btnSave" disabled="disabled" style="display: none;">
- <input type="button" value="Cancel" id="btnCancel" class="standard_button" disabled="disabled" style="display: none;">
-</div> 
-</form>
-<script id="mainTemplate" type="text/x-jquery-tmpl">
-    
-    <table id="ruleTable"  class="tableGrid ui-widget ui-corner-all">
-        <tr>
-            <th style="width: 20px">Active</th>
-            <th style="width: 50px">ID</th>
-            <th>Name</th>
-            <th>Selection</th>
-        </tr>
-        {{each rules}}
-        <tr>
-            <td>
-                <input type="hidden" class="idClass" value="${Id}"/>
-                {{if IsActive}}
-                <input type="checkbox" checked="checked" class = "formClass" />
-                {{else}}
-                <input type="checkbox" class = "formClass"/>
-                {{/if}}
-            </td>
-            <td style="width: 50px">${Identifier}</td>
-            <td>${Name}</td>
-            <td>
-                <input type="hidden" value="${AppVerificationRuleType}"/>
-                {{if AppVerificationRuleType == 1 }}
-                <select class="sourceSelect formClass" multiple="multiple" >
-                    {{each sources}}
-                    {{if $item.isSelected(SelectedValues, Id) == true }}
-                    <option value="${Id}" selected="selected">${Name}</option>
-                    {{else}}
-                    <option value="${Id}">${Name}</option>
-                    {{/if}}
-                    {{/each}}
-                </select>
-                {{else AppVerificationRuleType == 2 }}
-                <select class="statusSelect formClass" multiple="multiple" >
-                    {{each statuses}}
-                    {{if $item.isSelected(SelectedValues, Id) == true }}
-                    <option value="${Id}" selected="selected">${Name}</option>
-                    {{else}}
-                    <option value="${Id}">${Name}</option>
-                    {{/if}}
-                    {{/each}}
-                </select>
-                {{else AppVerificationRuleType == 7 }}
-                {{if SelectedValues.length > 0 }}
-                <input id="xDays" type="text" name="xDays" onKeyPress="return checkInput(event,'0123456789')" class = "formClass" value="${SelectedValues[0].SelectedValue}"/>
-                {{else}}
-                <input id="xDays" type="text" name="xDays" onKeyPress="return checkInput(event,'0123456789')" class = "formClass" value=""/>
-                {{/if}}
-                {{else}}
-                    
-                {{/if}}
-            </td>
-        </tr>
+<script id="formulaElementTemplate" type="text/x-jquery-tmpl">
+    <div id="formulaElementDiv" class="ruleElementContainer" style="display: block">
+        <table class="noty_message" style="padding: 0">
+            <tr>
+                <td style="width:140px"><label for="formulaText">Formula</label></td>
+                <td><input id="formulaText" type="text" name="formulaText" data-bind="value: FormulaText" style="width: 80%"/>
+                    &nbsp;&nbsp;<a href="#" onclick="showHelp()" style="text-decoration:underline">help</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><br></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="table_scroller" style="">
+                        <table id="variableGrid1" class="formClass">
+                            <thead>
+                                <tr>
+                                    <td>Variable</td>
+                                    <td>Entry Type</td>
+                                    <td>Value</td>
+                                    <td>Element</td>
+                                    <td>Test Value</td>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: Variables">
+                                <tr>
+                                    <td><input type="text" data-bind="value: Name" style="width:100px">
+                                    </td>
+                                    <td>
+                                        <select id="entryType" class="formClass" data-bind="value: EntryTypeId, event: { change: changeOfEntryType() }">
+                                            <option value="1">Data Entry</option>
+                                            <option value="2">From DB</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width:100px;text-align: right" data-bind="value: StaticValue, enable: EntryTypeId() == '1'"></input>
+                                    </td>
+                                    <td>
+                                        <select class="formClass" data-bind="options: $parent.ruleTypes, optionsText: 'Name', optionsValue: 'Id', optionsCaption: 'Select',
+                                            value: RuleTypeId, enable: EntryTypeId() == '2'
+                                            ">
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" style="width:100px;text-align: right" class="formClass" data-bind="value: TestValue"></input>
+                                    </td>
+                                    <td>
+                                        <input class="standard_button" type="button" data-bind="click: remove" value="Remove" id="btnRemoveVariable" /> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <div id="ruleButtons" style="float:right">
+                        <input class="standard_button" type="button" data-bind="click: addVariable" value="Add Variable" style="width:130px"  id="btnNewVariable" />
+                        <input class="standard_button" type="button" onclick="validateFormula();" style="width:130px" value="Validate Formula" id="btnValidate" />
+                    </div>
+                </td>
+            </tr>
+        </table>            
+    </div>
+</script>
+
+<script id="selectOperationsTemplate" type="text/x-jquery-tmpl">
+    <select id="genericSelect" class = "formClass">
+        <option value="-1">Select</option>
+        {{each selectList}}
+        <option value="${Id}">${CodeIdentifier}</option>
         {{/each}}
-    </table>    
+    </select>
+</script>
+<script id="selectIdNameTemplate" type="text/x-jquery-tmpl">
+    <select id="genericSelect" class = "formClass">
+        <option value="-1">Select</option>
+        {{each selectList}}
+            {{if Id == selectedId }}
+                <option value="${Id}" selected>${Name}</option>
+            {{else}}
+                <option value="${Id}">${Name}</option>
+            {{/if}}
+        {{/each}}
+    </select>
+</script>
+<script id="selectIdIdentifierTemplate" type="text/x-jquery-tmpl">
+    <select id="genericSelect" class = "formClass">
+        <option value="-1">Select</option>
+        {{each selectList}}
+            {{if Id == selectedId }}
+                <option value="${Id}" selected>${Identifier}</option>
+            {{else}}
+                <option value="${Id}">${Identifier}</option>
+            {{/if}}
+        {{/each}}
+    </select>
+</script>
+<script id="rulevalueinputDivTemplate" type="text/x-jquery-tmpl">
+    <input type="text" id="rulevalueinputid" name="rulevalueinputid" class="ruleValueInput rulevalueinputid" value="${Value1}" />
+    <input type="text" id="rulevalueinput2id" name="rulevalueinput2id" class="ruleValueInput rulevalueinput2id" value="${Value2}" />
+</script>
+<script id="rulevalueSelectDivTemplate" type="text/x-jquery-tmpl">
+    <select id="rulevalueSelect1" name="rulevalueSelect1" class="formClass rulevalueSelect1">
+        <option value="-1">Select</option>
+        {{each selectList}}
+        <option value="${Id}">${Value1}</option>
+        {{/each}}
+    </select>
+</script>
+<script id="toleranceTextTemplate" type="text/x-jquery-tmpl">
+    &nbsp;&nbsp;
+    <select id="toleranceTextSignPre${suffix}">
+        {{if Value2.charAt(0) == "+"}}
+        <option value="+" selected="selected">+</option>
+        {{else}}
+        <option value="+">+</option>
+        {{/if}}
+        {{if Value2.charAt(0) == "-"}}
+        <option value="-" selected="selected">-</option>
+        {{else}}
+        <option value="-">-</option>
+        {{/if}}
+    </select>
+    &nbsp;&nbsp;<input type="text" id="toleranceTextId${suffix}" name="toleranceTextId${suffix}" placeholder="enter tolerance" class="toleranceValueInput" value="${Value2.substring(1, (Value2.indexOf('%') > 0 ? Value2.length-1 : Value2.length) )}" style="width:100px" />
+    <select id="toleranceTextSignPost${suffix}">
+        <option value=""></option>
+        {{if Value2.charAt(Value2.length-1) == "%"}}
+        <option value="%" selected="selected">%</option>
+        {{else}}
+        <option value="%">%</option>
+        {{/if}}
+    </select>
+</script>
+
+<script id="AssignUsersToQueueViewTemplate" type="text/x-jquery-tmpl">
+<table>
+<tr>
+<td class = "headerBorder">
+Assign Users To
+</td>
+</tr>
+
+<tr></tr>
+
+<tr>
+<td>
+        <div id="table">
+            <div id="row">
+                <div id="cell">
+                    <label id = "lblSelect" for="selectedColumns">Active Users </label><br/> 
+                    <select id="availableColumns" multiple="multiple"  class = "formClass" style="height:100px;">
+                    {{each $item.availableColumns}}
+                    <option value="${Id}">${Name}</option>
+                    {{/each}}
+                    </select>
+                </div>
+            </div> 
+            
+            <div id="cell">
+                 <input type="button" value=">"id="to2"/>
+                 <input type="button" value="<" id="to1"/>
+            
+            </div>
+            
+            <div id="cell">
+                <label id = "lblDisplay" for="selectedColumns">Selected Users </label><br/>  
+                <select id="selectedColumns" multiple="multiple"  class = "formClass" style="height:100px;">
+                    {{each Columns}}
+                    <option value="${BindUserId}">${BindUserName}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    </td>
+    </tr>
+    </table>
 
 </script>
+
+<script type="text/javascript" src="./Index_files/jqGridSearch.js"></script>
+<script type="text/javascript" src="./Index_files/Rules.js"> </script>
+
+
+<script type="text/javascript">
+   
+</script>
+
+
+
+
+
+
+
 
 <script type="text/javascript" language="javascript">
 
@@ -643,8 +1296,8 @@
             </div>
         </div>
         
-            <p hidden="91238a95-4354-43f5-9e07-338faba148331">
+            <p hidden="8627bf73-083c-4ec4-8be0-36e5bd2635af0">
 
     
 
-</p><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious" style="display: none;"></button><button type="button" id="cboxNext" style="display: none;"></button><button id="cboxSlideshow" style="display: none;"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div><div class="ui-multiselect-menu ui-widget ui-widget-content ui-corner-all" style="width: 228px;"><div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix"><ul class="ui-helper-reset"><li><a class="ui-multiselect-all" href="https://gls-qa.defisolutions.com/Admin/AppVerificationRule?appVerificationType=1#"><span class="ui-icon ui-icon-check"></span><span>Check all</span></a></li><li><a class="ui-multiselect-none" href="https://gls-qa.defisolutions.com/Admin/AppVerificationRule?appVerificationType=1#"><span class="ui-icon ui-icon-closethick"></span><span>Uncheck all</span></a></li><li class="ui-multiselect-close"><a href="https://gls-qa.defisolutions.com/Admin/AppVerificationRule?appVerificationType=1#" class="ui-multiselect-close"><span class="ui-icon ui-icon-circle-close"></span></a></li></ul></div><ul class="ui-multiselect-checkboxes ui-helper-reset"><li class=" "><label for="ui-multiselect-0-option-0" title="" class="ui-corner-all"><input id="ui-multiselect-0-option-0" name="multiselect_0" type="checkbox" value="43" title="Dealer Track" disabled="disabled"><span>Dealer Track</span></label></li><li class=" "><label for="ui-multiselect-0-option-1" title="" class="ui-corner-all"><input id="ui-multiselect-0-option-1" name="multiselect_0" type="checkbox" value="45" title="RouteOne" disabled="disabled"><span>RouteOne</span></label></li></ul></div><div class="ui-multiselect-menu ui-widget ui-widget-content ui-corner-all" style="width: 228px;"><div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix"><ul class="ui-helper-reset"><li><a class="ui-multiselect-all" href="https://gls-qa.defisolutions.com/Admin/AppVerificationRule?appVerificationType=1#"><span class="ui-icon ui-icon-check"></span><span>Check all</span></a></li><li><a class="ui-multiselect-none" href="https://gls-qa.defisolutions.com/Admin/AppVerificationRule?appVerificationType=1#"><span class="ui-icon ui-icon-closethick"></span><span>Uncheck all</span></a></li><li class="ui-multiselect-close"><a href="https://gls-qa.defisolutions.com/Admin/AppVerificationRule?appVerificationType=1#" class="ui-multiselect-close"><span class="ui-icon ui-icon-circle-close"></span></a></li></ul></div><ul class="ui-multiselect-checkboxes ui-helper-reset"><li class=" "><label for="ui-multiselect-1-option-0" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-0" name="multiselect_1" type="checkbox" value="390" title="Application Received" disabled="disabled"><span>Application Received</span></label></li><li class=" "><label for="ui-multiselect-1-option-1" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-1" name="multiselect_1" type="checkbox" value="391" title="Initial Processing" disabled="disabled"><span>Initial Processing</span></label></li><li class=" "><label for="ui-multiselect-1-option-2" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-2" name="multiselect_1" type="checkbox" value="392" title="Auto Approved" disabled="disabled"><span>Auto Approved</span></label></li><li class=" "><label for="ui-multiselect-1-option-3" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-3" name="multiselect_1" type="checkbox" value="393" title="Auto Declined" disabled="disabled"><span>Auto Declined</span></label></li><li class=" "><label for="ui-multiselect-1-option-4" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-4" name="multiselect_1" type="checkbox" value="394" title="Recommended Review" disabled="disabled"><span>Recommended Review</span></label></li><li class=" "><label for="ui-multiselect-1-option-5" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-5" name="multiselect_1" type="checkbox" value="395" title="Approved" disabled="disabled"><span>Approved</span></label></li><li class=" "><label for="ui-multiselect-1-option-6" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-6" name="multiselect_1" type="checkbox" value="396" title="Conditional Approval" disabled="disabled"><span>Conditional Approval</span></label></li><li class=" "><label for="ui-multiselect-1-option-7" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-7" name="multiselect_1" type="checkbox" value="397" title="Manually Declined" disabled="disabled"><span>Manually Declined</span></label></li><li class=" "><label for="ui-multiselect-1-option-8" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-8" name="multiselect_1" type="checkbox" value="398" title="Contract Received" disabled="disabled"><span>Contract Received</span></label></li><li class=" "><label for="ui-multiselect-1-option-9" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-9" name="multiselect_1" type="checkbox" value="399" title="Ready to Book" disabled="disabled"><span>Ready to Book</span></label></li><li class=" "><label for="ui-multiselect-1-option-10" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-10" name="multiselect_1" type="checkbox" value="400" title="Booked" disabled="disabled"><span>Booked</span></label></li><li class=" "><label for="ui-multiselect-1-option-11" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-11" name="multiselect_1" type="checkbox" value="401" title="In Process" disabled="disabled"><span>In Process</span></label></li><li class=" "><label for="ui-multiselect-1-option-12" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-12" name="multiselect_1" type="checkbox" value="402" title="Underwriting Review" disabled="disabled"><span>Underwriting Review</span></label></li><li class=" "><label for="ui-multiselect-1-option-13" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-13" name="multiselect_1" type="checkbox" value="403" title="Funding Review" disabled="disabled"><span>Funding Review</span></label></li><li class=" "><label for="ui-multiselect-1-option-14" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-14" name="multiselect_1" type="checkbox" value="404" title="Returned" disabled="disabled"><span>Returned</span></label></li><li class=" "><label for="ui-multiselect-1-option-15" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-15" name="multiselect_1" type="checkbox" value="405" title="Incomplete/Not Received" disabled="disabled"><span>Incomplete/Not Received</span></label></li><li class=" "><label for="ui-multiselect-1-option-16" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-16" name="multiselect_1" type="checkbox" value="406" title="System ERROR" disabled="disabled"><span>System ERROR</span></label></li><li class=" "><label for="ui-multiselect-1-option-17" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-17" name="multiselect_1" type="checkbox" value="407" title="Credit Bureau Error" disabled="disabled"><span>Credit Bureau Error</span></label></li><li class=" "><label for="ui-multiselect-1-option-18" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-18" name="multiselect_1" type="checkbox" value="408" title="RApproved" disabled="disabled"><span>RApproved</span></label></li><li class=" "><label for="ui-multiselect-1-option-19" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-19" name="multiselect_1" type="checkbox" value="409" title="Recommended Decline" disabled="disabled"><span>Recommended Decline</span></label></li><li class=" "><label for="ui-multiselect-1-option-20" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-20" name="multiselect_1" type="checkbox" value="410" title="Queue For Funding" disabled="disabled"><span>Queue For Funding</span></label></li><li class=" "><label for="ui-multiselect-1-option-21" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-21" name="multiselect_1" type="checkbox" value="411" title="Expired" disabled="disabled"><span>Expired</span></label></li><li class=" "><label for="ui-multiselect-1-option-22" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-22" name="multiselect_1" type="checkbox" value="412" title="Return to Underwriting" disabled="disabled"><span>Return to Underwriting</span></label></li><li class=" "><label for="ui-multiselect-1-option-23" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-23" name="multiselect_1" type="checkbox" value="413" title="Cancelled" disabled="disabled"><span>Cancelled</span></label></li><li class=" "><label for="ui-multiselect-1-option-24" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-24" name="multiselect_1" type="checkbox" value="414" title="Draft Received" disabled="disabled"><span>Draft Received</span></label></li><li class=" "><label for="ui-multiselect-1-option-25" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-25" name="multiselect_1" type="checkbox" value="456" title="Return to Lender" disabled="disabled"><span>Return to Lender</span></label></li><li class=" "><label for="ui-multiselect-1-option-26" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-26" name="multiselect_1" type="checkbox" value="474" title="Book/Dont Fund" disabled="disabled"><span>Book/Dont Fund</span></label></li><li class=" "><label for="ui-multiselect-1-option-27" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-27" name="multiselect_1" type="checkbox" value="519" title="Econ Validation" disabled="disabled"><span>Econ Validation</span></label></li><li class=" "><label for="ui-multiselect-1-option-28" title="" class="ui-corner-all"><input id="ui-multiselect-1-option-28" name="multiselect_1" type="checkbox" value="846" title="RS" disabled="disabled"><span>RS</span></label></li></ul></div></body></html>
+</p><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div></body></html>
